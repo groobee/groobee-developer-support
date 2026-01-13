@@ -1,29 +1,24 @@
-name: Notify on Issue Opened
+name: Notify Power Automate on Issue Opened
 
 on:
   issues:
     types: [opened]
 
 jobs:
-  notify-teams:
+  notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Send message to Microsoft Teams
+      - name: Send issue payload to Power Automate
+        env:
+          FLOW_URL: ${{ secrets.POWER_AUTOMATE_URL }}
         run: |
-          curl -H "Content-Type: application/json" \
-          -d '{
-            "@type": "MessageCard",
-            "@context": "https://schema.org/extensions",
-            "summary": "New GitHub Issue",
-            "themeColor": "0076D7",
-            "title": "📌 새로운 GitHub 이슈가 생성되었습니다",
-            "sections": [{
-              "facts": [
-                { "name": "Repository", "value": "'"${{ github.repository }}"'" },
-                { "name": "Title", "value": "'"${{ github.event.issue.title }}"'" },
-                { "name": "Author", "value": "'"${{ github.event.issue.user.login }}"'" }
-              ],
-              "text": "[이슈 바로가기]('"${{ github.event.issue.html_url }}"')"
-            }]
-          }' \
-          ${{ secrets.TEAMS_WEBHOOK_URL }}
+          curl -sS -X POST "$FLOW_URL" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "repository": "${{ github.repository }}",
+              "number": ${{ github.event.issue.number }},
+              "title": "${{ github.event.issue.title }}",
+              "url": "${{ github.event.issue.html_url }}",
+              "author": "${{ github.event.issue.user.login }}",
+              "labels": ${{ toJson(github.event.issue.labels.*.name) }}
+            }'
