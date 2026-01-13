@@ -1,0 +1,95 @@
+name: 🐞 버그 리포트 (Bug report)
+description: Groobee SDK, 스크립트, 설치 과정에서 발생한 버그를 제보해주세요
+title: "[버그] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐞 버그 리포트
+
+        Groobee 사용 중 발생한 버그를 제보해주셔서 감사합니다.  
+        아래 항목을 가능한 한 자세히 작성해주세요.
+
+        ## 🔐 보안 안내
+
+        ⚠️ **중요**  
+        이 이슈는 **공개 저장소**에 등록됩니다.
+
+        - **API Key, Secret, Access Token**
+        - **인증 정보, 쿠키 값**
+        - **실제 서비스 도메인, 내부 IP**
+        - **개인 정보 또는 계정 정보**
+
+        와 같은 **기밀 정보는 절대 입력하지 마세요.**  
+        필요한 경우 **마스킹된 값** 또는 **예제(dummy) 값**을 사용해주세요.
+
+        ---
+        This issue will be posted to a **public repository**.  
+        Please **DO NOT include any secrets or sensitive information**.
+
+  - type: textarea
+    attributes:
+      label: 발생한 문제
+      description: |
+        어떤 문제가 발생했는지 설명해주세요.
+
+        (EN) Describe what happened.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 재현 방법
+      description: |
+        문제를 재현할 수 있는 단계를 순서대로 작성해주세요.
+
+        (EN) Steps to reproduce the issue.
+      placeholder: |
+        1. SDK 설치
+        2. 스크립트 설정
+        3. 페이지/앱 실행
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 기대한 동작
+      description: |
+        정상적으로 기대했던 결과를 작성해주세요.
+
+        (EN) What did you expect to happen?
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Groobee SDK / 스크립트 버전
+      description: |
+        사용 중인 SDK 또는 스크립트 버전을 입력해주세요.
+
+        (EN) Groobee SDK or script version.
+      placeholder: ex) groobee-sdk-1.2.3
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: 실행 환경
+      description: |
+        OS, 브라우저, 앱, 프레임워크 등 실행 환경을 작성해주세요.
+
+        (EN) OS, browser, app, framework, etc.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: 추가 정보
+      description: |
+        로그, 스크린샷 등 추가 정보가 있다면 첨부해주세요.
+        단, 기밀 정보는 포함하지 마세요.
+
+        (EN) Additional context such as logs or screenshots (no secrets).
+    validations:
+      required: false

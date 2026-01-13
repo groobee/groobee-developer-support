@@ -1,0 +1,61 @@
+name: ✨ 기능 요청 (Feature request)
+description: Groobee에 대한 새로운 기능 또는 개선 사항을 제안해주세요
+title: "[기능요청] "
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✨ 기능 요청
+
+        Groobee 개선을 위한 아이디어나 기능 요청을 남겨주세요.
+
+        ## 🔐 보안 안내
+
+        ⚠️ 이 이슈는 **공개 저장소**에 등록됩니다.  
+        실제 서비스 정보나 **API Key, Secret, 인증 정보**는  
+        **절대 포함하지 마세요.**
+
+        ---
+        Please do NOT include any sensitive or confidential information.
+
+  - type: textarea
+    attributes:
+      label: 해결하고 싶은 문제
+      description: |
+        현재 어떤 문제나 불편함이 있는지 설명해주세요.
+
+        (EN) Describe the problem you want to solve.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 제안하는 해결 방법
+      description: |
+        생각하고 계신 해결 방법이나 아이디어를 작성해주세요.
+
+        (EN) Describe your proposed solution.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 고려한 대안
+      description: |
+        다른 대안이나 우회 방법이 있다면 작성해주세요.
+
+        (EN) Describe alternatives you have considered.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: 추가 설명
+      description: |
+        예시, 스크린샷, 참고 자료가 있다면 추가해주세요.
+        (기밀 정보 제외)
+
+        (EN) Any additional context (no secrets).
+    validations:
+      required: false

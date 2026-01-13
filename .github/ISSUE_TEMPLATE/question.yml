@@ -1,0 +1,64 @@
+name: ❓ 질문 / 문의 (Question)
+description: Groobee SDK, 스크립트, 연동 관련 질문을 남겨주세요
+title: "[질문] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ❓ 질문 / 문의
+
+        Groobee 사용 중 궁금한 점이나 확인이 필요한 사항을 남겨주세요.
+
+        ## 🔐 보안 안내
+
+        ⚠️ 이 이슈는 **공개 저장소**에 등록됩니다.  
+        **API Key, Secret, 인증 정보, 실제 서비스 도메인** 등  
+        **기밀 정보는 절대 입력하지 마세요.**
+
+        예제 값 또는 마스킹된 값을 사용해주세요.
+
+        ---
+        This repository is public.  
+        Please do NOT include any sensitive information.
+
+  - type: textarea
+    attributes:
+      label: 질문 내용
+      description: |
+        궁금한 내용을 구체적으로 작성해주세요.
+
+        (EN) Describe your question in detail.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 시도해본 내용
+      description: |
+        이미 시도해본 방법이나 참고한 문서가 있다면 작성해주세요.
+
+        (EN) Describe what you have already tried.
+    validations:
+      required: false
+
+  - type: input
+    attributes:
+      label: 참고 문서 또는 링크
+      description: |
+        관련된 문서나 링크가 있다면 입력해주세요.
+
+        (EN) Related documentation or links.
+      placeholder: https://...
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: 실행 환경
+      description: |
+        질문이 발생한 환경을 간단히 작성해주세요.
+
+        (EN) Environment where the question applies.
+    validations:
+      required: false
