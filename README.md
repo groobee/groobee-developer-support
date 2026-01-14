@@ -1,15 +1,15 @@
-# groobee-developer-support (그루비 개발자 지원 레포)
+# groobee-developer-support (Groobee 개발자 지원 레포)
 
-Groobee SDK 및 Script를 사용하는 **개발자와 서비스 운영자**를 위한 지원 레포입니다.  
+Groobee SDK 및 스크립트 사용하는 **개발자와 서비스 운영자**를 위한 지원 레포입니다.  
 웹, iOS, Android 및 하이브리드 앱 환경에서 Groobee를 빠르고 안정적으로 연동하는 것을 목표로 합니다.
 
 ---
 
 ## 빠른 시작
 
-- [Web Script 빠른 시작](docs/getting-started/quickstart-web.md)
-- [iOS SDK 빠른 시작](docs/getting-started/quickstart-ios.md)
-- [Android SDK 빠른 시작](docs/getting-started/quickstart-android.md)
+- [Web 스크립트 설치 시작하기](docs/getting-started/gettingstart-web.md)
+- [iOS SDK 설치 시작하기](docs/getting-started/gettingstart-ios.md)
+- [Android SDK 설치 시작하기](docs/getting-started/quickstart-android.md)
 
 > 문제가 발생하면  
 > 👉 [자주발생하는 문제](docs/troubleshooting/common-errors.md)을 먼저 확인해주세요.
