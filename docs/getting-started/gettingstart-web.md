@@ -31,7 +31,7 @@ Groobee 스크립트 설치는 다음과 같은 순서로 진행됩니다.
 
 ### [1. 공통 스크립트 설치](../installation/installation-web-common-script.md)  
 웹 환경에서 Groobee를 사용하려면, 기본적으로 공통스크립트 설치가 필요합니다.  
-공통 스크립트는 그루비 서비스 사용 인증, 행동 이력 수집, AI 추천 기능 사용을 위한 필수 스크립트이며,  
+공통 스크립트는 Groobee 서비스 사용 인증, 행동 이력 수집, AI 추천 기능 사용을 위한 필수 스크립트이며,  
 이 단계에서는 Groobee 서비스 인증을 위한 공통스크립트를 설치하는 방법을 안내합니다.
 
 ### [2. 회원 정보 연동](../installation/installation-web-member-data.md)

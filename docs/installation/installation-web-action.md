@@ -13,8 +13,10 @@
 
 ## 사전 요구 사항
 
-- **(필수)** 공통 스크립트 설치가 되어있어야 합니다.  
+- **(필수)** 공통 스크립트가 설치 되어있어야 합니다.  
 👉 [공통 스크립트 설치 가이드](../installation/installation-web-common-script.md)
+- **(권장)** 웹 페이지 URL이 등록 되어있어야 합니다.  
+👉 [웹 페이지 경로 등록 가이드](../prerequisites/web-page-url-registration.md)
 
 ---
 
