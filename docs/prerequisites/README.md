@@ -4,5 +4,6 @@
 이 문서를 완료하면 Groobee SDK 및 스크립트를 사용하기 위한 기본적인 준비사항을 확인할 수 있습니다.
 
 - [웹 도메인 등록](web-domain-registration.md)
+- [웹 페이지 URL 등록](web-page-url-registration.md)
 - [앱 등록](app-registration.md)
 - [푸시키 등록](push-registration.md)
