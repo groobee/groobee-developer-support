@@ -334,6 +334,20 @@ groobee("siteType", "wisa_m"); // PC : wisa, 모바일 : wisa_m
 
 ---
 
+### Groobee 스크립트 실행 방지법
+공통 스크립트가 설치된 페이지더라도, 특정 페이지에서 Groobee 스크립트가 실행되지 않도록 막고 싶다면,  
+아래와 같이 groobee("grbDisabled", true);를 넣어주세요.
+
+```html
+<!-- Disable Groobee Script -->
+<script type="text/javascript">
+    groobee("grbDisabled", true);
+</script>
+<!-- End of Disable Groobee Script -->
+```
+
+---
+
 ## 다음 단계
 [회원 정보 연동](installation-web-member-data.md)로 이동하여 회원 정보 연동 설정을 해주세요. 
 
