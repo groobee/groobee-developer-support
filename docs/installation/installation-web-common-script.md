@@ -33,15 +33,16 @@
 ---
 
 ## 목차
-- [커스텀 웹 사이트 (Custom)](#커스텀-웹-사이트-custom)
-- [SPA 환경 (React, Vue 등)](#spa-환경-react-vue-등)
+- [커스텀 웹 사이트 (Custom)](#custom)
+- [SPA 환경 (React, Vue 등)](#spa)
 - [Cafe24](#cafe24)
-- [고도몰](#고도몰)
-- [고도몰 (옛날버전)](#고도몰-옛날버전)
-- [메이크샵](#메이크샵)
-- [위사 (스마트윙)](#위사-스마트윙)
+- [고도몰](#godo)
+- [고도몰 (옛날버전)](#oldgodo)
+- [메이크샵](#makeshop)
+- [위사 (스마트윙)](#wisawing)
 ---
 
+<a id="custom"></a>
 ## 커스텀 웹 사이트 (Custom)
 
 일반적인 커스텀 웹 사이트의 경우 아래 스크립트를 적용합니다.
@@ -64,6 +65,7 @@ groobee("siteType", "custom");
 
 ---
 
+<a id="spa"></a>
 ## SPA 환경 (React, Vue 등)
 SPA 환경에서는 페이지 전환 시점을 직접 제어해야 할 수 있습니다.
 
@@ -100,6 +102,7 @@ groobee.action("행동코드", {/*행동에 맞는 데이터*/});
 
 ---
 
+<a id="cafe24"></a>
 ## Cafe24
 
 ### 1. Cafe24 (PC)
@@ -140,6 +143,7 @@ groobee("siteType", "cafe24_m"); // PC : cafe24, 모바일 : cafe24_m
 
 ---
 
+<a id="godo"></a>
 ## 고도몰
 
 ### 1. 고도몰 (PC)
@@ -182,6 +186,7 @@ groobee("siteType", "godo5");
 
 ---
 
+<a id="oldgodo"></a>
 ## 고도몰 (옛날버전)
 
 ### 1. 고도몰 (PC)
@@ -225,6 +230,7 @@ groobee("siteType", "godomall_m");
 
 ---
 
+<a id="makeshop"></a>
 ## 메이크샵
 
 ### 1. 메이크샵 (PC)
@@ -292,10 +298,11 @@ groobee("siteType", "makeshop");
 
 ---
 
+<a id="wisawing"></a>
 ## 위사 (스마트윙)
 위사 쇼핑몰 관리자 페이지에 로그인 한 후, **디자인 > 디자인관리 > 스크립트 매니저**에 접속하여 Groobee 적용을 위한 스크립트를 생성합니다.
 
-[스크립트 매니저 메뉴 위치 스크린샷 보기](../images/installation/wisa/wisa-script-mgr-pos.png)
+[스크립트 매니저 메뉴 위치 스크린샷 보기](../images/installation/wisa/wisa-script-mgr-pos.png)  
 [스크립트 기본정보 입력](../images/installation/wisa/wisa-script-base.png)
 
 ### 1. 위사 (PC)
