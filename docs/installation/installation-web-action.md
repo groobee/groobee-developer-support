@@ -73,6 +73,9 @@ groobee( "SE", { keyword : "겨울옷" } );
 ### 상품 상세 페이지 (VG)
 - 상품 상세 페이지 방문 이력은 상품 정보 목록과 함께 호출해주어야 됩니다.
 - 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 상태(status) 필드는 품절이거나 상품이 판매상태가 아닐 경우에만 "SS" 값을 넣어주시면 됩니다.  
+  정상 판매중인 상품의 경우에는 빈 문자열("")로 전달해주세요.
+- 
 ```javascript
 groobee( "VG", {
   goods : [
@@ -105,6 +108,7 @@ groobee( "VG", {
 ### 장바구니 페이지 (VC)
 - 장바구니 페이지 방문 이력은 장바구니 상품 정보 목록과 함께 호출해주어야 됩니다.
 - 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 
 ```javascript
 groobee( "VC", {
   goods : [
@@ -155,6 +159,7 @@ groobee( "VC", {
 ### 주문서 작성 페이지 (OR)
 - 주문서 작성 페이지 방문 이력은 장바구니 상품 정보 목록과 함께 호출해주어야 됩니다.
 - 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 
 ```javascript
 groobee( "OR", {
   goods : [
@@ -210,11 +215,13 @@ groobee( "OR", {
 
 
 - 상품 정보가 없는 경우 orderNo만 전달하는 예시
+- 
 ```javascript
 groobee( "PU", { orderNo : "PU1234567890" } );
 ```
 
 - 상품 정보가 있는 경우 orderNo와 Goods[]를 함께 전달하는 예시
+- 
 ```javascript
 groobee( "PU", { 
   orderNo : "PU0102030405",
@@ -266,6 +273,7 @@ groobee( "PU", {
 ### 카테고리 페이지 (CA)
 - 카테고리 페이지 방문 이력은 카테고리 정보와 함께 호출해주어야 됩니다.
 - 카테고리 정보(category)의 타입은 Category 이며, 상세한 필드별 설명은 [Category 스키마 문서](../specs/action/schema.md#category)를 참고해주세요.
+- 
 ```javascript
 groobee( "CA", {
   category : {
@@ -283,7 +291,89 @@ groobee( "CA", {
 });
 ```
 
-### 
+### 장바구니 담기 (AC)
+- 장바구니 담기 이벤트는 장바구니에 담긴 상품 정보와 함께 호출해주어야 됩니다.
+- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+
+```javascript
+groobee( "AC", {
+  goods : [
+    {
+      name: "파란색 줄무늬 티셔츠",
+      code: "0001",
+      amt: 10000,
+      prc: 15000,
+      salePrc: 10000,
+      cnt: 1,
+      cat: "1234", 
+      cateNm: "티셔츠", 
+      catL: "1", 
+      cateLNm: "의류", 
+      catM: "12", 
+      cateMNm: "남성", 
+      catS: "123", 
+      cateSNm: "남성상의", 
+      catD: "1234", 
+      cateDNm: "티셔츠", 
+      brand: "P1", 
+      brandNm: "플래티" 
+    },
+    {
+      name: "흰 줄무늬 티셔츠",
+      code: "0001",
+      amt: 45000,
+      prc: 20000,
+      salePrc: 15000,
+      cnt: 3,
+      cat: "1235",
+      cateNm: "티셔츠",
+      catL: "1",
+      cateLNm: "의류",
+      catM: "12",
+      cateMNm: "남성",
+      catS: "123",
+      cateSNm: "남성상의",
+      catD: "1235",
+      cateDNm: "티셔츠",
+      brand: "P1",
+      brandNm: "플래티"
+    }
+  ]
+});
+```
+
+### 장바구니 제거 (DC)
+- 장바구니 제거 이벤트는 장바구니에서 제거된 상품 정보와 함께 호출해주어야 됩니다.
+- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품수(cnt) 필드는 장바구니에서 제거된 수량을 의미합니다.  
+  - 예) 장바구니에 3개 담긴 상품을 모두 제거한 경우 cnt: 3 으로 전달
+
+```javascript
+groobee( "DC", {
+  goods : [
+    {
+      name: "파란색 줄무늬 티셔츠",
+      code: "0001",
+      amt: 10000,
+      prc: 15000,
+      salePrc: 10000,
+      cnt: 1,
+      cat: "1234", 
+      cateNm: "티셔츠", 
+      catL: "1", 
+      cateLNm: "의류", 
+      catM: "12", 
+      cateMNm: "남성", 
+      catS: "123", 
+      cateSNm: "남성상의", 
+      catD: "1234", 
+      cateDNm: "티셔츠", 
+      brand: "P1", 
+      brandNm: "플래티" 
+    }
+  ]
+});
+```
 
 ---
 
