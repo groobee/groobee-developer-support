@@ -5,7 +5,7 @@
 ---
 
 ## 행동 이력 수집
-- Groobee로 회원 정보에 맞춰 맞춤형 서비스를 제공하기 위해서는 행동 이력 수집이 필요합니다.
+- Groobee로 사용자별 맞춤 캠페인을 제공하기 위해서는 행동 이력 수집이 필요합니다.
 - Groobee에서 기본적으로 제공하는 행동이력 유형은 메인화면, 카테고리, 상품상세정보, 검색, 장바구니, 주문서 작성, 주문완료 페이지 방문 등이 있으며  
   만약, 추가로 수집하고자 하는 행동이력이 있는 경우에는 커스텀 이벤트 기능을 활용하시면 됩니다.  
   👉 현재 문서 내 [행동 유형 목록](#행동-유형-목록)에 각 행동유형에 대한 간단한 설명이 나와있습니다.
@@ -51,14 +51,18 @@
 
 ---
 
+<a id="custom"></a>
 ## 커스텀 웹 사이트 (Custom)
-페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 정상적으로 설치되어 있다면,  
+페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 custom 유형으로 정상 설치 되어 있다면,  
 아래와 같은 자바스크립트 함수를 사용 할 수 있습니다.  
 아래 함수를 타입에 맞는 데이터를 넣어 호출하면 해당 행동 이력이 Groobee로 전송되어 수집됩니다.
 
 ```javascript
 groobee("행동코드", 값);
 ```
+
+<details>
+<summary>커스텀 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
 - 메인 페이지 방문 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.  
@@ -374,11 +378,13 @@ groobee( "DC", {
   ]
 });
 ```
+</details>
 
 ---
 
+<a id="spa"></a>
 ## SPA 환경 (React, Vue 등)
-페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 정상적으로 설치되어 있다면,  
+페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 custom spa유형으로 정상 설치 되어 있다면,  
 아래와 같은 자바스크립트 함수를 사용 할 수 있습니다.  
 아래 함수를 타입에 맞는 데이터를 넣어 호출하면 해당 행동 이력이 Groobee로 전송되어 수집됩니다.
 
@@ -393,6 +399,8 @@ groobee.action("행동코드", 값);
 > groobee.start() 함수를 호출하여 초기화 후 사용해야 합니다.  
 > [SPA 환경 공통 스크립트 설치법](../installation/installation-web-common-script.md#spa) 문서를 참고해주세요.
 
+<details>
+<summary>SPA 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
 - 메인 페이지 방문 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.  
@@ -709,11 +717,36 @@ groobee( "DC", {
 });
 ```
 
-
+</details>
 
 ---
 
+<a id="cafe24"></a>
 ## Cafe24
+페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 cafe24유형으로 정상 설치 되어 있다면,  
+아래와 같은 자바스크립트 함수를 사용 할 수 있습니다.  
+아래 함수를 타입에 맞는 데이터를 넣어 호출하면 해당 행동 이력이 Groobee로 전송되어 수집됩니다.
+
+<details>
+<summary>CAFE24 웹 사이트 행동 이력 수집 방법 보기</summary>
+
+### 메인 페이지 (MA)
+- 메인 페이지 방문 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.  
+  별도의 코드 삽입이 필요하지 않습니다.
+
+### 검색 결과 페이지 (SE)
+- 검색 페이지 방문 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.    
+  별도의 코드 삽입이 필요하지 않습니다.
+
+### 상품 상세 페이지 (VG)
+- 
+
+### 장바구니 페이지 (VC)
+### 주문서 작성 페이지 (OR)
+### 주문완료 페이지 (PU)
+### 카테고리 페이지 (CA)
+
+</details>
 
 ---
 

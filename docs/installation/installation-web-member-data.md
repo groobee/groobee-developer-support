@@ -92,6 +92,18 @@
 > &lt;div module="Layout_stateLogon" style="display: none;"&gt;&lt;/div&gt;를  
 > 직접입력하거나 Layout_stateLogon이 존재하는 페이지(header.html 등)를 찾아 내부 영역에 삽입g합니다
 
+> 만약 페이지가 공통 레이아웃을 포함하지 않는 페이지라면,  
+> 해당 페이지 상단에 회원 정보 스크립트를 직접 삽입해 주세요.  
+> (예: 주문서 작성, 주문완료 페이지 등에서 공통 레이아웃을 사용하지 않는경우 해당 페이지 상단에 직접 아래 스크립트를 추가합니다.)
+> ```html
+> <!-- Groobee Basic Data -->
+> <div module="Layout_statelogon" style="display:none;">
+> <div id="groobee-member-id" style="display: none;">{$id}</div>
+> <div id="groobee-member-grade" style="display: none;">{$group_name}</div>
+> </div>
+> <!-- End of Groobee Basic Data -->
+> ```
+
 ---
 
 <a id="godo"></a>
