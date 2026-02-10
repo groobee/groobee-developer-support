@@ -739,9 +739,107 @@ groobee( "DC", {
   별도의 코드 삽입이 필요하지 않습니다.
 
 ### 상품 상세 페이지 (VG)
-- 
+- 상품 > 상품 상세 페이지 &lt;div module="product_detail"&gt; 바로 하단에 아래 스크립트를 삽입합니다.
+
+- PC  
+[상품 상세 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-detail-pos-pc.png)
+```html
+<!-- Groobee Selector Script -->
+<div class="groobeeProductDetail" style="display: none;">
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductPrice">{$product_price}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price}</span>
+<span class="groobeeProductCode">{$product_no}</span>
+<span class="groobeeProductImage">{$medium_img}</span>
+<span class="groobeeProductCategory"></span>
+<span class="groobeeProductCategoryName"></span>
+<span class="groobeeProductStatus">{$soldout_icon}</span>
+</div>
+<!-- End of Groobee Selector Script -->
+```
+
+- 모바일  
+[상품 상세 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-detail-pos-mo.png)
+```html
+<!-- Groobee Selector Script -->
+<div class="groobeeProductDetail" style="display: none;">
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductPrice">{$product_price}</span>
+<span class="groobeeProductSalePrice">{$txt_product_price_mobile}</span>
+<span class="groobeeProductCode">{$product_no}</span>
+<span class="groobeeProductImage">{$medium_img}</span>
+<span class="groobeeProductCategory"></span>
+<span class="groobeeProductCategoryName"></span>
+<span class="groobeeProductStatus">{$soldout_icon}</span>
+</div>
+<!-- End of Groobee Selector Script -->
+```
 
 ### 장바구니 페이지 (VC)
+- 주문 > 장바구니 페이지 &lt;div module="Order_BasketPackage"&gt; 바로 하단에 삽입합니다.  
+[장바구니 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-cart-pos.png)
+```html
+<!-- Groobee Cart Selector Script -->
+<div module="Order_NormNormal" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<div module="Order_SuppNormal" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<div module="Order_NormIndividual" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<div module="Order_InstNormal" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<!-- End of Groobee Cart Selector Script -->
+<!-- 해외배송을 사용하는 사이트만 삽입 -->
+<div module="Order_NormOversea" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<!-- End of Groobee Cart Selector Script -->
+```
+
 ### 주문서 작성 페이지 (OR)
 ### 주문완료 페이지 (PU)
 ### 카테고리 페이지 (CA)
