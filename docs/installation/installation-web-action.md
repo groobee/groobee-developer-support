@@ -723,9 +723,8 @@ groobee( "DC", {
 
 <a id="cafe24"></a>
 ## Cafe24
-페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 cafe24유형으로 정상 설치 되어 있다면,  
-아래와 같은 자바스크립트 함수를 사용 할 수 있습니다.  
-아래 함수를 타입에 맞는 데이터를 넣어 호출하면 해당 행동 이력이 Groobee로 전송되어 수집됩니다.
+페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 cafe24유형으로 정상 설치 되어 있다면,
+스마트 디자인 편집기에서 아래 스크립트 들을 삽입하여 행동 이력을 수집할 수 있습니다.
 
 <details>
 <summary>CAFE24 웹 사이트 행동 이력 수집 방법 보기</summary>
@@ -741,7 +740,7 @@ groobee( "DC", {
 ### 상품 상세 페이지 (VG)
 - 상품 > 상품 상세 페이지 &lt;div module="product_detail"&gt; 바로 하단에 아래 스크립트를 삽입합니다.
 
-- PC  
+##### PC  
 [상품 상세 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-detail-pos-pc.png)
 ```html
 <!-- Groobee Selector Script -->
@@ -758,7 +757,7 @@ groobee( "DC", {
 <!-- End of Groobee Selector Script -->
 ```
 
-- 모바일  
+##### 모바일  
 [상품 상세 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-detail-pos-mo.png)
 ```html
 <!-- Groobee Selector Script -->
@@ -776,7 +775,7 @@ groobee( "DC", {
 ```
 
 ### 장바구니 페이지 (VC)
-- 주문 > 장바구니 페이지 &lt;div module="Order_BasketPackage"&gt; 바로 하단에 삽입합니다.  
+- 주문 > 장바구니 페이지 &lt;div module="Order_BasketPackage"&gt; 바로 하단에 아래 스크립트를 삽입합니다.  
 [장바구니 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-cart-pos.png)
 ```html
 <!-- Groobee Cart Selector Script -->
@@ -841,13 +840,141 @@ groobee( "DC", {
 ```
 
 ### 주문서 작성 페이지 (OR)
-- 주문 > 주문서 작성 페이지 &lt;div module="Order_form"&gt; 바로 하단에 삽입
+- 주문 > 주문서 작성 페이지 &lt;div module="Order_form"&gt; 바로 하단에 아래 스크립트를 삽입합니다.  
+[주문서 작성 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-order-pos.png)
+
+```html
+<!-- Groobee Order Selector Script -->
+<div class="groobeeOrderList" module="Order_normallist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<div class="groobeeOrderList" module="Order_supplierlist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<div class="groobeeOrderList" module="Order_individuallist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<!-- End of Groobee Order Selector Script -->
+<!-- 해외배송을 사용하는 사이트만 삽입 -->
+<div class="groobeeOrderList" module="Order_oversealist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<!-- End of Groobee Order Selector Script -->
+```
+
+> **특이사항**  
+> 모바일 간편(원터치) 주문서 이력은 수집 할 수 없습니다.
 
 ### 주문완료 페이지 (PU)
-- todo
+- 주문 완료 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.  
+  별도의 코드 삽입이 필요하지 않습니다.
+- 
+> **특이사항**  
+> 모바일 간편(원터치) 주문 이력은 수집 할 수 없습니다.
 
 ### 카테고리 페이지 (CA)
-- todo
+- 상품 > 상품 분류 페이지 &lt;div module="product_headcategory"&gt; 하단에 아래 스크립트를 삽입합니다.
+
+
+```html
+<div class="groobeeCategory" style="display:none">
+  <span class="groobeeCategoryName">{$name_1}</span>
+  <span class="groobeeCategoryCode">{$param_1}</span>
+  <span class="groobeeCategoryLName"></span>
+  <span class="groobeeCategoryLCode"></span>
+  <span class="groobeeCategoryMName"></span>
+  <span class="groobeeCategoryMCode"></span>
+  <span class="groobeeCategorySName"></span>
+  <span class="groobeeCategorySCode"></span>
+  <span class="groobeeCategoryDName"></span>
+  <span class="groobeeCategoryDCode"></span>
+</div>
+
+<script>
+  (function () {
+    try {
+      var path = document.querySelector('.path[module="product_headcategory"]') || document.querySelector('.path');
+      if (!path) return;
+  
+      var box = path.querySelector('.groobeeCategory');
+      if (!box) return;
+  
+      var list = Array.prototype.slice.call(path.querySelectorAll('ol > li'));
+      var links = [];
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].offsetParent === null) continue;      // display:none 제외
+        var a = list[i].querySelector('a');
+        if (!a) continue;
+        if (a.getAttribute('href') === '/') continue;     // 홈 제외
+        links.push(a);
+        if (links.length === 4) break;                    // 4단계까지만
+      }
+      if (!links.length) return;
+  
+      function text(a) {
+        return (a.textContent || '').replace(/\s+/g, ' ').trim();
+      }
+      function cateNo(a) {
+        var href = a.getAttribute('href') || '';
+        var m = href.match(/[?&]cate_no=(\d+)/i);
+        if (m) return m[1];
+        return href.replace(/\D/g, ''); // fallback: 숫자만
+      }
+  
+      function set(selector, value) {
+        var el = box.querySelector(selector);
+        if (el) el.textContent = value || '';
+      }
+  
+      var step = [
+        { n: '.groobeeCategoryLName', c: '.groobeeCategoryLCode' },
+        { n: '.groobeeCategoryMName', c: '.groobeeCategoryMCode' },
+        { n: '.groobeeCategorySName', c: '.groobeeCategorySCode' },
+        { n: '.groobeeCategoryDName', c: '.groobeeCategoryDCode' }
+      ];
+  
+      for (var s = 0; s < step.length; s++) {
+        var a = links[s];
+        set(step[s].n, a ? text(a) : '');
+        set(step[s].c, a ? cateNo(a) : '');
+      }
+      
+      // 가장 마지막 카테고리값으로 최종 카테고리값을 채운다.
+      var last = links[links.length - 1];
+      set('.groobeeCategoryName', text(last));
+      set('.groobeeCategoryCode', cateNo(last));
+    } catch (e) {
+      // 에러가 나도 사이트 동작에 영향 없도록 무시
+      console.warn('Groobee category script error:', e);
+    }
+  })();
+</script>
+```
+
 
 </details>
 
