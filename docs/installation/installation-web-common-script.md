@@ -37,7 +37,7 @@
 - [SPA 환경 (React, Vue 등)](#spa)
 - [Cafe24](#cafe24)
 - [고도몰](#godo)
-- [고도몰 (옛날버전)](#oldgodo)
+- [고도몰 (e나무)](#godoenamu)
 - [메이크샵](#makeshop)
 - [위사 (스마트윙)](#wisawing)
 ---
@@ -186,8 +186,8 @@ groobee("siteType", "godo5");
 
 ---
 
-<a id="oldgodo"></a>
-## 고도몰 (옛날버전)
+<a id="godoenamu"></a>
+## 고도몰 (e나무)
 
 ### 1. 고도몰 (PC)
 
@@ -209,7 +209,7 @@ groobee("siteType", "godomall");
 <!-- End of Groobee Script -->
 ```
 
-### 2. 고도몰 (옛날버전) (모바일)
+### 2. 고도몰 (e나무) (모바일)
 고도몰 쇼핑몰 관리자 페이지에 로그인 한 후, **모바일샵 > 모바일샵 디자인관리 > 상단 레이아웃** 페이지 <head> 영역 종료 태그 직전에 아래 스크립트를 삽입 후 저장합니다.
 
 1. [모바일샵 디자인 관리 메뉴 위치 스크린샷 보기](../images/installation/godo/godo-design-menu-pos-mo.png)
