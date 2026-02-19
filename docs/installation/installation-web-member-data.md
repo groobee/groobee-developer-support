@@ -211,7 +211,7 @@ groobee("siteType", "godo5");
    [디자인 스킨 관리 메뉴 위치 스크린샷 보기](../images/installation/makeshop/makeshop-design-menu-pos-pc.png)
 
 2. **상단 > 기본 상단** 편집 화면에서 아래 스크립트를 삽입 후 저장합니다.  
-[스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-mmember-pos.png) 
+[스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-member-pos.png) 
    
 ```html
 <!-- Groobee Basic Data -->
@@ -226,7 +226,7 @@ groobee("siteType", "godo5");
 
 
 2. **상단 > 기본 상단** 편집 화면에서 아래 스크립트를 삽입 후 저장합니다.  
-   [스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-mmember-pos.png)
+   [스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-member-pos.png)
 
 ```html
 <!-- Groobee Basic Data -->
