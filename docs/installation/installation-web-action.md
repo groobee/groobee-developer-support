@@ -892,7 +892,200 @@ groobee( "DC", {
 ### 주문완료 페이지 (PU)
 - 주문 완료 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.  
   별도의 코드 삽입이 필요하지 않습니다.
-- 
+
+
+> **특이사항**  
+> 모바일 간편(원터치) 주문 이력은 수집 할 수 없습니다.
+
+### 카테고리 페이지 (CA)
+- 상품 > 상품 분류 페이지 &lt;div module="product_headcategory"&gt; 하단에 아래 스크립트를 삽입합니다.  
+cafe24 유형은 현재 대카테고리 정보만 수집이 가능하며, 중/소/세부 카테고리 정보는 수집이 불가능합니다.  
+[카테고리 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-category-pos.png)
+
+```html
+<div class="groobeeCategory" style="display:none">
+  <span class="groobeeCategoryName">{$name_1}</span>
+  <span class="groobeeCategoryCode">{$param_1}</span>
+</div>
+```
+
+
+</details>
+
+---
+
+## 고도몰
+페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 고도몰 유형 (godo5, godo5_m)으로 정상 설치 되어 있다면,
+스마트 디자인 편집기에서 아래 스크립트 들을 삽입하여 행동 이력을 수집할 수 있습니다.
+
+<details>
+<summary>고도몰 웹 사이트 행동 이력 수집 방법 보기</summary>
+
+### 메인 페이지 (MA)
+- 메인 페이지 방문 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.  
+  별도의 코드 삽입이 필요하지 않습니다.
+
+### 검색 결과 페이지 (SE)
+- 검색 페이지 방문 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.    
+  별도의 코드 삽입이 필요하지 않습니다.
+
+### 상품 상세 페이지 (VG)
+- 상품 > 상품 상세 페이지 &lt;div module="product_detail"&gt; 바로 하단에 아래 스크립트를 삽입합니다.
+
+##### PC
+[상품 상세 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-detail-pos-pc.png)
+```html
+<!-- Groobee Selector Script -->
+<div class="groobeeProductDetail" style="display: none;">
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductPrice">{$product_price}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price}</span>
+<span class="groobeeProductCode">{$product_no}</span>
+<span class="groobeeProductImage">{$medium_img}</span>
+<span class="groobeeProductCategory"></span>
+<span class="groobeeProductCategoryName"></span>
+<span class="groobeeProductStatus">{$soldout_icon}</span>
+</div>
+<!-- End of Groobee Selector Script -->
+```
+
+##### 모바일
+[상품 상세 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-detail-pos-mo.png)
+```html
+<!-- Groobee Selector Script -->
+<div class="groobeeProductDetail" style="display: none;">
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductPrice">{$product_price}</span>
+<span class="groobeeProductSalePrice">{$txt_product_price_mobile}</span>
+<span class="groobeeProductCode">{$product_no}</span>
+<span class="groobeeProductImage">{$medium_img}</span>
+<span class="groobeeProductCategory"></span>
+<span class="groobeeProductCategoryName"></span>
+<span class="groobeeProductStatus">{$soldout_icon}</span>
+</div>
+<!-- End of Groobee Selector Script -->
+```
+
+### 장바구니 페이지 (VC)
+- 주문 > 장바구니 페이지 &lt;div module="Order_BasketPackage"&gt; 바로 하단에 아래 스크립트를 삽입합니다.  
+  [장바구니 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-cart-pos.png)
+```html
+<!-- Groobee Cart Selector Script -->
+<div module="Order_NormNormal" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<div module="Order_SuppNormal" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<div module="Order_NormIndividual" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<div module="Order_InstNormal" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<!-- End of Groobee Cart Selector Script -->
+<!-- 해외배송을 사용하는 사이트만 삽입 -->
+<div module="Order_NormOversea" style="display: none;">
+<div class="groobeeCartList" module="Order_list">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$name}</span>
+<span class="groobeeProductAmount">{$sum_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$quantity}</span>
+<span class="groobeeProductImage">{$img}</span>
+</div>
+</div>
+<!-- End of Groobee Cart Selector Script -->
+```
+
+### 주문서 작성 페이지 (OR)
+- 주문 > 주문서 작성 페이지 &lt;div module="Order_form"&gt; 바로 하단에 아래 스크립트를 삽입합니다.  
+  [주문서 작성 이력 수집을 위한 스크립트 설치 위치 및 예시](../images/installation/cafe24/cafe24-order-pos.png)
+
+```html
+<!-- Groobee Order Selector Script -->
+<div class="groobeeOrderList" module="Order_normallist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<div class="groobeeOrderList" module="Order_supplierlist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<div class="groobeeOrderList" module="Order_individuallist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<!-- End of Groobee Order Selector Script -->
+<!-- 해외배송을 사용하는 사이트만 삽입 -->
+<div class="groobeeOrderList" module="Order_oversealist" style="display: none;">
+<a class="groobeeProductA" href="/product/detail.html{$param}"></a>
+<span class="groobeeProductName">{$product_name_link}</span>
+<span class="groobeeProductAmount">{$product_total_price_front}</span>
+<span class="groobeeProductPrice">{$product_price_front}</span>
+<span class="groobeeProductSalePrice">{$product_sale_price_front}</span>
+<span class="groobeeProductCount">{$product_quantity_text}</span>
+<span class="groobeeProductImage">{$product_image}</span>
+</div>
+<!-- End of Groobee Order Selector Script -->
+```
+
+> **특이사항**  
+> 모바일 간편(원터치) 주문서 이력은 수집 할 수 없습니다.
+
+### 주문완료 페이지 (PU)
+- 주문 완료 이력은 [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md)이 되어 있다면 자동으로 수집됩니다.  
+  별도의 코드 삽입이 필요하지 않습니다.
+
+
 > **특이사항**  
 > 모바일 간편(원터치) 주문 이력은 수집 할 수 없습니다.
 
@@ -975,12 +1168,7 @@ groobee( "DC", {
 </script>
 ```
 
-
 </details>
-
----
-
-## 고도몰
 
 ---
 
