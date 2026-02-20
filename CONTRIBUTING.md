@@ -14,10 +14,19 @@
 
 ### draft 브랜치
 - 문서 작업은 `draft/*` 브랜치에서 진행합니다.
+- main 브랜치에 반영된 draft 브랜치는 삭제합니다.
 
 예시:
 - `draft/web-script-installation`
-- `draft/wisa-installation-guide`
+- `draft/ios-sdk-installation`
+
+### patch 브랜치
+- 오타 등 간단한 수정은 `patch/*` 브랜치에서 진행합니다.
+- main 브랜치에 반영된 patch 브랜치는 삭제합니다.
+
+예시:
+- `patch/gettingstart-web-header-size`
+- `patch/web-script-installation-typo`
 
 ---
 
