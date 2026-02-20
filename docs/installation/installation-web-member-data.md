@@ -25,15 +25,16 @@
 ---
 
 ## 목차
-- [커스텀 웹 사이트](#커스텀-웹-사이트)
+- [커스텀 웹 사이트](#custom)
 - [Cafe24](#cafe24)
-- [고도몰](#고도몰)
-- [고도몰 (옛날버전)](#고도몰-옛날버전)
-- [메이크샵](#메이크샵)
-- [위사 (스마트윙)](#위사-스마트윙)
+- [고도몰](#godo)
+- [고도몰 (e나무)](#godoenamu)
+- [메이크샵](#makeshop)
+- [위사 (스마트윙)](#wisawing)
 
 ---
 
+<a id="custom"></a>
 ## 커스텀 웹 사이트
 직접 구축한 사이트를 운영 중이거나 임대형 쇼핑몰 중 가이드에 없는 쇼핑몰을 운영하시는 경우에는 아래의 방법을 참고하여 회원 정보를 연동해 주세요.
 - 모든 페이지에 공통으로 적용되는 공통 레이아웃에 아래의 메타태그를 삽입하고  
@@ -52,6 +53,7 @@
 
 ---
 
+<a id="cafe24"></a>
 ## Cafe24
 
 ### 1. Cafe24 (PC)
@@ -90,8 +92,21 @@
 > &lt;div module="Layout_stateLogon" style="display: none;"&gt;&lt;/div&gt;를  
 > 직접입력하거나 Layout_stateLogon이 존재하는 페이지(header.html 등)를 찾아 내부 영역에 삽입g합니다
 
+> 만약 페이지가 공통 레이아웃을 포함하지 않는 페이지라면,  
+> 해당 페이지 상단에 회원 정보 스크립트를 직접 삽입해 주세요.  
+> (예: 주문서 작성, 주문완료 페이지 등에서 공통 레이아웃을 사용하지 않는경우 해당 페이지 상단에 직접 아래 스크립트를 추가합니다.)
+> ```html
+> <!-- Groobee Basic Data -->
+> <div module="Layout_statelogon" style="display:none;">
+> <div id="groobee-member-id" style="display: none;">{$id}</div>
+> <div id="groobee-member-grade" style="display: none;">{$group_name}</div>
+> </div>
+> <!-- End of Groobee Basic Data -->
+> ```
+
 ---
 
+<a id="godo"></a>
 ## 고도몰
 
 ### 1. 고도몰 (PC)
@@ -160,7 +175,8 @@ groobee("siteType", "godo5");
 
 ---
 
-## 고도몰 (옛날버전)
+<a id="godoenamu"></a>
+## 고도몰 (e나무)
 
 ### 1. 고도몰 (PC)
 
@@ -174,7 +190,7 @@ groobee("siteType", "godo5");
 <meta property="groobee:member_grade" content="{_sess.level}"/>
 ```
 
-### 2. 고도몰 (옛날버전) (모바일)
+### 2. 고도몰 (e나무) (모바일)
 고도몰 쇼핑몰 관리자 페이지에 로그인 한 후, **모바일샵 > 모바일샵 디자인관리 > 상단 레이아웃**  페이지에 작성한 [Groobee 공통 스크립트](../installation/installation-web-common-script.md) 하단에 아래 스크립트를 삽입합니다.
 
 1. [모바일샵 디자인 관리 메뉴 위치 스크린샷 보기](../images/installation/godo/godo-design-menu-pos-mo.png)
@@ -187,6 +203,7 @@ groobee("siteType", "godo5");
 
 ---
 
+<a id="makeshop"></a>
 ## 메이크샵
 
 ### 1. 메이크샵 (PC)
@@ -194,7 +211,7 @@ groobee("siteType", "godo5");
    [디자인 스킨 관리 메뉴 위치 스크린샷 보기](../images/installation/makeshop/makeshop-design-menu-pos-pc.png)
 
 2. **상단 > 기본 상단** 편집 화면에서 아래 스크립트를 삽입 후 저장합니다.  
-[스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-mmember-pos.png) 
+[스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-member-pos.png) 
    
 ```html
 <!-- Groobee Basic Data -->
@@ -209,7 +226,7 @@ groobee("siteType", "godo5");
 
 
 2. **상단 > 기본 상단** 편집 화면에서 아래 스크립트를 삽입 후 저장합니다.  
-   [스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-mmember-pos.png)
+   [스크립트 설치 위치 스크린샷 보기](../images/installation/makeshop/makeshop-member-pos.png)
 
 ```html
 <!-- Groobee Basic Data -->
@@ -220,6 +237,7 @@ groobee("siteType", "godo5");
 
 ---
 
+<a id="wisawing"></a>
 ## 위사 (스마트윙)
 
 **디자인 > HTML 편집 > 상단공통페이지 편집** 메뉴에 들어가 아래 스크립트를 삽입합니다.  

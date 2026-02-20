@@ -33,15 +33,16 @@
 ---
 
 ## 목차
-- [커스텀 웹 사이트 (Custom)](#커스텀-웹-사이트-custom)
-- [SPA 환경 (React, Vue 등)](#spa-환경-react-vue-등)
+- [커스텀 웹 사이트 (Custom)](#custom)
+- [SPA 환경 (React, Vue 등)](#spa)
 - [Cafe24](#cafe24)
-- [고도몰](#고도몰)
-- [고도몰 (옛날버전)](#고도몰-옛날버전)
-- [메이크샵](#메이크샵)
-- [위사 (스마트윙)](#위사-스마트윙)
+- [고도몰](#godo)
+- [고도몰 (e나무)](#godoenamu)
+- [메이크샵](#makeshop)
+- [위사 (스마트윙)](#wisawing)
 ---
 
+<a id="custom"></a>
 ## 커스텀 웹 사이트 (Custom)
 
 일반적인 커스텀 웹 사이트의 경우 아래 스크립트를 적용합니다.
@@ -64,12 +65,13 @@ groobee("siteType", "custom");
 
 ---
 
+<a id="spa"></a>
 ## SPA 환경 (React, Vue 등)
 SPA 환경에서는 페이지 전환 시점을 직접 제어해야 할 수 있습니다.
 
 ### 1. 기본 스크립트 삽입
-SPA도 기본 스크립트 설치는 [커스텀 웹 사이트](#커스텀-웹-사이트-custom)와 동일하게 적용합니다.
-단, 페이지 전환 시점을 직접 제어하는 경우에는 groobee("isSPA", "true") 옵션을 추가로 설정합니다.
+SPA도 기본 스크립트 설치는 [커스텀 웹 사이트](#커스텀-웹-사이트-custom)와 동일하게 적용합니다.  
+단, 페이지 전환 시점을 직접 제어하는 경우에는 groobee("isSPA", "true") 옵션을 추가로 설정합니다.  
 isSPA 옵션을 설정하면 Groobee 스크립트가 자동 실행되지 않으며, 페이지 전환 시점에 직접 실행 함수를 호출해 행동 이력을 서버로 전송 할 수 있습니다.
 
 ```html
@@ -100,6 +102,7 @@ groobee.action("행동코드", {/*행동에 맞는 데이터*/});
 
 ---
 
+<a id="cafe24"></a>
 ## Cafe24
 
 ### 1. Cafe24 (PC)
@@ -140,6 +143,7 @@ groobee("siteType", "cafe24_m"); // PC : cafe24, 모바일 : cafe24_m
 
 ---
 
+<a id="godo"></a>
 ## 고도몰
 
 ### 1. 고도몰 (PC)
@@ -182,7 +186,8 @@ groobee("siteType", "godo5");
 
 ---
 
-## 고도몰 (옛날버전)
+<a id="godoenamu"></a>
+## 고도몰 (e나무)
 
 ### 1. 고도몰 (PC)
 
@@ -204,7 +209,7 @@ groobee("siteType", "godomall");
 <!-- End of Groobee Script -->
 ```
 
-### 2. 고도몰 (옛날버전) (모바일)
+### 2. 고도몰 (e나무) (모바일)
 고도몰 쇼핑몰 관리자 페이지에 로그인 한 후, **모바일샵 > 모바일샵 디자인관리 > 상단 레이아웃** 페이지 <head> 영역 종료 태그 직전에 아래 스크립트를 삽입 후 저장합니다.
 
 1. [모바일샵 디자인 관리 메뉴 위치 스크린샷 보기](../images/installation/godo/godo-design-menu-pos-mo.png)
@@ -225,6 +230,7 @@ groobee("siteType", "godomall_m");
 
 ---
 
+<a id="makeshop"></a>
 ## 메이크샵
 
 ### 1. 메이크샵 (PC)
@@ -292,15 +298,17 @@ groobee("siteType", "makeshop");
 
 ---
 
+<a id="wisawing"></a>
 ## 위사 (스마트윙)
 위사 쇼핑몰 관리자 페이지에 로그인 한 후, **디자인 > 디자인관리 > 스크립트 매니저**에 접속하여 Groobee 적용을 위한 스크립트를 생성합니다.
 
-[스크립트 매니저 메뉴 위치 스크린샷 보기](../images/installation/wisa/wisa-script-mgr-pos.png)
+[스크립트 매니저 메뉴 위치 스크린샷 보기](../images/installation/wisa/wisa-script-mgr-pos.png)  
 [스크립트 기본정보 입력](../images/installation/wisa/wisa-script-base.png)
 
 ### 1. 위사 (PC)
 **공통헤더 > PC > 공통헤더** 항목에 아래 스크립트를 삽입 후 저장합니다.  
-[스크립트 설치 위치 스크린샷 보기](../images/installation/wisa/wisa-header-pos-pc.png)
+[스크립트 설치 예시](../images/installation/wisa/wisa-header-pc.png)
+
 ```html
 <!-- Groobee Script -->
 <script type="text/javascript">
@@ -312,13 +320,13 @@ groobee("siteType", "makeshop");
 </script>
 <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js"></script>
 <!-- End of Groobee Script -->
-
 ```
  
 
 ### 2. 위사 (MO)
 **공통헤더 > Mobile > 공통헤더** 항목에 아래 스크립트를 삽입 후 저장합니다.  
-[스크립트 설치 위치 스크린샷 보기](../images/installation/wisa/wisa-header-pos-mo.png)
+[스크립트 설치 예시](../images/installation/wisa/wisa-header-mo.png)
+
 ```html
 <!-- Groobee Script -->
 <script type="text/javascript">
@@ -330,6 +338,20 @@ groobee("siteType", "wisa_m"); // PC : wisa, 모바일 : wisa_m
 </script>
 <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js"></script>
 <!-- End of Groobee Script -->
+```
+
+---
+
+### Groobee 스크립트 실행 방지법
+공통 스크립트가 설치된 페이지더라도, 특정 페이지에서 Groobee 스크립트가 실행되지 않도록 막고 싶다면,  
+아래와 같이 groobee("grbDisabled", true);를 넣어주세요.
+
+```html
+<!-- Disable Groobee Script -->
+<script type="text/javascript">
+    groobee("grbDisabled", true);
+</script>
+<!-- End of Disable Groobee Script -->
 ```
 
 ---
