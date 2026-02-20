@@ -307,7 +307,8 @@ groobee("siteType", "makeshop");
 
 ### 1. 위사 (PC)
 **공통헤더 > PC > 공통헤더** 항목에 아래 스크립트를 삽입 후 저장합니다.  
-[스크립트 설치 위치 스크린샷 보기](../images/installation/wisa/wisa-header-pos-pc.png)
+[스크립트 설치 예시](../images/installation/wisa/wisa-header-pc.png)
+
 ```html
 <!-- Groobee Script -->
 <script type="text/javascript">
@@ -319,13 +320,13 @@ groobee("siteType", "makeshop");
 </script>
 <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js"></script>
 <!-- End of Groobee Script -->
-
 ```
  
 
 ### 2. 위사 (MO)
 **공통헤더 > Mobile > 공통헤더** 항목에 아래 스크립트를 삽입 후 저장합니다.  
-[스크립트 설치 위치 스크린샷 보기](../images/installation/wisa/wisa-header-pos-mo.png)
+[스크립트 설치 예시](../images/installation/wisa/wisa-header-mo.png)
+
 ```html
 <!-- Groobee Script -->
 <script type="text/javascript">
