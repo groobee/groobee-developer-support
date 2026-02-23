@@ -22,4 +22,10 @@
 
 ## Groobee Android SDK 설치 가이드
 
+- Android SDK 가이드는 현재 별도 문서로 제공되고 있습니다.  
+Groobee 고객센터로 문의부탁드립니다.
+
 ## Groobee iOS SDK 설치 가이드
+
+- iOS SDK 가이드는 현재 별도 문서로 제공되고 있습니다.  
+Groobee 고객센터로 문의부탁드립니다.
