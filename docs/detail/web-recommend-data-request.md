@@ -1,57 +1,36 @@
-# AI 상품 추천: 데이터 호출형 - 모든 페이지
+# AI 상품 추천: 데이터 호출형
 
 ## 개요
 스크립트 LOAD 완료 후 원하는 시점에 추천 상품 목록을 가져와서 사용할 수 있습니다.
 DIV형과 달리 디자인을 자유롭게 구성할 수 있습니다.
 
-> **비동기식 방식**으로 구현되어 있기 때문에 타임아웃 값을 적절하게 설정해주세요.
+> **비동기식 방식**으로 구혐되어 있기 때문에 타임아웃 값을 적절하게 설정해주세요.
 
 ## 연동 방식
-고객사가 그루비에서 추천 상품을 요청하면 데이터를 바로 전달합니다.
+고객사가 Groobee에서 추천 상품을 요청하면 데이터를 바로 전달합니다.
 비동기식이라 요청이 느려지면 HTML에 추천 리스트를 표현하지 못하는 경우가 발생할 수 있습니다.
 
 ```javascript
-groobee.getGroobeeKeyBaseRecommendAsync("캠페인키", "추천타입", "타입에따른 기준값", 타임아웃)
+groobee.getGroobeeRecommendAsync("캠페인키", 타임아웃)
   .then(data => {
     console.log(data);
   });
 ```
 
-## 추천 상품 조회 (getGroobeeKeyBaseRecommendAsync)
-고객사가 키(Key) 기반 추천 상품을 요청할 때 사용하는 함수입니다.
+## 추천 상품 조회 (getGroobeeRecommendAsync)
+고객사가 추천 상품을 요청할 때 사용하는 함수입니다.
 
-- **역할**: 키 기반 추천 상품 조회
-- **함수명**: `groobee.getGroobeeKeyBaseRecommendAsync`
+- **역할**: 추천 상품 조회
+- **함수명**: `groobee.getGroobeeRecommendAsync`
 
 ### 파라미터
 - `campaignKey` (string): 캠페인키
-- `recommendBaseType` (string): 추천 종류(대문자)
-- `recommendValue` (string): 추천 검색 값
 - `timeSet` (int): 타임아웃 시간 (기본 3000ms)
-
-#### recommendBaseType 종류
-- `CATEGORY`
-- `GOODS`
-- `KEYWORD`
-
-#### recommendBaseType에 따른 recommendValue
-- `CATEGORY`: 카테고리 코드
-- `GOODS`: 상품코드
-- `KEYWORD`: 검색어
+- `{}` (object, optional): 임시(생략 가능)
 
 ### 호출 예시
 ```javascript
-groobee.getGroobeeKeyBaseRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f", "CATEGORY", "카테고리코드", 3000)
-  .then(data => {
-    console.log(data);
-  });
-
-groobee.getGroobeeKeyBaseRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f", "GOODS", "상품코드", 3000)
-  .then(data => {
-    console.log(data);
-  });
-
-groobee.getGroobeeKeyBaseRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f", "KEYWORD", "검색어", 3000)
+groobee.getGroobeeRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f", 3000)
   .then(data => {
     console.log(data);
   });
@@ -80,7 +59,7 @@ groobee.getGroobeeKeyBaseRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f", "K
 ```
 
 ## DI (노출)
-실제 고객사에서 노출된 상품 정보를 그루비로 보내 통계에 집계합니다.
+실제 고객사에서 노출된 상품/기획전 정보를 Groobee로 보내 통계에 집계합니다.
 
 - **함수명**: `groobee.send`
 - **type**: `"DI"` (고정 값)
@@ -115,7 +94,7 @@ groobee.send("DI", groobeeObj);
 ```
 
 ## CL (클릭)
-고객이 클릭한 상품 정보를 그루비로 보내 통계에 집계합니다.
+고객이 클릭한 상품/기획전 정보를 Groobee로 보내 통계에 집계합니다.
 
 - **함수명**: `groobee.send`
 - **type**: `"CL"` (고정 값)
@@ -148,35 +127,13 @@ groobeeObj = {
 groobee.send("CL", groobeeObj);
 ```
 
-## 사용 가능 알고리즘 정의
-사용 가능한 알고리즘은 `recommendBaseType`에 따라 아래와 같습니다.
-
-### CATEGORY (카테고리 기반)
-1. 카테고리 TOP N
-2. 실시간 카테고리 TOP N
-3. 연관 카테고리 상품
-
-### GOODS (상품 기반)
-1. 함께 본 상품
-2. 함께 구매한 상품
-3. 함께 담은 상품
-4. 구매 패턴 유사 상품
-5. 상품명 기반 유사 상품
-6. 딥러닝 기반 유사 상품
-7. 연관 카테고리 상품
-8. 이미지 기반 유사 상품
-9. 딥러닝 기반 다음에 볼 상품
-
-### KEYWORD (검색어 기반)
-1. 검색어 추천
-
 ## 작성 예시
-> 아래는 작성 예시일 뿐 고객사 코드에 맞게 수정해 주세요. 그루비 스크립트가 정상적으로 로드되지 않으면 동작하지 않기 때문에 예시와 같이 setInterval 함수 사용을 권장드립니다.
+> 아래는 작성 예시일 뿐 고객사 코드에 맞게 수정해 주세요. Groobee 스크립트가 정상적으로 로드되지 않으면 동작하지 않기 때문에 예시와 같이 setInterval 함수 사용을 권장드립니다. 
 ```javascript
 function groobeeRecommendCall() {
   // 함수 존재 여부 체크
-  if (groobee && groobee.getGroobeeKeyBaseRecommendAsync) {
-    groobee.getGroobeeKeyBaseRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f", "CATEGORY", "카테고리코드", 500)
+  if (groobee && groobee.getGroobeeRecommendAsync) {
+    groobee.getGroobeeRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f")
       .then(data => {
         고객사처리함수(data);
       });
@@ -191,8 +148,8 @@ function groobeeRecommendCall() {
       }
       tryCnt++;
 
-      if (groobee.getGroobeeKeyBaseRecommendAsync && typeof groobee.getGroobeeKeyBaseRecommendAsync === "function") {
-        groobee.getGroobeeKeyBaseRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f", "CATEGORY", "카테고리코드", 500)
+      if (groobee.getGroobeeRecommendAsync && typeof groobee.getGroobeeRecommendAsync === "function") {
+        groobee.getGroobeeRecommendAsync("RE6b33946d7add471dbd33f35347b5c06f")
           .then(data => {
             고객사처리함수(data);
           });
