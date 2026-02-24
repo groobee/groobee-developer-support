@@ -5,7 +5,7 @@
 DIV형과 달리 디자인을 자유롭게 구성할 수 있습니다.
 
 ## 연동 방식
-그루비는 추천 상품 전달 시 HTML/CSS가 아니라 아래 정보를 고객사 사이트의 특정 자바스크립트 함수로 전달합니다.
+Groobee는 추천 상품 전달 시 HTML/CSS가 아니라 아래 정보를 고객사 사이트의 특정 자바스크립트 함수로 전달합니다.
 - **추천 캠페인키**
 - **선택된 알고리즘 코드**
 - **추천 상품 목록**
@@ -20,9 +20,9 @@ function setGroobeeRecommend(algorithmCd, campaignKey, goodsArray) {
 상품을 선별하고 원하는 위치에 노출하도록 구현해야 합니다.
 
 ## setGroobeeRecommend
-그루비에서 정보 수집 후 필요한 정보를 전달하는 함수입니다.
+Groobee에서 정보 수집 후 필요한 정보를 전달하는 함수입니다.
 
-- **역할**: 그루비에서 정보 수집 후 필요한 정보 전달
+- **역할**: Groobee에서 정보 수집 후 필요한 정보 전달
 - **함수명**: `setGroobeeRecommend` (고정 값, 변경 불가)
 
 ### 파라미터
@@ -40,7 +40,7 @@ goodsArray = [
 ```
 
 ## DI (노출)
-실제 고객사에서 노출된 상품/기획전 정보를 그루비로 보내 통계에 집계합니다.
+실제 고객사에서 노출된 상품/기획전 정보를 Groobee로 보내 통계에 집계합니다.
 
 - **함수명**: `groobee.send`
 - **type**: `"DI"` (고정 값)
@@ -75,7 +75,7 @@ groobee.send("DI", groobeeObj);
 ```
 
 ## CL (클릭)
-고객이 클릭한 상품/기획전 정보를 그루비로 보내 통계에 집계합니다.
+고객이 클릭한 상품/기획전 정보를 Groobee로 보내 통계에 집계합니다.
 
 - **함수명**: `groobee.send`
 - **type**: `"CL"` (고정 값)
@@ -131,7 +131,7 @@ function setGroobeeRecommend(algorithmCd, campaignKey, goodsArray) {
         $("#지정된ID").append(html);
         $("#지정된ID").show();
 
-        // ----------------그루비 노출 START------------------
+        // ----------------Groobee 노출 START------------------
         var goods = result;
         var groobeeObj = {
           algorithmCd: algorithmCd,
@@ -141,7 +141,7 @@ function setGroobeeRecommend(algorithmCd, campaignKey, goodsArray) {
         };
         // 마지막에 노출 처리
         groobee.send("DI", groobeeObj);
-        // ----------------그루비 노출 END------------------
+        // ----------------Groobee 노출 END------------------
       },
       error: function (result, status, error) {
         console.log(error);
