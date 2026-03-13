@@ -16,10 +16,23 @@
 - 스크립트를 삽입할 수 있는 **레이아웃 / 디자인 수정 권한**
 - PC / 모바일 환경 분리 여부
 - SPA 환경 여부, 쇼핑몰 솔루션 사용 여부
+- 사이트에 CSP(Content Security Policy) 보안 정책이 적용되어 있는지 확인합니다.
 
 > 도메인 등록이 되어 있지 않은 경우  
 > 스크립트가 정상 삽입되어 있어도 데이터가 수집되지 않습니다.  
 > 👉 [웹 도메인 등록 가이드](../prerequisites/web-domain-registration.md)
+ 
+> CSP 정책이 적용된 사이트의 경우  
+> CSP 정책이 적용된 사이트의 경우 외부 리소스 로드가 차단되어  
+> Groobee 스크립트, 스타일(CSS), API 통신이 정상 동작하지 않을 수 있습니다.  
+> 
+> 이 경우 Groobee 도메인을 CSP 허용 목록에 추가해야 합니다.
+>
+> - 도메인 : *.groobee.io ( static.groobee.io, gau.groobee.io, gse.groobee.io, gre.groobee.io ) 
+>  
+> - 정책 : script-src, style-src, connect-src, img-src
+>   
+> 브라우저 콘솔에서 **Content Security Policy directive violation** 오류가 발생하면 CSP 차단일 가능성이 높습니다.
 
 ---
 

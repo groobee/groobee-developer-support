@@ -13,7 +13,8 @@ Groobee 사용 중 발생할 수 있는 주요 문제와 해결 방법을 안내
 
 ### 스크립트가 실제로 로드되고 있는지 확인하세요.
 - 크롬 브라우저 기준 브라우저 개발자도구(F12)를 엽니다.
-- 개발자도구의 Network 탭을 열어 아래와 같은 Groobee 관련 JS 파일이 정상적으로 로드되는지 확인합니다.
+- 개발자도구의 Network 탭을 열어 아래와 같은 Groobee 관련 JS 파일이 정상적으로 로드되는지 확인합니다.  
+  Network 탭에서 groobee로 검색하면, 관련 요청을 쉽게 찾을 수 있습니다.
   - groobee.init.js
   - groobee.core.js
   - groobee.front.js
@@ -39,11 +40,20 @@ Groobee 사용 중 발생할 수 있는 주요 문제와 해결 방법을 안내
 > 👉 [도메인 등록 가이드](../prerequisites/web-domain-registration.md) 문서를 참고해주세요.
 
 
-### 사내망에서 접속하는 경우, 사내망에서 Groobee 서버로의 네트워크 통신이 차단되어 있을 수 있습니다.
+### 사내망에서 접속하는 경우 네트워크 방화벽 또는 프록시 설정으로 인해 Groobee 서버와의 통신이 차단될 수 있습니다.
 - 사내망에서 접속하는 경우, 네트워크 방화벽이나 프록시 설정으로 인해 Groobee 서버로의 통신이 차단될 수 있습니다.
 - 사내 네트워크 관리자에게 문의하여 Groobee 서버로의 통신이 허용되어 있는지 확인하세요.
 - Groobee 도메인은 `*.groobee.io` 입니다.
-  
+
+
+### 사이트에 Content Security Policy(CSP)가 적용된 경우 Groobee 스크립트 로드가 차단될 수 있습니다.
+- CSP 정책이 적용된 사이트의 경우 **외부 리소스 로드가 차단**되어  
+  Groobee 스크립트, 스타일(CSS), API 통신이 정상 동작하지 않을 수 있습니다.
+- 브라우저 콘솔에서 **Content Security Policy directive violation** 오류가 발생하면 CSP 차단일 가능성이 높습니다.
+- CSP 정책이 있을 경우 Groobee 도메인을 CSP 허용 목록에 추가해야 합니다.
+  - 도메인 : *.groobee.io ( static.groobee.io, gau.groobee.io, gse.groobee.io, gre.groobee.io )
+  - 정책 : script-src, style-src, connect-src, img-src
+ 
 
 ---
 
