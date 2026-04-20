@@ -79,7 +79,7 @@ groobee( "SE", { keyword : "겨울옷" } );
 
 ### 상품 상세 페이지 (VG)
 - 상품 상세 페이지 방문 이력은 상품 정보 목록과 함께 호출해주어야 됩니다.
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 - 상품 상태(status) 필드는 품절이거나 상품이 판매상태가 아닐 경우에만 "SS" 값을 넣어주시면 됩니다.  
   정상 판매중인 상품의 경우에는 빈 문자열("")로 전달해주세요.
 
@@ -114,7 +114,7 @@ groobee( "VG", {
 
 ### 장바구니 페이지 (VC)
 - 장바구니 페이지 방문 이력은 장바구니 상품 정보 목록과 함께 호출해주어야 됩니다.
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 ```javascript
 groobee( "VC", {
@@ -165,7 +165,7 @@ groobee( "VC", {
 
 ### 주문서 작성 페이지 (OR)
 - 주문서 작성 페이지 방문 이력은 장바구니 상품 정보 목록과 함께 호출해주어야 됩니다.
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 ```javascript
 groobee( "OR", {
@@ -218,7 +218,7 @@ groobee( "OR", {
 - 주문완료 페이지 방문 이력은 주문번호와 함께 호출해주어야 됩니다.
 - 주문번호(orderNo)는 반드시 문자열(String) 타입으로 전달해야 합니다.
 - 상품 정보가 있는 경우에는 상품 정보 목록 값을 추가로 전달 할 수 있습니다.  
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 
 - 상품 정보가 없는 경우 orderNo만 전달하는 예시
@@ -279,7 +279,7 @@ groobee( "PU", {
 
 ### 카테고리 페이지 (CA)
 - 카테고리 페이지 방문 이력은 카테고리 정보와 함께 호출해주어야 됩니다.
-- 카테고리 정보(category)의 타입은 Category 이며, 상세한 필드별 설명은 [Category 스키마 문서](../specs/action/schema.md#category)를 참고해주세요.
+- 카테고리 정보(category)의 타입은 Category 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Category 섹션를 참고해주세요.
 
 ```javascript
 groobee( "CA", {
@@ -300,7 +300,7 @@ groobee( "CA", {
 
 ### 장바구니 담기 (AC)
 - 장바구니 담기 이벤트는 장바구니에 담긴 상품 정보와 함께 호출해주어야 됩니다.
-- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 ```javascript
 groobee( "AC", {
@@ -351,7 +351,7 @@ groobee( "AC", {
 
 ### 장바구니 제거 (DC)
 - 장바구니 제거 이벤트는 장바구니에서 제거된 상품 정보와 함께 호출해주어야 됩니다.
-- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 - 상품수(cnt) 필드는 장바구니에서 제거된 수량을 의미합니다.  
   - 예) 장바구니에 3개 담긴 상품을 모두 제거한 경우 cnt: 3 으로 전달
 
@@ -400,7 +400,7 @@ groobee.action("행동코드", 값);
 > SPA 모드로 공통 스크립트를 설치한 경우,      
 > groobee.start()가 호출되지 않으면, groobee.action() 함수를 사용할 수 없습니다.      
 > groobee.start() 함수를 호출하여 초기화 후 사용해야 합니다.  
-> [SPA 환경 공통 스크립트 설치법](../installation/installation-web-common-script.md#spa) 문서를 참고해주세요.
+> [공통 스크립트 설치](../installation/installation-web-common-script.md)의 SPA 환경 섹션 문서를 참고해주세요.
 
 <details>
 <summary>SPA 웹 사이트 행동 이력 수집 방법 보기</summary>
@@ -417,7 +417,7 @@ groobee.action( "SE", { keyword : "겨울옷" } );
 
 ### 상품 상세 페이지 (VG)
 - 상품 상세 페이지 방문 이력은 상품 정보 목록과 함께 호출해주어야 됩니다.
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 - 상품 상태(status) 필드는 품절이거나 상품이 판매상태가 아닐 경우에만 "SS" 값을 넣어주시면 됩니다.  
   정상 판매중인 상품의 경우에는 빈 문자열("")로 전달해주세요.
 
@@ -452,7 +452,7 @@ groobee.action( "VG", {
 
 ### 장바구니 페이지 (VC)
 - 장바구니 페이지 방문 이력은 장바구니 상품 정보 목록과 함께 호출해주어야 됩니다.
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 ```javascript
 groobee.action( "VC", {
@@ -503,7 +503,7 @@ groobee.action( "VC", {
 
 ### 주문서 작성 페이지 (OR)
 - 주문서 작성 페이지 방문 이력은 장바구니 상품 정보 목록과 함께 호출해주어야 됩니다.
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 ```javascript
 groobee.action( "OR", {
@@ -556,7 +556,7 @@ groobee.action( "OR", {
 - 주문완료 페이지 방문 이력은 주문번호와 함께 호출해주어야 됩니다.
 - 주문번호(orderNo)는 반드시 문자열(String) 타입으로 전달해야 합니다.
 - 상품 정보가 있는 경우에는 상품 정보 목록 값을 추가로 전달 할 수 있습니다.
-- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 
 - 상품 정보가 없는 경우 orderNo만 전달하는 예시
@@ -617,7 +617,7 @@ groobee.action( "PU", {
 
 ### 카테고리 페이지 (CA)
 - 카테고리 페이지 방문 이력은 카테고리 정보와 함께 호출해주어야 됩니다.
-- 카테고리 정보(category)의 타입은 Category 이며, 상세한 필드별 설명은 [Category 스키마 문서](../specs/action/schema.md#category)를 참고해주세요.
+- 카테고리 정보(category)의 타입은 Category 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Category 섹션를 참고해주세요.
 
 ```javascript
 groobee.action( "CA", {
@@ -638,7 +638,7 @@ groobee.action( "CA", {
 
 ### 장바구니 담기 (AC)
 - 장바구니 담기 이벤트는 장바구니에 담긴 상품 정보와 함께 호출해주어야 됩니다.
-- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 
 ```javascript
 groobee.action( "AC", {
@@ -689,7 +689,7 @@ groobee.action( "AC", {
 
 ### 장바구니 제거 (DC)
 - 장바구니 제거 이벤트는 장바구니에서 제거된 상품 정보와 함께 호출해주어야 됩니다.
-- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [Goods 스키마 문서](../specs/action/schema.md#goods)를 참고해주세요.
+- 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
 - 상품수(cnt) 필드는 장바구니에서 제거된 수량을 의미합니다.
   - 예) 장바구니에 3개 담긴 상품을 모두 제거한 경우 cnt: 3 으로 전달
 
