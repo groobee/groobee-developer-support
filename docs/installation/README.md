@@ -22,10 +22,33 @@
 
 ## Groobee Android SDK 설치 가이드
 
-- Android SDK 가이드는 현재 별도 문서로 제공되고 있습니다.  
-Groobee 고객센터로 문의부탁드립니다.
+### [Android Native SDK 설치 가이드](installation-android-sdk.md)
+
+- Android 네이티브 앱과 하이브리드 앱에 Groobee SDK를 설치하는 방법을 정리한 문서입니다.
+- SDK 설치, `Application` 설정, 푸시 서비스 등록까지 설치 중심으로 정리합니다.
+
+### [Android Flutter SDK 설치 가이드](installation-android-flutter-sdk.md)
+
+- Flutter 앱의 Android 모듈에 Groobee SDK를 설치하고 `MethodChannel`로 연동하는 방법을 정리한 문서입니다.
+- `pubspec.yaml`, Android Gradle 설정, `Application`/`Manifest`, FCM 연동에 필요한 설치 절차를 포함합니다.
+
+### [Android 공통 추가 설정](installation-android-common-settings.md)
+
+- Android 13 알림 권한, direct boot 기반 FCM 수신, ProGuard / R8 설정을 정리한 문서입니다.
+
+## Android SDK 상세 사용 가이드
+
+- Android SDK 개요, 캠페인 설명, 회원/푸시, 화면 이벤트, 하이브리드 동기화, 추천 상품, Flutter MethodChannel 문서는  
+  👉 [상세 가이드](../detail/README.md) 에서 확인할 수 있습니다.
 
 ## Groobee iOS SDK 설치 가이드
 
-- iOS SDK 가이드는 현재 별도 문서로 제공되고 있습니다.  
-Groobee 고객센터로 문의부탁드립니다.
+### [iOS Native SDK 설치 가이드](installation-ios-sdk.md)
+
+- iOS 네이티브 앱에 Groobee SDK를 설치하는 방법을 정리한 문서입니다.
+- `Podfile`, `AppDelegate`, `LifeCycle`, FCM/APNS, Rich Push 설정까지 설치 절차를 포함합니다.
+
+## iOS SDK 상세 사용 가이드
+
+- iOS SDK 개요, 회원/푸시, 화면 이벤트, 하이브리드 동기화, 추천 상품, 주의사항/로그 문서는  
+  👉 [상세 가이드](../detail/README.md) 에서 확인할 수 있습니다.
