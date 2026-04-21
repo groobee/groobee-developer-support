@@ -1,6 +1,6 @@
 # Groobee iOS SDK 설치 가이드 (Flutter)
 
-이 문서는 Groobee iOS SDK(Flutter) `1.1.1` 기준으로 Flutter 앱(iOS 빌드)의 설치 절차만 정리한 문서입니다.
+이 문서는 Flutter 앱(iOS 빌드)에 Groobee iOS SDK를 연동하는 설치 절차를 정리한 문서입니다. 현재 권장 버전은 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md)에서 확인하세요.
 
 캠페인 개요와 기능별 사용 문서는 아래 문서를 참고하세요.
 
@@ -60,7 +60,7 @@ dependencies:
   firebase_core_platform_interface: ^4.5.3
 ```
 
-PDF 원문 예시는 `firebase_messaging: ^14.1.0`, `firebase_core: ^2.7.0`, `firebase_core_platform_interface: ^4.5.3` 기준입니다. 실제 적용 시에는 현재 사용하는 Flutter SDK 및 Firebase 구성과 호환되는 버전을 사용하세요.
+위 예시는 `firebase_messaging: ^14.1.0`, `firebase_core: ^2.7.0`, `firebase_core_platform_interface: ^4.5.3` 조합을 기준으로 작성되었습니다. 실제 적용 시에는 현재 사용하는 Flutter SDK 및 Firebase 구성과 호환되는 버전을 사용하세요.
 
 ### 2단계: GroobeeKit Podfile 작성
 
@@ -70,7 +70,7 @@ Flutter iOS 앱 프로젝트 폴더(`ios/`)에 생성되어 있는 `Podfile`에 
 pod 'GroobeeKit'
 ```
 
-> Native iOS 가이드에서는 `FirebaseFirestore`, `FirebaseMessaging`을 별도로 추가하지만, Flutter iOS 가이드(PDF)는 `pod 'GroobeeKit'` 단독으로만 안내합니다. Firebase 관련 의존성은 Flutter 측 `firebase_messaging`, `firebase_core` 패키지가 iOS에 플러그인 형태로 제공합니다.
+> Native iOS에서는 `FirebaseFirestore`, `FirebaseMessaging`을 별도로 추가하지만, Flutter iOS에서는 `pod 'GroobeeKit'` 단독으로만 추가합니다. Firebase 관련 의존성은 Flutter 측 `firebase_messaging`, `firebase_core` 패키지가 iOS에 플러그인 형태로 주입합니다.
 
 ### 3단계: GroobeeKit Pod install
 
@@ -183,7 +183,7 @@ func pushNotiConfirmation() {
 }
 ```
 
-> PDF 원문 예시는 Firebase 초기화를 Dart 측(`Firebase.initializeApp()`)에서 먼저 수행하는 구성이며, AppDelegate에는 `FirebaseApp.configure()` 호출이 포함되지 않은 채로 적혀 있습니다. 기존 설정표에는 `FirebaseApp.initializeApp`이 필수로 표기되어 있으므로, 프로젝트의 Firebase 초기화 방식과 SDK 요구사항을 확인한 뒤 AppDelegate에도 필요 시 `FirebaseApp.configure()`와 `Messaging.messaging().delegate = self`를 추가하세요.
+> Flutter 앱은 일반적으로 Firebase 초기화를 Dart 측(`Firebase.initializeApp()`)에서 먼저 수행합니다. 한편 위 설정표에는 `FirebaseApp.initializeApp`이 필수로 표기되어 있으므로, 프로젝트의 Firebase 초기화 방식과 SDK 요구사항을 확인한 뒤 AppDelegate에도 필요 시 `FirebaseApp.configure()`와 `Messaging.messaging().delegate = self`를 추가하세요.
 
 ### Objective-C 예시
 
@@ -542,7 +542,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
 }
 ```
 
-> Rich Push의 상세 Xcode 설정 화면과 스크린샷은 [iOS Native SDK 설치 가이드](./installation-ios-sdk.md)의 **Rich Push 설정** 섹션과 동일합니다. 본 가이드 차원의 보강으로, Flutter 프로젝트에서도 `Runner` 프로젝트에 Extension을 추가하는 절차 자체는 Native iOS와 동일하게 적용됩니다.
+> Rich Push의 상세 Xcode 설정 화면과 스크린샷은 [iOS Native SDK 설치 가이드](./installation-ios-sdk.md)의 **Rich Push 설정** 섹션과 동일합니다. Flutter 프로젝트에서도 `Runner` 프로젝트에 Extension을 추가하는 절차 자체는 Native iOS와 동일하게 적용됩니다.
 
 ---
 

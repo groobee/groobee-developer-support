@@ -1,6 +1,6 @@
 # Groobee Android SDK 설치 가이드 (Flutter)
 
-이 문서는 Groobee Android SDK(Flutter) `1.0.80` 기준으로 Flutter 앱(Android 빌드)의 설치 절차만 정리한 문서입니다.
+이 문서는 Flutter 앱(Android 빌드)에 Groobee Android SDK를 연동하는 설치 절차를 정리한 문서입니다. 현재 권장 버전은 [Android SDK 변경 로그](../changelog/sdk-android-changelog.md)에서 확인하세요.
 
 캠페인 개요와 기능별 사용 문서는 아래 문서를 참고하세요.
 
@@ -50,7 +50,7 @@ dependencies:
   firebase_messaging: ^<compatible-version>
 ```
 
-문서 원본 예시는 `firebase_messaging: ^14.1.0`, `firebase_core: ^2.7.0`, `firebase_core_platform_interface: ^4.5.3` 기준입니다. 실제 적용 시에는 현재 사용하는 Flutter SDK 및 Firebase 설정과 호환되는 버전을 사용하세요.
+위 예시는 `firebase_messaging: ^14.1.0`, `firebase_core: ^2.7.0`, `firebase_core_platform_interface: ^4.5.3` 조합을 기준으로 작성되었습니다. 실제 적용 시에는 현재 사용하는 Flutter SDK 및 Firebase 설정과 호환되는 버전을 사용하세요.
 
 ### 2. Flutter 패키지 동기화 후 Android 모듈 열기
 
@@ -75,7 +75,7 @@ buildscript {
 }
 ```
 
-문서 원본 예시는 `com.google.gms:google-services:4.3.15` 기준이며, Android Gradle Plugin과 Kotlin 플러그인은 프로젝트의 Flutter/Android 환경에 맞는 버전을 사용해야 합니다. PDF에는 `classpath 'com.android.tools.build:gradle:<gradle-version>'`, `classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"` 두 항목이 함께 예시로 포함되어 있습니다.
+위 예시는 `com.google.gms:google-services:4.3.15` 조합을 기준으로 작성되었으며, Android Gradle Plugin과 Kotlin 플러그인은 프로젝트의 Flutter/Android 환경에 맞는 버전을 사용해야 합니다.
 
 ### 4. `android/app/build.gradle` 설정
 
@@ -101,7 +101,7 @@ dependencies {
 }
 ```
 
-문서 원본 예시는 Firebase BOM `26.4.0`, Groobee SDK `1.0.77` 기준입니다. Groobee SDK 버전은 [Android SDK 변경 로그](../changelog/sdk-android-changelog.md)에서 최신 안정 버전을 확인한 뒤 적용하세요.
+위 예시는 Firebase BOM `26.4.0`을 기준으로 작성되었습니다. Groobee SDK 버전은 [Android SDK 변경 로그](../changelog/sdk-android-changelog.md)에서 최신 안정 버전을 확인한 뒤 적용하세요.
 
 ### 5. Gradle Sync 확인
 
@@ -204,11 +204,11 @@ public class MyApplication extends Application {
 | `registerActivityLifecycleCallbacks()` | 필수 | 앱 생명주기에 맞춰 Groobee 세션을 처리합니다. |
 | `LoggerUtils.setLogLevel()` | 선택 | 로그 레벨을 설정합니다. |
 | `LoggerUtils.setOptions()` | 선택 | 상세 로그, 트레이스, 로그 콜백 등 추가 로그 옵션을 설정합니다. |
-| `FirebaseApp.initializeApp()` | PDF 설정표 기준 필수 | 원문 표에는 FCM 연동 필수 항목으로 포함되어 있습니다. |
+| `FirebaseApp.initializeApp()` | 필수 | FCM 연동에 사용됩니다. |
 
 `setNotificationSettingsButton()`에 전달하는 첫 번째 값은 문자열 리소스 ID입니다. 실제 버튼에는 `groobee_noti_config` 같은 리소스 키가 아니라 현재 언어 설정에 맞는 문자열이 노출되어야 합니다.
 
-> Flutter PDF는 `FirebaseApp.initializeApp()`를 설정표에 포함하지만, 예제 코드에서는 Dart 측 `Firebase.initializeApp()`만 안내합니다. 실제 프로젝트의 Firebase 초기화 방식과 SDK 요구사항을 함께 확인하세요.
+> Flutter 앱은 일반적으로 Firebase 초기화를 Dart 측(`Firebase.initializeApp()`)에서 수행합니다. Android `Application` 측에서는 위 설정표처럼 `FirebaseApp.initializeApp()`가 필수로 요구되므로, 실제 프로젝트의 Firebase 초기화 방식과 SDK 요구사항을 함께 확인하세요.
 
 > Flutter 앱에서는 FCM 토큰 생성 전에 Dart 측에서 `Firebase.initializeApp()`을 먼저 호출해야 합니다.
 
@@ -234,7 +234,7 @@ public class MyApplication extends Application {
 </application>
 ```
 
-> 원본 PDF 예시에는 `android:exported` 속성이 별도로 명시되어 있지 않습니다. Android 최신 보안 관행에 맞춰 `exported="false"`를 권장하며, Direct Boot 지원이 필요한 경우에만 [Android 공통 추가 설정](./installation-android-common-settings.md)의 `exported="true"` 예시를 사용하세요.
+> 일반 FCM 서비스 등록 시에는 Android 최신 보안 관행에 맞춰 `exported="false"`를 권장합니다. Direct Boot 지원이 필요한 경우에만 [Android 공통 추가 설정](./installation-android-common-settings.md)의 `exported="true"` 예시를 사용하세요.
 
 ### 기존 FirebaseMessagingService가 있는 경우
 

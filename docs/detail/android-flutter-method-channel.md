@@ -1,6 +1,6 @@
 # Flutter Android SDK MethodChannel 연동
 
-이 문서는 Groobee Android SDK(Flutter) `1.0.80` 기준으로 Dart와 Android 모듈 사이를 `MethodChannel`로 연결하는 방법을 정리한 문서입니다.
+이 문서는 Flutter 앱에서 Dart와 Android 모듈 사이를 `MethodChannel`로 연결하는 방법을 정리한 문서입니다. 현재 권장 SDK 버전은 [Android SDK 변경 로그](../changelog/sdk-android-changelog.md)에서 확인하세요.
 
 ---
 
@@ -191,7 +191,7 @@ case "setAgreedPush": {
 ## GET 계열 메소드 패턴
 
 조회성 메소드는 Android에서 받은 결과를 Dart로 다시 넘겨야 합니다.  
-PDF 원문 기준으로 `result.success()`에는 문자열이 들어가도록 `Gson().toJson()`을 사용하는 방식을 권장합니다.
+`result.success()`에는 문자열이 들어가도록 `Gson().toJson()`을 사용해 JSON 문자열로 직렬화한 뒤 전달하는 방식을 권장합니다.
 
 ### 비동기식 예시: `getPushAgreed`
 

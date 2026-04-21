@@ -1,6 +1,6 @@
 # Groobee iOS SDK 설치 가이드 (Native)
 
-이 문서는 Groobee iOS SDK(Native) `1.1.1` 기준으로 iOS 네이티브 앱(Swift, Objective-C)의 설치 절차만 정리한 문서입니다.
+이 문서는 Groobee iOS Native SDK의 설치 절차(Swift, Objective-C)를 정리한 문서입니다. 현재 권장 버전은 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md)에서 확인하세요.
 
 기능별 사용 문서는 아래 문서를 참고하세요.
 

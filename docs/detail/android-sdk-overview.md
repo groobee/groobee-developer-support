@@ -35,10 +35,11 @@ Groobee Android SDK를 설치하면 모바일 앱에서 아래 두 가지 캠페
 | 항목 | 내용 |
 | --- | --- |
 | 플랫폼 | Android |
-| SDK 버전 기준 문서 | 1.0.80 |
 | 대략적인 SDK 크기 | 약 2MB |
 | 최소 지원 버전 | API 16 (Jelly Bean) |
 | 푸시 연동 방식 | FCM 기반 |
+
+현재 권장 SDK 버전은 [Android SDK 변경 로그](../changelog/sdk-android-changelog.md)에서 확인하세요.
 
 참고 문서:
 
@@ -50,7 +51,7 @@ Groobee Android SDK를 설치하면 모바일 앱에서 아래 두 가지 캠페
 <a id="admin-checklist"></a>
 ## 어드민 설정 체크리스트
 
-PDF 원문 기준으로 Android SDK 연동 전에 아래 항목을 점검해야 합니다.
+Android SDK 연동 전에 아래 항목을 점검해야 합니다.
 
 | 구분 | 항목 | 필수 여부 |
 | --- | --- | --- |
