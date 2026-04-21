@@ -48,7 +48,12 @@
 - iOS 네이티브 앱에 Groobee SDK를 설치하는 방법을 정리한 문서입니다.
 - `Podfile`, `AppDelegate`, `LifeCycle`, FCM/APNS, Rich Push 설정까지 설치 절차를 포함합니다.
 
+### [iOS Flutter SDK 설치 가이드](installation-ios-flutter-sdk.md)
+
+- Flutter 앱의 iOS 모듈에 Groobee SDK를 설치하고 `MethodChannel`로 연동하는 방법을 정리한 문서입니다.
+- `pubspec.yaml`, `Podfile`, `AppDelegate`(`FlutterAppDelegate` 상속), FCM/APNS, Rich Push 설정 절차를 포함합니다.
+
 ## iOS SDK 상세 사용 가이드
 
-- iOS SDK 개요, 회원/푸시, 화면 이벤트, 하이브리드 동기화, 추천 상품, 주의사항/로그 문서는  
+- iOS SDK 개요, 회원/푸시, 화면 이벤트, 하이브리드 동기화, 추천 상품, 주의사항/로그, Flutter MethodChannel 문서는  
   👉 [상세 가이드](../detail/README.md) 에서 확인할 수 있습니다.

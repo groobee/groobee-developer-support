@@ -54,6 +54,10 @@
 
 - WebView에서 InAppMessage 사용 시 주의사항과 `LoggerUtils` 사용법을 정리한 문서입니다.
 
+### [Flutter iOS SDK MethodChannel 연동](ios-flutter-method-channel.md)
+
+- Flutter 앱에서 Dart와 iOS 모듈 사이를 `MethodChannel`로 연결하는 방법을 정리한 문서입니다.
+
 ## Web 상세 가이드
 
 ### [AI 상품 추천: DIV형](web-recommend-div.md)

@@ -1,6 +1,6 @@
 # Groobee Android SDK 설치 가이드 (Native)
 
-이 문서는 `[Native] Groobee Android SDK 설정 가이드 v1.0.80` 기준으로 Android 네이티브 앱의 설치 절차만 정리한 문서입니다.
+이 문서는 Groobee Android SDK(Native) `1.0.80` 기준으로 Android 네이티브 앱의 설치 절차만 정리한 문서입니다.
 
 캠페인 개요와 기능별 사용 문서는 아래 문서를 참고하세요.
 
@@ -156,10 +156,15 @@ public class MyApplication extends Application {
 
 ### 푸시 중요도 설정
 
+Groobee SDK 1.0.44 버전부터 지원되며, Android 공식 문서 기준으로 작성되어 있습니다.
+
 | 값 | 설명 |
 | --- | --- |
 | `NotificationManager.IMPORTANCE_DEFAULT` | 기본값입니다. 알림이 일반 우선순위로 표시되고 소리/진동이 발생합니다. |
 | `NotificationManager.IMPORTANCE_HIGH` | 높은 우선순위로 표시되며, 푸시 수신 시 Toast 노출도 지원합니다. |
+
+> Android 공식 문서에는 `IMPORTANCE_LOW`, `IMPORTANCE_MIN`도 존재하지만, 그루비 푸시 메시지 지원 기능 특성상 부적합하다고 판단되어 `IMPORTANCE_DEFAULT`보다 낮은 값은 적용되지 않습니다.
+> `setPushImportance()`를 호출하지 않으면 `IMPORTANCE_DEFAULT`가 기본값으로 적용됩니다.
 
 ---
 
@@ -182,6 +187,8 @@ public class MyApplication extends Application {
     </service>
 </application>
 ```
+
+> 원본 PDF 예시에는 `android:exported` 속성이 별도로 명시되어 있지 않습니다. 여기서는 Android 최신 보안 관행에 맞춰 `exported="false"`를 권장합니다. 잠금 상태(Direct Boot) 기기에서도 푸시를 수신해야 하는 경우에는 [Android 공통 추가 설정](./installation-android-common-settings.md)에서 `exported="true"`와 `directBootAware="true"`를 함께 설정하는 별도 예시를 참고하세요.
 
 ### 기존 FirebaseMessagingService를 이미 사용 중인 경우
 

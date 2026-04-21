@@ -1,6 +1,6 @@
 # Flutter Android SDK MethodChannel 연동
 
-이 문서는 `[Flutter] Groobee Android SDK 설정 가이드 v1.0.80` 기준으로 Dart와 Android 모듈 사이를 `MethodChannel`로 연결하는 방법을 정리한 문서입니다.
+이 문서는 Groobee Android SDK(Flutter) `1.0.80` 기준으로 Dart와 Android 모듈 사이를 `MethodChannel`로 연결하는 방법을 정리한 문서입니다.
 
 ## 왜 MethodChannel이 필요한가
 

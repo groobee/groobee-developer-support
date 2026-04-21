@@ -60,9 +60,11 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 
 기기가 잠금 해제되기 전 직접 부팅 모드에서 FCM을 수신하려면 아래 조건이 필요합니다.
 
-- 기기가 direct boot 모드를 지원해야 합니다.
-- 기기에 최신 Google Play 서비스가 설치되어 있어야 합니다.
+- 기기가 direct boot 모드를 지원해야 합니다. (일반적으로 활성화되어 있습니다.)
+- 기기에 Google Play 서비스 `19.0.54` 이상이 설치되어 있어야 합니다.
 - 앱에서 `com.google.firebase:firebase-messaging`를 사용해야 합니다.
+
+자세한 조건과 구현 방법은 [FCM Direct Boot 공식 문서](https://firebase.google.com/docs/cloud-messaging/android/receive?hl=ko#receive_fcm_messages_in_direct_boot_mode)를 참고하세요.
 
 추가 의존성:
 
@@ -81,7 +83,7 @@ Manifest 예시:
     <service
         android:name="io.groobee.message.GroobeeFirebaseMessagingService"
         android:directBootAware="true"
-        android:exported="false">
+        android:exported="true">
         <intent-filter>
             <action android:name="com.google.firebase.MESSAGING_EVENT" />
         </intent-filter>

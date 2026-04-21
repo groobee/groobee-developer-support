@@ -1,6 +1,6 @@
 # Groobee Android SDK 설치 가이드 (Flutter)
 
-이 문서는 `[Flutter] Groobee Android SDK 설정 가이드 v1.0.80` 기준으로 Flutter 앱(Android 빌드)의 설치 절차만 정리한 문서입니다.
+이 문서는 Groobee Android SDK(Flutter) `1.0.80` 기준으로 Flutter 앱(Android 빌드)의 설치 절차만 정리한 문서입니다.
 
 캠페인 개요와 기능별 사용 문서는 아래 문서를 참고하세요.
 
@@ -32,27 +32,36 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core: ^<compatible-version>
+  firebase_core_platform_interface: ^<compatible-version>
   firebase_messaging: ^<compatible-version>
 ```
 
-문서 원본 예시는 `firebase_messaging: ^14.1.0`, `firebase_core: ^2.7.0` 기준입니다. 실제 적용 시에는 현재 사용하는 Flutter SDK 및 Firebase 설정과 호환되는 버전을 사용하세요.
+문서 원본 예시는 `firebase_messaging: ^14.1.0`, `firebase_core: ^2.7.0`, `firebase_core_platform_interface: ^4.5.3` 기준입니다. 실제 적용 시에는 현재 사용하는 Flutter SDK 및 Firebase 설정과 호환되는 버전을 사용하세요.
 
-### 2. Android 모듈을 Android Studio로 열기
+### 2. Flutter 패키지 동기화 후 Android 모듈 열기
 
-- Android Studio에서 프로젝트를 연 뒤 Android 관련 설정 파일을 직접 편집하거나
+```bash
+flutter pub get
+```
+
+- 명령 실행 후 Android Studio에서 프로젝트를 연 뒤 Android 관련 설정 파일을 직접 편집하거나
 - Flutter 프로젝트에서 `Open Android module in Android Studio`를 사용합니다.
 
 ### 3. 최상위 `build.gradle` 설정
 
 ```gradle
 buildscript {
+    ext.kotlin_version = '<kotlin-version>'
+
     dependencies {
+        classpath 'com.android.tools.build:gradle:<gradle-plugin-version>'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:<version>'
     }
 }
 ```
 
-문서 원본 예시는 `com.google.gms:google-services:4.3.15`입니다.
+문서 원본 예시는 `com.google.gms:google-services:4.3.15` 기준이며, Android Gradle Plugin과 Kotlin 플러그인은 프로젝트의 Flutter/Android 환경에 맞는 버전을 사용해야 합니다. PDF에는 `classpath 'com.android.tools.build:gradle:<gradle-version>'`, `classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"` 두 항목이 함께 예시로 포함되어 있습니다.
 
 ### 4. `android/app/build.gradle` 설정
 
@@ -210,6 +219,8 @@ public class MyApplication extends Application {
     </service>
 </application>
 ```
+
+> 원본 PDF 예시에는 `android:exported` 속성이 별도로 명시되어 있지 않습니다. Android 최신 보안 관행에 맞춰 `exported="false"`를 권장하며, Direct Boot 지원이 필요한 경우에만 [Android 공통 추가 설정](./installation-android-common-settings.md)의 `exported="true"` 예시를 사용하세요.
 
 ### 기존 FirebaseMessagingService가 있는 경우
 
