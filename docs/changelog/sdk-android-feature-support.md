@@ -4,7 +4,7 @@
 각 기능의 최신 상태와 지원 버전을 확인할 수 있습니다.
 
 > 최소 지원 OS: Android API 16 (Jelly Bean)  
-> 문서 기준 SDK 버전: 1.0.80
+> 현재 권장 SDK 버전은 [Android SDK 변경 로그](./sdk-android-changelog.md)에서 확인하세요.
 
 ---
 

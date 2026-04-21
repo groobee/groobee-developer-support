@@ -1,6 +1,6 @@
 # Groobee Android SDK 설치 가이드 (Native)
 
-이 문서는 Groobee Android SDK(Native) `1.0.80` 기준으로 Android 네이티브 앱의 설치 절차만 정리한 문서입니다.
+이 문서는 Groobee Android Native SDK의 설치 절차만 정리한 문서입니다. 현재 권장 버전은 [Android SDK 변경 로그](../changelog/sdk-android-changelog.md)에서 확인하세요.
 
 캠페인 개요와 기능별 사용 문서는 아래 문서를 참고하세요.
 
@@ -204,7 +204,7 @@ Groobee SDK 1.0.44 버전부터 지원되며, Android 공식 문서 기준으로
 </application>
 ```
 
-> 원본 PDF 예시에는 `android:exported` 속성이 별도로 명시되어 있지 않습니다. 여기서는 Android 최신 보안 관행에 맞춰 `exported="false"`를 권장합니다. 잠금 상태(Direct Boot) 기기에서도 푸시를 수신해야 하는 경우에는 [Android 공통 추가 설정](./installation-android-common-settings.md)에서 `exported="true"`와 `directBootAware="true"`를 함께 설정하는 별도 예시를 참고하세요.
+> 일반 FCM 서비스 등록 시에는 Android 최신 보안 관행에 맞춰 `exported="false"`를 권장합니다. 잠금 상태(Direct Boot) 기기에서도 푸시를 수신해야 하는 경우에는 [Android 공통 추가 설정](./installation-android-common-settings.md)에서 `exported="true"`와 `directBootAware="true"`를 함께 설정하는 별도 예시를 참고하세요.
 
 ### 기존 FirebaseMessagingService를 이미 사용 중인 경우
 
