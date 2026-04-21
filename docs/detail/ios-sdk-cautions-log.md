@@ -74,7 +74,7 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 | 메소드 | 설명 |
 | --- | --- |
 | `setLogLevel` | 로그 레벨을 설정합니다. `verbose`, `debug`, `info`, `warn`, `error`, `none`가 있으며 `verbose`가 가장 자세한 로그를 출력합니다. |
-| `setDetailLogEnabled` | 상세 로그를 활성화합니다. |
+| `setDetailLogEnabled` | 평소에는 간략하게 표기되는 일부 로그를, 디버깅이 필요할 때 더 상세하게 출력하도록 전환하는 옵션입니다. |
 | `setTraceEnabled` | 추적 아이디를 활성화합니다. |
 | `setLogCallback` | 로그 내용을 별도로 처리할 수 있는 콜백을 등록합니다. |
 

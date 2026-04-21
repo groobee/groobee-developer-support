@@ -116,7 +116,7 @@ Goods goodsItem = Goods.builder()
 ### `setCustomEvent(activity, eventKey, eventValue, screenId)`
 
 - Groobee 어드민에서 정의한 커스텀 이벤트 기준으로 메시지를 제어할 때 사용합니다.
-- `screenId`가 없는 구버전 호환 메소드도 존재하지만, 가능하면 `screenId`가 있는 형태를 사용하는 것을 권장합니다.
+- `screenId`가 없는 구버전 호환 메소드(`setCustomEvent(activity, eventKey, eventValue)`)도 존재하지만 **`@Deprecated`** 처리되어 있으므로, 신규 개발 시에는 반드시 `screenId`가 있는 형태를 사용하세요.
 
 | 파라미터 | 설명 |
 | --- | --- |
