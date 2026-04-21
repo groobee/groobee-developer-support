@@ -41,11 +41,12 @@ SDK 개요와 캠페인 설명은 [Android SDK 개요 및 캠페인](../detail/a
 
 ### 1. Gradle 저장소 설정
 
-프로젝트에서 `google()`과 `mavenCentral()` 저장소를 사용할 수 있어야 합니다.
+프로젝트에서 `google()`과 `mavenCentral()` 저장소를 사용할 수 있어야 합니다. 프로젝트의 Gradle 구조에 맞춰 아래 중 하나에 두 저장소가 포함되어 있는지 확인하고, 없으면 추가합니다.
+
+Gradle 7.0 이상 / 최신 Android Studio 기본 구조 — `settings.gradle(.kts)`:
 
 ```kotlin
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
@@ -53,7 +54,18 @@ dependencyResolutionManagement {
 }
 ```
 
-구형 프로젝트 구조에서는 루트 `build.gradle`의 `allprojects.repositories`에 동일하게 추가하면 됩니다.
+구형 프로젝트 구조 — 루트 `build.gradle`:
+
+```gradle
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+```
+
+> `repositoriesMode`(`FAIL_ON_PROJECT_REPOS` 등) 옵션은 프로젝트의 저장소 관리 정책에 따라 결정되는 설정으로, Groobee SDK 설치와 직접 관련이 없습니다. 기존 프로젝트의 값을 그대로 두고 저장소만 확인하세요.
 
 ### 2. 앱 모듈 의존성 추가
 
