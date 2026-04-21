@@ -56,6 +56,10 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 }
 ```
 
+사용자에게 실제로 노출되는 권한 요청 다이얼로그 예시입니다.
+
+<img src="../images/sdk/android/push-permission-dialog.png" alt="Android 13 이상 푸시 권한 요청 다이얼로그" width="320" />
+
 ## 잠금 상태 기기에서 Push 수신
 
 기기가 잠금 해제되기 전 직접 부팅 모드에서 FCM을 수신하려면 아래 조건이 필요합니다.
