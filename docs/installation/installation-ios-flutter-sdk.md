@@ -344,9 +344,20 @@ didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
 ### FCM과 APNS 연동 방법
 
 1. Firebase 콘솔에서 왼쪽 첫 번째 메뉴 항목인 `프로젝트 개요`를 클릭하고 `프로젝트 설정`으로 진입합니다.
+
+![Firebase 콘솔에서 프로젝트 설정 메뉴 열기](../images/sdk/ios/firebase-step1-project-menu.png)
+
 2. 프로젝트 설정에서 아래 메뉴 탭의 두 번째 항목인 `클라우드 메시징`을 클릭합니다.
+
+![프로젝트 설정 > 클라우드 메시징 탭](../images/sdk/ios/firebase-step2-cloud-messaging-tab.png)
+
 3. 클라우드 메시징 항목에서 아래로 스크롤하여 `Apple 앱 구성`에서 사용 중인 iOS 앱의 Bundle ID를 확인하고 `APN 인증 키` 하위의 업로드 버튼을 클릭합니다.
+
+![Apple 앱 구성 및 APN 인증 키 업로드 버튼](../images/sdk/ios/firebase-step3-apns-key-upload.png)
+
 4. 내려받은 `.p8` 파일, Key ID, Team ID를 입력하고 업로드합니다.
+
+![APN 인증 키 업로드 다이얼로그](../images/sdk/ios/firebase-step4-apns-key-dialog.png)
 
 참고 링크:
 
@@ -378,11 +389,28 @@ Apple 공식 문서: <https://developer.apple.com/documentation/usernotification
 ### Service 설정
 
 1. `+ Capabilities` 버튼을 눌러 `Push Notifications`와 `Background Modes`를 추가하고 `Background fetch`, `Remote notifications`를 체크하여 활성화합니다.
+
+![Signing & Capabilities에서 Push Notifications와 Background Modes 추가](../images/sdk/ios/rich-push-service-step1-capabilities.png)
+
 2. `TARGETS` 하단의 `+` 버튼을 클릭합니다.
+
+![TARGETS 하단 + 버튼 클릭](../images/sdk/ios/rich-push-service-step2-targets-add.png)
+
 3. `Notification` 검색 후 `Notification Service Extension`을 선택하여 `Next`로 진행합니다.
+
+![Notification Service Extension 선택](../images/sdk/ios/rich-push-service-step3-extension-select.png)
+
 4. `Product Name`을 `Service`로 입력하고 `Language`를 `Swift`로 설정한 뒤 `Finish`를 클릭하고, 다이얼로그에서 `Activate`를 눌러 Service 스키마를 활성화합니다.
+
+![Product Name Service 입력](../images/sdk/ios/rich-push-service-step4-product-name.png)
+
 5. Service의 `Deployment Info`에서 iOS 버전을 현재 앱 프로젝트의 Deployment Target과 동일하게 설정합니다. 그리고 `Frameworks and Libraries`에 `GroobeeKit.xcframework`를 추가하고 `Embed`를 `Do Not Embed`로 설정합니다.
+
+![Service Deployment Info와 GroobeeKit.xcframework 설정](../images/sdk/ios/rich-push-service-step5-deployment.png)
+
 6. `Service -> Info.plist`에 아래 항목을 추가합니다.
+
+![Service Info.plist에 ATS 설정 추가](../images/sdk/ios/rich-push-service-step6-infoplist.png)
 
 | Key | Type | Value |
 | --- | --- | --- |
@@ -435,10 +463,24 @@ class NotificationService: UNNotificationServiceExtension {
 ### Content 설정
 
 1. `TARGETS` 하단의 `+` 버튼을 클릭합니다.
+
+![TARGETS 하단 + 버튼 클릭 (Content Extension 추가용)](../images/sdk/ios/rich-push-content-step1-targets-add.png)
+
 2. `Notification` 검색 후 `Notification Content Extension`을 선택하여 `Next`로 진행합니다.
+
+![Notification Content Extension 선택](../images/sdk/ios/rich-push-content-step2-extension-select.png)
+
 3. `Product Name`을 `Content`로 입력하고 `Language`를 `Swift`로 설정한 뒤 `Finish`를 클릭하고, 다이얼로그에서 `Activate`를 눌러 Content 스키마를 활성화합니다.
+
+![Product Name Content 입력](../images/sdk/ios/rich-push-content-step3-product-name.png)
+
 4. Content의 `Deployment Info`에서 iOS 버전을 현재 앱 프로젝트의 Deployment Target과 동일하게 설정합니다. 그리고 `Frameworks and Libraries`에 `GroobeeKit.xcframework`를 추가하고 `Embed`를 `Do Not Embed`로 설정합니다.
+
+![Content Deployment Info와 GroobeeKit.xcframework 설정](../images/sdk/ios/rich-push-content-step4-frameworks.png)
+
 5. `Content -> Info.plist`에 아래 항목을 추가합니다.
+
+![Content Info.plist 설정](../images/sdk/ios/rich-push-content-step5-infoplist.png)
 
 | Key | Type | Value |
 | --- | --- | --- |
