@@ -2,6 +2,19 @@
 
 이 문서는 Android Native SDK와 Flutter Android SDK 공통 기준으로 검색, 상품 상세, 장바구니, 주문, 카테고리, 커스텀 이벤트 등 화면/행동 데이터 연동 방법을 정리한 문서입니다.
 
+---
+
+## 목차
+
+1. [공통 원칙](#common-principles)
+2. [`Goods` 모델](#goods-model)
+3. [메소드별 정리](#methods)
+4. [어떤 화면에서 어떤 메소드를 써야 하는가](#method-by-screen)
+5. [Flutter 앱에서의 적용](#flutter-usage)
+
+---
+
+<a id="common-principles"></a>
 ## 공통 원칙
 
 - 가능한 한 화면 최초 진입 시점에 한 번만 호출하세요.
@@ -18,6 +31,7 @@ SCREEN_ORDER
 SCREEN_ORDER_COMPLETE
 ```
 
+<a id="goods-model"></a>
 ## `Goods` 모델
 
 상품 관련 메소드에는 `Goods` 모델을 사용합니다.
@@ -66,6 +80,7 @@ Goods goodsItem = Goods.builder()
 | `goodsImg` | `String` | 상품 이미지 URL |
 | `goodsCnt` | `Int` | 수량 |
 
+<a id="methods"></a>
 ## 메소드별 정리
 
 ### `setSearchKeyword(activity, keyword, screenId)`
@@ -124,6 +139,7 @@ Goods goodsItem = Goods.builder()
 | `eventValue` | 이벤트 값 |
 | `screenId` | 화면 식별 ID |
 
+<a id="method-by-screen"></a>
 ## 어떤 화면에서 어떤 메소드를 써야 하는가
 
 | 화면/행동 | 권장 메소드 |
@@ -137,6 +153,7 @@ Goods goodsItem = Goods.builder()
 | 일반 화면 | `setScreenData()` |
 | 별도 비즈니스 이벤트 | `setCustomEvent()` |
 
+<a id="flutter-usage"></a>
 ## Flutter 앱에서의 적용
 
 Flutter에서는 화면 이벤트를 Dart에서 감지하더라도, 실제 Groobee 메소드 호출은 Android Activity 컨텍스트에서 처리해야 합니다.  

@@ -2,6 +2,19 @@
 
 이 문서는 Android Native SDK와 Flutter Android SDK 공통 기준으로 Groobee Android SDK의 개요, 지원 캠페인, 어드민 설정 체크리스트를 정리한 문서입니다.
 
+---
+
+## 목차
+
+1. [SDK가 제공하는 캠페인](#campaigns)
+2. [SDK 기본 정보](#sdk-info)
+3. [어드민 설정 체크리스트](#admin-checklist)
+4. [어드민 설정 방법](#admin-setup)
+5. [어떤 문서를 먼저 보면 되는가](#getting-started)
+
+---
+
+<a id="campaigns"></a>
 ## SDK가 제공하는 캠페인
 
 Groobee Android SDK를 설치하면 모바일 앱에서 아래 두 가지 캠페인 영역을 사용할 수 있습니다.
@@ -16,6 +29,7 @@ Groobee Android SDK를 설치하면 모바일 앱에서 아래 두 가지 캠페
 - AI 세그먼트 또는 일반 세그먼트를 통해 선별된 사용자에게 푸시 메시지를 발송할 수 있습니다.
 - Android 푸시는 FCM(Firebase Cloud Messaging) 기반으로 동작합니다.
 
+<a id="sdk-info"></a>
 ## SDK 기본 정보
 
 | 항목 | 내용 |
@@ -33,6 +47,7 @@ Groobee Android SDK를 설치하면 모바일 앱에서 아래 두 가지 캠페
 - [Android SDK 변경 로그](../changelog/sdk-android-changelog.md)
 - [Android SDK 기능 지원 범위](../changelog/sdk-android-feature-support.md)
 
+<a id="admin-checklist"></a>
 ## 어드민 설정 체크리스트
 
 PDF 원문 기준으로 Android SDK 연동 전에 아래 항목을 점검해야 합니다.
@@ -58,6 +73,7 @@ PDF 원문 기준으로 Android SDK 연동 전에 아래 항목을 점검해야 
 | 행동 데이터 | 카테고리 | 선택 |
 | 행동 데이터 | 기타 화면 정보 | 선택 |
 
+<a id="admin-setup"></a>
 ## 어드민 설정 방법
 
 ### 1. SDK 설정 화면 진입
@@ -75,6 +91,7 @@ PDF 원문 기준으로 Android SDK 연동 전에 아래 항목을 점검해야 
 - 패키지명은 SDK 인증 과정에도 사용되므로 오타 없이 정확히 등록해야 합니다.
 - 등록 방법은 [앱 패키지명 등록 가이드](../prerequisites/app-name-registration.md)를 참고하세요.
 
+<a id="getting-started"></a>
 ## 어떤 문서를 먼저 보면 되는가
 
 설치부터 시작하려면:

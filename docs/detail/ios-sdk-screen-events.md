@@ -1,5 +1,23 @@
 # iOS SDK 화면 이벤트 및 행동 이력 연동
 
+---
+
+## 목차
+
+1. [검색 키워드](#search-keyword)
+2. [Goods Model Builder](#goods-model-builder)
+3. [상품 상세](#goods-detail)
+4. [장바구니](#cart)
+5. [주문하기](#order)
+6. [주문 완료](#order-complete)
+7. [카테고리](#category)
+8. [기타 화면 정보](#etc-screen)
+9. [커스텀 이벤트](#custom-event)
+10. [함께 보면 좋은 문서](#related-docs)
+
+---
+
+<a id="search-keyword"></a>
 ## 검색 키워드
 
 ### `setSearchKeyword(searchKwd, screenId)`
@@ -26,6 +44,7 @@ Objective-C:
 - 검색 시 `setSearchKeyword()` 메소드를 호출하면 특정 검색어를 입력한 유저에 한해 메시지 전달이 가능합니다.
 - 세그먼트 변수 생성 시 방문행동 → 사이트 검색어를 이용해 특정 단어에 대한 세그먼트를 만들 수 있습니다.
 
+<a id="goods-model-builder"></a>
 ## Goods Model Builder
 
 상품 관련 메소드에는 `Goods` 모델을 사용합니다.
@@ -72,6 +91,7 @@ Goods *goodsItem = [[[[[[[[[[Goods alloc] init]
 | `goodsImg` | `String` | 상품 이미지 URL | `http://shop.com/web/product_img.png` |
 | `goodsCnt` | `Int` | 상품 수량 | `1` |
 
+<a id="goods-detail"></a>
 ## 상품 상세
 
 ### `setViewGoods(goods, screenId)`
@@ -98,6 +118,7 @@ Objective-C:
 - `setViewGoods()` 메소드는 상품 상세 진입 시 호출을 권장합니다.
 - 세그먼트 변수 생성, AI 분석(RFM, 구매확률), 전환 상태 측정, 트리거 옵션 기능에 활용됩니다.
 
+<a id="cart"></a>
 ## 장바구니
 
 ### `setShoppingCart(goods, screenId)`
@@ -130,6 +151,7 @@ NSMutableArray<Goods *> *goodsList = [NSMutableArray array];
 - `setShoppingCart()` 메소드는 장바구니 진입 시 호출을 권장합니다.
 - 세그먼트 변수 생성, AI 분석(RFM, 구매확률), 전환 상태 측정, 트리거 옵션 기능에 활용됩니다.
 
+<a id="order"></a>
 ## 주문하기
 
 ### `setGoodsOrder(goods, screenId)`
@@ -162,6 +184,7 @@ NSMutableArray<Goods *> *goodsList = [NSMutableArray array];
 - `setGoodsOrder()` 메소드는 주문하기 진입 시 호출을 권장합니다.
 - 세그먼트 변수 생성, AI 분석(RFM, 구매확률), 전환 상태 측정, 트리거 옵션 기능에 활용됩니다.
 
+<a id="order-complete"></a>
 ## 주문 완료
 
 ### `setGoodsOrderComplete(orderNo, goods, screenId)`
@@ -200,6 +223,7 @@ NSMutableArray<Goods *> *goodsList = [NSMutableArray array];
 - `setGoodsOrderComplete()` 메소드는 주문완료 진입 시 호출을 권장합니다.
 - 세그먼트 변수 생성, AI 분석(RFM, 구매확률), 전환 상태 측정, 트리거 옵션 기능에 활용됩니다.
 
+<a id="category"></a>
 ## 카테고리
 
 ### `setCategory(cateCd, cateNm, screenId)`
@@ -227,6 +251,7 @@ Objective-C:
 
 - 카테고리 선택 시 `setCategory()` 메소드 호출을 권장하며, 특정 카테고리 진입 시 메시지를 전달할 수 있습니다.
 
+<a id="etc-screen"></a>
 ## 기타 화면 정보
 
 ### `setScreenData(screenName, screenId)`
@@ -253,6 +278,7 @@ Objective-C:
 현재 그루비는 상품을 보거나 구매하는 행위에 초점이 맞추어져 있습니다.  
 그 외 다른 화면에서 메시지를 전달하고 싶다면 `setScreenData()` 메소드를 호출합니다.
 
+<a id="custom-event"></a>
 ## 커스텀 이벤트
 
 ### `setCustomEvent(eventKey, screenId, eventValue)`
@@ -283,6 +309,7 @@ Objective-C:
 
 그루비 어드민에서 별도의 CustomEvent 변수를 이용해 사용자에게 메시지를 전달하고 싶다면 `setCustomEvent()` 메소드를 호출합니다.
 
+<a id="related-docs"></a>
 ## 함께 보면 좋은 문서
 
 - [iOS SDK 회원 정보 및 푸시 상태 연동](./ios-sdk-member-push.md)

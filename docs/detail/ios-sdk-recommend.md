@@ -1,5 +1,18 @@
 # iOS SDK 추천 상품 연동
 
+---
+
+## 목차
+
+1. [추천 상품 리스트 조회](#recommend-list)
+2. [추천 상품 노출](#recommend-impression)
+3. [추천 상품 클릭](#recommend-click)
+4. [Goods Model Builder Parameter](#goods-model-builder-parameter)
+5. [함께 보면 좋은 문서](#related-docs)
+
+---
+
+<a id="recommend-list"></a>
 ## 추천 상품 리스트 조회
 
 ### 동기식: `getRecommendGoods(campaignKey, timeout)`
@@ -106,6 +119,7 @@ Objective-C:
 
 - 추천할 상품 리스트가 없거나 응답시간이 지난 경우 빈 `Array`로 반환됩니다.
 
+<a id="recommend-impression"></a>
 ## 추천 상품 노출
 
 ### `setShowRecommendGoods(goods, campaignKey, algorithmCd, requestId)`
@@ -140,6 +154,7 @@ Objective-C:
 `getRecommendGoods()` 메소드로 만들어진 View에서 현재 화면에 load된 추천상품들을 `List`에 담아 `setShowRecommendGoods()`를 호출합니다.  
 이 함수를 호출하면 그루비 어드민에서 추천상품의 노출상태에 따른 통계 데이터를 확인할 수 있습니다.
 
+<a id="recommend-click"></a>
 ## 추천 상품 클릭
 
 ### `setClickRecommendGoods(goods, campaignKey, algorithmCd, requestId)`
@@ -174,6 +189,7 @@ Objective-C:
 `getRecommendGoods()` 메소드로 만들어진 View에서 현재 화면에 load된 추천상품들 중 클릭된 추천상품을 `setClickRecommendGoods()`로 전달합니다.  
 이 함수를 호출하면 그루비 어드민에서 추천상품의 클릭에 따른 통계 데이터를 확인할 수 있습니다.
 
+<a id="goods-model-builder-parameter"></a>
 ## Goods Model Builder Parameter
 
 | 변수명 | 자료형 | 설명 | 예시 |
@@ -188,6 +204,7 @@ Objective-C:
 | `goodsImg` | `String` | 상품 이미지 URL | `http://shop.com/web/product_img.png` |
 | `goodsCnt` | `Int` | 상품 수량 | `2` |
 
+<a id="related-docs"></a>
 ## 함께 보면 좋은 문서
 
 - [iOS SDK 화면 이벤트 및 행동 이력 연동](./ios-sdk-screen-events.md)
