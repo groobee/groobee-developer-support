@@ -1,5 +1,7 @@
 # Groobee iOS SDK 설치 가이드 (Native)
 
+이 문서는 Groobee iOS SDK(Native) `1.1.1` 기준으로 iOS 네이티브 앱(Swift, Objective-C)의 설치 절차만 정리한 문서입니다.
+
 기능별 사용 문서는 아래 문서를 참고하세요.
 
 - [iOS SDK 개요 및 지원 범위](../detail/ios-sdk-overview.md)
@@ -8,6 +10,8 @@
 - [iOS SDK 하이브리드 앱 데이터 동기화](../detail/ios-sdk-hybrid-sync.md)
 - [iOS SDK 추천 상품 연동](../detail/ios-sdk-recommend.md)
 - [iOS SDK 주의사항 및 로그 유틸리티](../detail/ios-sdk-cautions-log.md)
+
+Flutter 앱(iOS 빌드)에서 `MethodChannel`로 연동하는 경우에는 [iOS Flutter SDK 설치 가이드](./installation-ios-flutter-sdk.md)를 참고하세요.
 
 <a id="sdk-overview"></a>
 ## 설치 전 확인
