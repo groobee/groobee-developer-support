@@ -16,8 +16,7 @@ Flutter 앱(Android 빌드)에서 `MethodChannel`로 연동하는 경우에는 [
 ## 설치 전 확인
 
 - Groobee 서비스키
-- [앱 패키지명 등록](../prerequisites/app-name-registration.md)
-- [사용 플랫폼 정보 등록](../prerequisites/app-platform-registration.md)
+- [앱 정보 등록 (앱 패키지명 / Bundle ID / 플랫폼 정보)](../prerequisites/app-name-registration.md)
 - 푸시 사용 시 Firebase 프로젝트 설정과 Firebase 비공개키 업로드
 
 SDK 개요와 캠페인 설명은 [Android SDK 개요 및 캠페인](../detail/android-sdk-overview.md) 문서에 정리했습니다.

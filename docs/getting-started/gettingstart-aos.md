@@ -20,10 +20,8 @@
   계정이 없는 경우 영업팀에 문의해주세요.  
   👉 [Groobee 사이트 링크](https://groobee.net/)
 - 앱에서 사용할 Groobee 서비스키
-- 어드민 사이트에 앱 패키지명 등록  
-  👉 [앱 패키지명 등록 가이드](../prerequisites/app-name-registration.md)
-- 어드민 사이트에 사용 플랫폼 정보 등록  
-  👉 [사용 플랫폼 정보 등록 가이드](../prerequisites/app-platform-registration.md)
+- 어드민 사이트에 앱 패키지명 / 플랫폼 정보 등록  
+  👉 [앱 정보 등록 가이드](../prerequisites/app-name-registration.md)
 - 푸시를 사용할 경우 Firebase 프로젝트 설정과 Firebase 비공개키 등록
 - Flutter 앱인 경우 `google-services.json` 준비 및 Android 모듈 편집 환경 확인
 - 하이브리드 앱인 경우 데이터 동기화 방향 결정  

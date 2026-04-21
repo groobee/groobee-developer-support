@@ -15,8 +15,7 @@
 ## 설치 전 확인
 
 - Groobee 서비스키
-- [앱 패키지명 등록](../prerequisites/app-name-registration.md)
-- [사용 플랫폼 정보 등록](../prerequisites/app-platform-registration.md)
+- [앱 정보 등록 (앱 패키지명 / Bundle ID / 플랫폼 정보)](../prerequisites/app-name-registration.md)
 - 푸시 사용 시 Firebase 프로젝트 설정
 - `android/app/google-services.json` 파일 준비
 - Flutter 프로젝트에서 Android 모듈을 수정할 수 있는 환경
