@@ -1,10 +1,24 @@
 # iOS SDK 회원 정보 및 푸시 상태 연동
 
+---
+
+## 목차
+
+1. [공통 호출 위치](#common-call-site)
+2. [회원 정보 설정](#member-info)
+3. [푸시 수신 동의 설정](#push-consent)
+4. [푸시 동의 상태 조회](#push-consent-query)
+5. [함께 보면 좋은 문서](#related-docs)
+
+---
+
+<a id="common-call-site"></a>
 ## 공통 호출 위치
 
 그루비 메소드는 가급적이면 View 생성 시 한 번만 호출되는 `viewDidLoad()` 같은 곳에서 사용하시길 권합니다.  
 InAppMessage를 사용하는 상태에서 화면전환 메소드나 버튼 기능처럼 여러 번 호출될 수 있는 곳에서 사용하면 오작동 가능성이 있습니다.
 
+<a id="member-info"></a>
 ## 회원 정보 설정
 
 ### `setServiceLogin(memberId)`
@@ -193,6 +207,7 @@ Objective-C:
 - 1번 기기에서 푸시 동의를 거부한 고객이 2번 기기에서 푸시 동의를 수락한 경우  
   → 1번 기기에 해당하는 회원의 푸시 상태를 동의 수락 상태로 변경
 
+<a id="push-consent"></a>
 ## 푸시 수신 동의 설정
 
 ### `setPushAgreeAP(isPushAgreedAP)`
@@ -277,6 +292,7 @@ Objective-C:
 - 야간 수신 동의를 수락한 유저에 한해서 21시 이후 시간에 메시지 발송이 가능합니다.
 - 그루비에서는 발송 시간이 21시 이후일 경우 야간 수신 동의한 유저만 발송 대상으로 제한합니다.
 
+<a id="push-consent-query"></a>
 ## 푸시 동의 상태 조회
 
 ### 동기식: `getPushAgreed(memberId)`
@@ -366,6 +382,7 @@ Objective-C:
 - 비동기 통신 결과 완료 시 연결한 callback listener로 전달합니다.
 - 호출한 회원 아이디 기준으로 최근에 설정한 푸시 동의 상태를 조회하여 반환합니다.
 
+<a id="related-docs"></a>
 ## 함께 보면 좋은 문서
 
 - [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md)
