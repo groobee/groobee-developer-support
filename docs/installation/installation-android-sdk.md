@@ -258,7 +258,24 @@ public class CustomService extends FirebaseMessagingService {
 }
 ```
 
-> 기존에 등록된 FCM 서비스가 있다면 하나의 엔트리만 남기고 정리하세요.
+이 경우 `AndroidManifest.xml`에는 **기본 `GroobeeFirebaseMessagingService`가 아니라 직접 만든 `CustomService`만** 등록합니다. `<action>`은 동일하게 `com.google.firebase.MESSAGING_EVENT`를 선언해야 FCM이 이 서비스로 메시지를 전달합니다.
+
+```xml
+<application
+    android:name=".MyApplication"
+    ...>
+
+    <service
+        android:name=".CustomService"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+</application>
+```
+
+> 기존에 등록된 FCM 서비스가 있다면 하나의 엔트리만 남기고 정리하세요. `GroobeeFirebaseMessagingService`와 `CustomService`가 동시에 등록되어 있으면 동일 메시지가 중복 처리될 수 있습니다.
 
 ---
 
