@@ -48,31 +48,31 @@ Groobee iOS SDK 설치는 다음 순서로 진행하는 것을 권장합니다.
 
 ### 1. SDK 설치
 
-네이티브 앱은 [Native SDK 설치](../installation/installation-ios-sdk.md#sdk-install), Flutter 앱은 [Flutter SDK 설치](../installation/installation-ios-flutter-sdk.md#flutter-install) 문서를 참고하세요.
+네이티브 앱은 [iOS Native SDK 설치 가이드](../installation/installation-ios-sdk.md), Flutter 앱은 [iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md) 문서의 **SDK 설치** 섹션을 참고하세요.
 
 `Podfile`에 `GroobeeKit`, `FirebaseMessaging` 등을 추가하고 `pod install`을 수행합니다. Flutter 앱은 `pubspec.yaml`에 Firebase 패키지를 추가한 뒤 `flutter pub get` → `pod install` 순서로 진행합니다.
 
 ### 2. AppDelegate 초기화 설정
 
-네이티브 앱은 [Native AppDelegate 설정](../installation/installation-ios-sdk.md#appdelegate-config), Flutter 앱은 [Flutter AppDelegate 설정](../installation/installation-ios-flutter-sdk.md#appdelegate-config) 문서를 참고하세요.
+네이티브 앱은 [iOS Native SDK 설치 가이드](../installation/installation-ios-sdk.md), Flutter 앱은 [iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md) 문서의 **AppDelegate 설정** 섹션을 참고하세요.
 
 서비스키, `GroobeeConfig`, Firebase 초기화, 푸시 권한 요청을 `AppDelegate`에 설정합니다. Flutter 앱은 `FlutterAppDelegate` 상속과 `GeneratedPluginRegistrant` 등록이 추가로 필요합니다.
 
 ### 3. LifeCycle 설정
 
-네이티브 앱은 [Native LifeCycle 설정](../installation/installation-ios-sdk.md#lifecycle-config), Flutter 앱은 [Flutter LifeCycle 설정](../installation/installation-ios-flutter-sdk.md#lifecycle-config) 문서를 참고하세요.
+네이티브 앱은 [iOS Native SDK 설치 가이드](../installation/installation-ios-sdk.md), Flutter 앱은 [iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md) 문서의 **LifeCycle 설정** 섹션을 참고하세요.
 
 iOS 13 미만과 iOS 13 이상에 맞춰 `GroobeeKitLifeCycle` 메소드를 연결합니다.
 
 ### 4. Push Messaging Service 설정
 
-네이티브 앱은 [Native Push Messaging Service 설정](../installation/installation-ios-sdk.md#push-service), Flutter 앱은 [Flutter Push Messaging Service 설정](../installation/installation-ios-flutter-sdk.md#push-service) 문서를 참고하세요.
+네이티브 앱은 [iOS Native SDK 설치 가이드](../installation/installation-ios-sdk.md), Flutter 앱은 [iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md) 문서의 **Push Messaging Service 설정** 섹션을 참고하세요.
 
 Firebase 콘솔에서 APNS 인증 키를 업로드하고, `AppDelegate`에 FCM/APNS 연동 코드를 추가합니다.
 
 ### 5. Rich Push 설정
 
-네이티브 앱은 [Native Rich Push 설정](../installation/installation-ios-sdk.md#rich-push), Flutter 앱은 [Flutter Rich Push 설정](../installation/installation-ios-flutter-sdk.md#rich-push) 문서를 참고하세요.
+네이티브 앱은 [iOS Native SDK 설치 가이드](../installation/installation-ios-sdk.md), Flutter 앱은 [iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md) 문서의 **Rich Push 설정** 섹션을 참고하세요.
 
 `Notification Service Extension`, `Notification Content Extension`, `Info.plist`, 알림 확장 코드를 설정합니다.
 

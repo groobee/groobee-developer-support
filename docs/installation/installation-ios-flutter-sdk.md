@@ -526,7 +526,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
 }
 ```
 
-> Rich Push의 상세 Xcode 설정 화면과 스크린샷은 Native iOS 설치 가이드의 [Rich Push 설정](./installation-ios-sdk.md#rich-push) 섹션과 동일합니다. 본 가이드 차원의 보강으로, Flutter 프로젝트에서도 `Runner` 프로젝트에 Extension을 추가하는 절차 자체는 Native iOS와 동일하게 적용됩니다.
+> Rich Push의 상세 Xcode 설정 화면과 스크린샷은 [iOS Native SDK 설치 가이드](./installation-ios-sdk.md)의 **Rich Push 설정** 섹션과 동일합니다. 본 가이드 차원의 보강으로, Flutter 프로젝트에서도 `Runner` 프로젝트에 Extension을 추가하는 절차 자체는 Native iOS와 동일하게 적용됩니다.
 
 ---
 
