@@ -117,6 +117,11 @@ dependencies {
 
 Flutter 앱에서도 Groobee 초기화는 Android `Application` 클래스에서 수행하는 것을 권장합니다.
 
+> **기존에 커스텀 `Application` 클래스를 이미 사용 중인 경우**에는 **새로 만들지 말고** 기존 클래스의 `onCreate()`에 아래 초기화 코드를 추가하세요. `AndroidManifest.xml`의 `<application android:name="...">` 값도 그대로 유지하면 됩니다.
+> **커스텀 `Application` 클래스가 없는 경우**에만 아래 절차에 따라 새로 만드세요.
+
+커스텀 `Application` 클래스가 없는 경우 생성 절차:
+
 1. `android/app/src/main/kotlin/...` 또는 `java/...` 아래에 `MyApplication` 클래스를 생성합니다.
 2. `onCreate()`에서 Groobee SDK를 초기화합니다.
 3. `AndroidManifest.xml`의 `<application>`에 `android:name=".MyApplication"`을 설정합니다.
