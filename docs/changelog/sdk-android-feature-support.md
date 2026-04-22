@@ -52,7 +52,7 @@
 | Push 동의 상태 조회 (동기) | `getPushAgreed(MEMBER_ID)` | ✅ 지원 | 인증 전 호출 시 null 반환 가능 |
 | Push 동의 상태 조회 (비동기/콜백) | `getPushAgreed(MEMBER_ID, ResultAgreeds)` | ✅ 지원 | 콜백 Listener로 결과 전달 |
 
-### 페이지별 설정 (화면/행동 이벤트)
+### 행동 이력 수집
 
 | 기능 | 메소드 | 최신 상태 | 비고 |
 |---|---|---|---|

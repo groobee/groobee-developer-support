@@ -12,7 +12,7 @@
 
 - 로그인, 로그아웃, 회원 속성, 푸시 토큰, 푸시 동의 상태 관련 메소드를 정리한 문서입니다.
 
-### [Android SDK 화면 이벤트 및 행동 이력 연동](android-sdk-screen-events.md)
+### [Android SDK 행동 이력 수집](android-sdk-actions.md)
 
 - 검색, 상품 상세, 장바구니, 주문, 카테고리, 커스텀 이벤트 등 화면/행동 수집 메소드를 정리한 문서입니다.
 

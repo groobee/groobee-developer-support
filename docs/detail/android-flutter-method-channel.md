@@ -331,7 +331,7 @@ case "getPushAgreedSync": {
 ## 브리지 확장 순서 권장 사항
 
 1. `setPushToken()`, `setServiceLogin()`, `setAgreedPush()`처럼 단순한 SET 메소드부터 연결합니다.
-2. 이후 `setScreenData()`와 `setSearchKeyword()` 같은 화면 이벤트를 연결합니다.
+2. 이후 `setScreenData()`와 `setSearchKeyword()` 같은 행동 이력 수집 메소드를 연결합니다.
 3. 다음으로 `Goods` 모델 변환이 필요한 상품 이벤트 메소드를 추가합니다.
 4. 마지막으로 `getPushAgreed()`나 추천 상품 API처럼 JSON 응답이 필요한 GET 계열을 확장합니다.
 
@@ -340,5 +340,5 @@ case "getPushAgreedSync": {
 
 - [Android Flutter SDK 설치 가이드](../installation/installation-android-flutter-sdk.md)
 - [Android SDK 회원 정보 및 푸시 상태 연동](./android-sdk-member-push.md)
-- [Android SDK 화면 이벤트 및 행동 이력 연동](./android-sdk-screen-events.md)
+- [Android SDK 행동 이력 수집](./android-sdk-actions.md)
 - [Android SDK 추천 상품 연동](./android-sdk-recommend.md)

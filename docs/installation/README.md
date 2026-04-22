@@ -38,7 +38,7 @@
 
 ## Android SDK 상세 사용 가이드
 
-- Android SDK 개요, 캠페인 설명, 회원/푸시, 화면 이벤트, 하이브리드 동기화, 추천 상품, Flutter MethodChannel 문서는  
+- Android SDK 개요, 캠페인 설명, 회원/푸시, 행동 이력 수집, 하이브리드 동기화, 추천 상품, Flutter MethodChannel 문서는  
   👉 [상세 가이드](../detail/README.md) 에서 확인할 수 있습니다.
 
 ## Groobee iOS SDK 설치 가이드

@@ -6,7 +6,7 @@
 
 - [Android SDK 개요 및 캠페인](../detail/android-sdk-overview.md)
 - [Android SDK 회원 정보 및 푸시 상태 연동](../detail/android-sdk-member-push.md)
-- [Android SDK 화면 이벤트 및 행동 이력 연동](../detail/android-sdk-screen-events.md)
+- [Android SDK 행동 이력 수집](../detail/android-sdk-actions.md)
 - [Android SDK 하이브리드 앱 데이터 동기화](../detail/android-sdk-hybrid-sync.md)
 - [Android SDK 추천 상품 연동](../detail/android-sdk-recommend.md)
 
@@ -288,9 +288,9 @@ public class CustomService extends FirebaseMessagingService {
 - [Android SDK 회원 정보 및 푸시 상태 연동](../detail/android-sdk-member-push.md)
 
 <a id="screen-methods"></a>
-### 화면 이벤트 및 행동 이력
+### 행동 이력 수집
 
-- [Android SDK 화면 이벤트 및 행동 이력 연동](../detail/android-sdk-screen-events.md)
+- [Android SDK 행동 이력 수집](../detail/android-sdk-actions.md)
 
 <a id="hybrid-methods"></a>
 ### 하이브리드 앱 데이터 동기화
