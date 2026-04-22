@@ -6,7 +6,7 @@
 
 - [iOS SDK 개요 및 지원 범위](../detail/ios-sdk-overview.md)
 - [iOS SDK 회원 정보 및 푸시 상태 연동](../detail/ios-sdk-member-push.md)
-- [iOS SDK 화면 이벤트 및 행동 이력 연동](../detail/ios-sdk-screen-events.md)
+- [iOS SDK 행동 이력 수집](../detail/ios-sdk-actions.md)
 - [iOS SDK 하이브리드 앱 데이터 동기화](../detail/ios-sdk-hybrid-sync.md)
 - [iOS SDK 추천 상품 연동](../detail/ios-sdk-recommend.md)
 - [iOS SDK 주의사항 및 로그 유틸리티](../detail/ios-sdk-cautions-log.md)
@@ -575,9 +575,9 @@ Future<void> initializeDefault() async {
 
 - [iOS SDK 회원 정보 및 푸시 상태 연동](../detail/ios-sdk-member-push.md)
 
-### 화면 이벤트 및 행동 이력
+### 행동 이력 수집
 
-- [iOS SDK 화면 이벤트 및 행동 이력 연동](../detail/ios-sdk-screen-events.md)
+- [iOS SDK 행동 이력 수집](../detail/ios-sdk-actions.md)
 
 ### 하이브리드 앱 데이터 동기화
 

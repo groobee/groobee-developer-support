@@ -55,5 +55,5 @@
 
 ## iOS SDK 상세 사용 가이드
 
-- iOS SDK 개요, 회원/푸시, 화면 이벤트, 하이브리드 동기화, 추천 상품, 주의사항/로그, Flutter MethodChannel 문서는  
+- iOS SDK 개요, 회원/푸시, 행동 이력 수집, 하이브리드 동기화, 추천 상품, 주의사항/로그, Flutter MethodChannel 문서는  
   👉 [상세 가이드](../detail/README.md) 에서 확인할 수 있습니다.

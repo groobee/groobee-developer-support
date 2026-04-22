@@ -80,5 +80,5 @@ Objective-C:
 ## 함께 보면 좋은 문서
 
 - [iOS SDK 회원 정보 및 푸시 상태 연동](./ios-sdk-member-push.md)
-- [iOS SDK 화면 이벤트 및 행동 이력 연동](./ios-sdk-screen-events.md)
+- [iOS SDK 행동 이력 수집](./ios-sdk-actions.md)
 - [iOS SDK 주의사항 및 로그 유틸리티](./ios-sdk-cautions-log.md)

@@ -207,6 +207,6 @@ Objective-C:
 <a id="related-docs"></a>
 ## 함께 보면 좋은 문서
 
-- [iOS SDK 화면 이벤트 및 행동 이력 연동](./ios-sdk-screen-events.md)
+- [iOS SDK 행동 이력 수집](./ios-sdk-actions.md)
 - [iOS SDK 하이브리드 앱 데이터 동기화](./ios-sdk-hybrid-sync.md)
 - [iOS SDK 주의사항 및 로그 유틸리티](./ios-sdk-cautions-log.md)

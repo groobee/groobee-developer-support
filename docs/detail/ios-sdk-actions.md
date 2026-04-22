@@ -1,4 +1,6 @@
-# iOS SDK 화면 이벤트 및 행동 이력 연동
+# iOS SDK 행동 이력 수집
+
+이 문서는 iOS Native SDK와 Flutter iOS SDK 공통 기준으로, 검색·상품 상세·장바구니·주문·카테고리·커스텀 이벤트 등 **사용자 행동 이력(Action)을 Groobee에 수집**하는 방법을 정리한 문서입니다.
 
 ---
 

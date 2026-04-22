@@ -266,7 +266,7 @@ Flutter 브리지에서 자주 연결하게 되는 `GroobeeKit` 메소드를 기
 | `getPushAgreed` | `Groobee.getInstance().getPushAgreed(memberId:responseAgreeds:)` | 푸시 동의 상태 조회 (비동기, 콜백). |
 | `getPushAgreedSync` | `Groobee.getInstance().getPushAgreed(memberId:)` | 푸시 동의 상태 조회 (동기). |
 
-### 화면 이벤트 / 행동 이력
+### 행동 이력 수집
 
 | Dart 호출 메소드명 | iOS 메소드 | 설명 |
 | --- | --- | --- |
@@ -301,7 +301,7 @@ Flutter 브리지에서 자주 연결하게 되는 `GroobeeKit` 메소드를 기
 ## 브리지 확장 순서 권장 사항
 
 1. `setPushToken()`, `setServiceLogin()`, `setPushAgreedAP()` 처럼 단순한 SET 메소드부터 연결합니다.
-2. 이후 `setScreenData()`와 `setSearchKeyword()` 같은 화면 이벤트를 연결합니다.
+2. 이후 `setScreenData()`와 `setSearchKeyword()` 같은 행동 이력 수집 메소드를 연결합니다.
 3. 다음으로 상품/주문 모델 변환이 필요한 `setViewGoods`, `setGoodsOrder`, `setGoodsOrderComplete` 등을 추가합니다.
 4. 마지막으로 `getPushAgreed()`, `getRecommendGoods()` 처럼 JSON 응답이 필요한 GET 계열을 확장합니다.
 
@@ -310,6 +310,6 @@ Flutter 브리지에서 자주 연결하게 되는 `GroobeeKit` 메소드를 기
 
 - [Flutter iOS SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md)
 - [iOS SDK 회원 정보 및 푸시 상태 연동](./ios-sdk-member-push.md)
-- [iOS SDK 화면 이벤트 및 행동 이력 연동](./ios-sdk-screen-events.md)
+- [iOS SDK 행동 이력 수집](./ios-sdk-actions.md)
 - [iOS SDK 추천 상품 연동](./ios-sdk-recommend.md)
 - [iOS SDK 주의사항 및 로그 유틸리티](./ios-sdk-cautions-log.md)
