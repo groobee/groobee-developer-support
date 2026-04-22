@@ -69,7 +69,7 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
 ## 로그 유틸리티 사용법
 
-그루비 SDK는 상세 로그를 확인할 수 있도록 `LoggerUtils`라는 로그 클래스를 제공합니다.
+Groobee SDK는 상세 로그를 확인할 수 있도록 `LoggerUtils`라는 로그 클래스를 제공합니다.
 
 | 메소드 | 설명 |
 | --- | --- |

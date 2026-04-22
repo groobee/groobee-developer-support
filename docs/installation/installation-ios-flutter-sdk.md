@@ -133,7 +133,7 @@ Objective-C (`AppDelegate.m`):
 
 | 클래스 | 메소드 | 설명 |
 | --- | --- | --- |
-| `GroobeeConfig` | `setServiceKey` | (필수) 그루비 어드민에서 발급받은 서비스키 등록. |
+| `GroobeeConfig` | `setServiceKey` | (필수) Groobee 어드민에서 발급받은 서비스키 등록. |
 | `GroobeeConfig` | `setInAppMsgMarginTop` | (선택) 인앱메시지 상단 노출일 경우 마진값 설정. |
 | `GroobeeConfig` | `setInAppMsgMarginBottom` | (선택) 인앱메시지 하단 노출일 경우 마진값 설정. |
 | `GroobeeConfig` | `setNotificationSettingsButton` | (선택) 푸시 알림 하단에 수신 설정 버튼 추가. 버튼 텍스트는 `NSLocalizedString`으로 다국어화된 텍스트를 권장하며, 앱에 알림 수신 설정 페이지 딥링크 처리가 추가로 필요합니다. |
@@ -229,7 +229,7 @@ func pushNotiConfirmation() {
 <a id="lifecycle-config"></a>
 ## 5단계: LifeCycle 설정
 
-그루비의 세션과 메시지 처리를 위해 App의 LifeCycle을 `GroobeeKitLifeCycle`에 연결합니다.
+Groobee의 세션과 메시지 처리를 위해 App의 LifeCycle을 `GroobeeKitLifeCycle`에 연결합니다.
 
 ### iOS 13 미만
 
@@ -432,9 +432,9 @@ Apple 공식 문서: <https://developer.apple.com/documentation/usernotification
 
 7. `NotificationService.swift`에 아래 코드를 작성합니다.
 
-Firebase 메시징 서비스가 이미 등록되어 있는 경우 `GroobeeNotification.getInstance().receiveService()`를 통해 `request`, `bestAttemptContent`, `contentHandler` 객체를 그루비에 전달할 수 있습니다.
+Firebase 메시징 서비스가 이미 등록되어 있는 경우 `GroobeeNotification.getInstance().receiveService()`를 통해 `request`, `bestAttemptContent`, `contentHandler` 객체를 Groobee에 전달할 수 있습니다.
 
-또한, 그루비는 Admin에서 발송한 메시지만 렌더링할 수 있도록 분기 처리 로직이 포함되어 있습니다. 다른 FCM 서비스를 이용 중인 경우에는 `else` 구간에 코드를 삽입해 메시징 핸들링을 제어할 수 있습니다.
+또한, Groobee는 Admin에서 발송한 메시지만 렌더링할 수 있도록 분기 처리 로직이 포함되어 있습니다. 다른 FCM 서비스를 이용 중인 경우에는 `else` 구간에 코드를 삽입해 메시징 핸들링을 제어할 수 있습니다.
 
 ```swift
 import UserNotifications
@@ -509,7 +509,7 @@ class NotificationService: UNNotificationServiceExtension {
 
 6. `NotificationViewController.swift`에 아래 코드를 작성합니다.
 
-Firebase 메시징 서비스가 이미 등록되어 있는 경우 `GroobeeNotification.getInstance().receiveContent()`를 통해 `notification` 객체를 그루비에 전달할 수 있습니다.
+Firebase 메시징 서비스가 이미 등록되어 있는 경우 `GroobeeNotification.getInstance().receiveContent()`를 통해 `notification` 객체를 Groobee에 전달할 수 있습니다.
 
 `NotificationService.swift`에 추가한 분기 로직과 동일하게 Content에도 분기 코드를 작성합니다.
 

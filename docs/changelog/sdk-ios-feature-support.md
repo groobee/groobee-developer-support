@@ -47,7 +47,7 @@
 | 회원가입 완료 | `setMemberJoin(memberId:screenId:)` | ✅ 지원 | 전환율 측정 |
 | 푸시 토큰 등록 | `setPushToken(pushToken:)` | ✅ 지원 | 푸시 사용 시 필수 |
 | 푸시 동의 상태 동기화 | `syncMemberAgreed(memberId:)` | ✅ 지원 | `setServiceLogin`/`setMemberJoin` 이후 호출 |
-| 그루비 웹 쿠키 가져오기 | `getGroobeeWebCookies` | ✅ 지원 | 웹뷰에 쿠키 주입 용도 |
+| Groobee 웹 쿠키 가져오기 | `getGroobeeWebCookies` | ✅ 지원 | 웹뷰에 쿠키 주입 용도 |
 
 ### 푸시 수신 동의 설정
 

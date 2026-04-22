@@ -277,7 +277,7 @@ Objective-C:
 | `SCREEN_NAME` | `String` | 화면 식별 NAME | `홈` |
 | `SCREEN_ID` | `String` | 화면 식별 ID | `SCREEN_PAGE_01` |
 
-현재 그루비는 상품을 보거나 구매하는 행위에 초점이 맞추어져 있습니다.  
+현재 Groobee는 상품을 보거나 구매하는 행위에 초점이 맞추어져 있습니다.  
 그 외 다른 화면에서 메시지를 전달하고 싶다면 `setScreenData()` 메소드를 호출합니다.
 
 <a id="custom-event"></a>
@@ -309,7 +309,7 @@ Objective-C:
 | `SCREEN_ID` | `String` | 화면 식별 ID | `SCREEN_PAGE_01` |
 | `EVENT_VALUE` | `String` | 이벤트 값 | `HOME` |
 
-그루비 어드민에서 별도의 CustomEvent 변수를 이용해 사용자에게 메시지를 전달하고 싶다면 `setCustomEvent()` 메소드를 호출합니다.
+Groobee 어드민에서 별도의 CustomEvent 변수를 이용해 사용자에게 메시지를 전달하고 싶다면 `setCustomEvent()` 메소드를 호출합니다.
 
 <a id="related-docs"></a>
 ## 함께 보면 좋은 문서

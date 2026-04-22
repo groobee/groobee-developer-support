@@ -74,7 +74,7 @@ Objective-C:
 
 | 변수명 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `CAMPAIGN_KEY` | `String` | 그루비 어드민에서 생성한 추천 캠페인키 | `RE10b977c6fd…` |
+| `CAMPAIGN_KEY` | `String` | Groobee 어드민에서 생성한 추천 캠페인키 | `RE10b977c6fd…` |
 | `responseGoods` | `ResponseGoods` | 성공(`onSuccess`) / 실패(`onFailed`) 결과를 받을 콜백 | 콜백 객체 |
 
 - UI 스레드를 블로킹하지 않아 어떤 화면에서도 안전하게 호출할 수 있습니다.
@@ -113,7 +113,7 @@ Objective-C:
 | `requestId` | `String` | 요청 ID | 리턴 데이터가 없는 경우 `null` |
 
 `getRecommendGoods()` 메소드로 만들어진 View에서 현재 화면에 load된 추천상품들을 `List`에 담아 `setShowRecommendGoods()`를 호출합니다.  
-이 함수를 호출하면 그루비 어드민에서 추천상품의 노출상태에 따른 통계 데이터를 확인할 수 있습니다.
+이 함수를 호출하면 Groobee 어드민에서 추천상품의 노출상태에 따른 통계 데이터를 확인할 수 있습니다.
 
 <a id="recommend-click"></a>
 ## 추천 상품 클릭
@@ -148,7 +148,7 @@ Objective-C:
 | `requestId` | `String` | 요청 ID | 리턴 데이터가 없는 경우 `null` |
 
 `getRecommendGoods()` 메소드로 만들어진 View에서 현재 화면에 load된 추천상품들 중 클릭된 추천상품을 `setClickRecommendGoods()`로 전달합니다.  
-이 함수를 호출하면 그루비 어드민에서 추천상품의 클릭에 따른 통계 데이터를 확인할 수 있습니다.
+이 함수를 호출하면 Groobee 어드민에서 추천상품의 클릭에 따른 통계 데이터를 확인할 수 있습니다.
 
 <a id="goods-model-builder-parameter"></a>
 ## Goods Model Builder Parameter
@@ -208,7 +208,7 @@ if (goodsList != nil && [goodsList count] > 0) {
 
 | 변수명 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `CAMPAIGN_KEY` | `String` | 그루비 어드민에서 생성한 추천 캠페인키 | `RE10b977c6fd…` |
+| `CAMPAIGN_KEY` | `String` | Groobee 어드민에서 생성한 추천 캠페인키 | `RE10b977c6fd…` |
 | `TIME_OUT` | `Double` | 추천 상품 리스트 응답 대기 시간(ms) | `10000 => 10초` |
 
 - 추천할 상품 리스트가 없거나 응답시간이 지난 경우 빈 `Array`로 반환됩니다.

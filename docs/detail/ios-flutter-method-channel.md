@@ -52,7 +52,7 @@ Future<void> initializeDefault() async {
 }
 ```
 
-인증 후 토큰 발급을 처리할 함수를 호출하고, 해당 토큰을 `MethodChannel`을 이용해 그루비 함수로 전달합니다.
+인증 후 토큰 발급을 처리할 함수를 호출하고, 해당 토큰을 `MethodChannel`을 이용해 Groobee 함수로 전달합니다.
 
 ```dart
 Future<void> getFcmToken() async {
@@ -253,7 +253,7 @@ Flutter 브리지에서 자주 연결하게 되는 `GroobeeKit` 메소드를 기
 | `memberDataClear` | `Groobee.getInstance().memberDataClear()` | 세팅된 회원 정보 초기화. |
 | `setMemberJoin` | `Groobee.getInstance().setMemberJoin(memberId:screenId:)` | 회원가입 완료 시점 호출. |
 | `syncMemberAgreed` | `Groobee.getInstance().syncMemberAgreed(memberId:)` | 여러 기기 간 푸시 동의 상태 동기화. |
-| `getGroobeeWebCookies` | `Groobee.getInstance().getGroobeeWebCookies()` | 그루비 웹 쿠키 조회 (하이브리드 동기화용). |
+| `getGroobeeWebCookies` | `Groobee.getInstance().getGroobeeWebCookies()` | Groobee 웹 쿠키 조회 (하이브리드 동기화용). |
 
 ### 푸시
 
