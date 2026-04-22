@@ -92,11 +92,11 @@ Goods goodsItem = Goods.builder()
 - 검색 결과 화면에서 사용자가 입력한 검색 키워드를 수집할 때 호출합니다.
 - 특정 검색어를 입력한 사용자 세그먼트 구성에 사용할 수 있습니다.
 
-| 파라미터 | 자료형 | 설명 | 예시 |
-| --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` / `MainActivity.this` |
-| `keyword` | `String` | 사용자가 입력한 검색어 | `"청바지"` |
-| `screenId` | `String` | 화면 식별 ID (고정 문자열 권장) | `"SCREEN_SEARCH"` |
+| 파라미터 | 자료형 | 설명 | 예시                                     |
+| --- | --- | --- |----------------------------------------|
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
+| `keyword` | `String` | 사용자가 입력한 검색어 | `"청바지"`                                |
+| `screenId` | `String` | 화면 식별 ID (고정 문자열 권장) | `"SCREEN_SEARCH"`                      |
 
 ### `setViewGoods(activity, goods, screenId)`
 
@@ -105,7 +105,7 @@ Goods goodsItem = Goods.builder()
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
 | `goods` | `Goods` | 조회한 상품 1건 | [`Goods` 모델](#goods-model) 참고 |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_PRODUCT_DETAIL"` |
 
@@ -115,7 +115,7 @@ Goods goodsItem = Goods.builder()
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
 | `goodsList` | `List<Goods>` | 장바구니에 담긴 상품 목록 | `listOf(goodsA, goodsB)` |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_CART"` |
 
@@ -125,7 +125,7 @@ Goods goodsItem = Goods.builder()
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
 | `goodsList` | `List<Goods>` | 주문 진행 중인 상품 목록 | `listOf(goodsItem)` |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_ORDER"` |
 
@@ -135,7 +135,7 @@ Goods goodsItem = Goods.builder()
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
 | `orderNumber` | `String` | 주문 번호 | `"ORD-20260101-0001"` |
 | `goodsList` | `List<Goods>` | 주문한 상품 목록 | `listOf(goodsItem)` |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_ORDER_COMPLETE"` |
@@ -146,7 +146,7 @@ Goods goodsItem = Goods.builder()
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
 | `cateCode` | `String` | 카테고리 코드 | `"C99"` |
 | `cateName` | `String` | 카테고리 이름 | `"바지"` |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_CATEGORY"` |
@@ -158,7 +158,7 @@ Goods goodsItem = Goods.builder()
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_HOME"` |
 
 ### `setCustomEvent(activity, eventKey, eventValue, screenId)`
@@ -168,7 +168,7 @@ Goods goodsItem = Goods.builder()
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
-| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `this` |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
 | `eventKey` | `String` | 어드민에 정의한 이벤트 키 | `"AGREE_MARKETING"` |
 | `eventValue` | `String` | 이벤트 값 | `"true"` |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_SETTINGS"` |

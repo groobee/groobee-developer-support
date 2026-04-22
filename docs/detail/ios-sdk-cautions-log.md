@@ -112,4 +112,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 - [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md)
 - [iOS SDK 하이브리드 앱 데이터 동기화](./ios-sdk-hybrid-sync.md)
-- [iOS SDK 화면 이벤트 및 행동 이력 연동](./ios-sdk-screen-events.md)
+- [iOS SDK 행동 이력 수집](./ios-sdk-actions.md)
