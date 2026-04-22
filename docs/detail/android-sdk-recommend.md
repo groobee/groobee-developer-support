@@ -83,7 +83,7 @@ Groobee.getInstance().getRecommendGoods(campaignKey, new ResultGoods() {
 | `resultGoods` | `ResultGoods` | 성공(`onSuccess`) / 실패(`onFailed`) 결과를 받을 콜백 |
 
 - UI 스레드를 블로킹하지 않아 목록·상세·메인 등 어느 화면에서도 안전하게 사용할 수 있습니다.
-- 응답 결과가 없거나 내부적으로 타임아웃된 경우 `goodsList`가 비어 있는 상태로 `onSuccess`가 호출될 수 있습니다.
+- 응답 결과가 없는 경우 `goodsList`가 비어 있는 상태로 `onSuccess`가 호출될 수 있습니다.
 
 <a id="recommend-result"></a>
 ## 추천 결과에서 사용하는 값
