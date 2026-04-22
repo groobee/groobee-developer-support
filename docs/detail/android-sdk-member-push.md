@@ -39,9 +39,9 @@ Flutter 브리지 구현은 [Flutter Android SDK MethodChannel 연동](./android
 
 - Groobee SDK는 회원 ID를 앱 재실행 후에도 유지합니다.
 - 회원 ID는 외부인이 식별할 수 없는 값으로 전달하는 것을 권장합니다. (예: `MB0000012345` 형태)
-- 앱 토큰/세션이 만료될 때도 현재 상태에 맞게 `setServiceLogout()`를 호출해야 합니다.
+- 앱 토큰/세션이 만료되어 로그아웃 될 때도 현재 상태에 맞게 `setServiceLogout()`를 호출해야 합니다.
 - 푸시 관련 이력 역시 회원 ID와 함께 수집되므로, 푸시로 앱이 열릴 때도 로그인 상태 정합성을 맞춰야 합니다.
-- 하이브리드 앱인 경우 스크립트에서 `setServiceLogin()`/`setServiceLogout()`로 전달하는 값과 동일한 값을 Android 네이티브 모듈에서도 전달해야 합니다.
+- 하이브리드 앱인 경우 스크립트에서 사용하는 회원아이디와 Android 네이티브 모듈에서 사용하는 회원아이디가 동일해야 합니다.
 
 <a id="member-attributes"></a>
 ## 회원 속성 연동
