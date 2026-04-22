@@ -357,28 +357,26 @@ didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
 ## 6단계: Push Messaging Service 설정
 
 ### FCM과 APNS 연동 방법
+iOS의 경우 APNs 인증키를 FCM에 등록해야 FCM을 통한 푸시 발송이 가능합니다.  \
+다음은 APNs 인증키를 FCM에 등록하는 방법예시입니다.
 
-1. Firebase 콘솔에서 왼쪽 첫 번째 메뉴 항목인 `프로젝트 개요`를 클릭하고 `프로젝트 설정`으로 진입합니다.
+1. Firebase 콘솔에서 `설정` > `일반` > `클라우드 메시징` 메뉴로 진입한 후, 등록해둔 앱의 APN 인증키를 업로드 버튼을 누릅니다.
 
-![Firebase 콘솔에서 프로젝트 설정 메뉴 열기](../images/sdk/ios/firebase-step1-project-menu.png)
+![APN 인증키 등록 메뉴 접근 순서](../images/sdk/ios/firebase-step1-upload-sign.png)
 
-2. 프로젝트 설정에서 아래 메뉴 탭의 두 번째 항목인 `클라우드 메시징`을 클릭합니다.
+2. 내려받은 `.p8` 파일을 업로드하고 Key ID, Team ID를 입력해 업로드를 완료합니다.
 
-![프로젝트 설정 > 클라우드 메시징 탭](../images/sdk/ios/firebase-step2-cloud-messaging-tab.png)
+![APN 인증 키 업로드 다이얼로그](../images/sdk/ios/firebase-step2-upload-dialog.png)
 
-3. 클라우드 메시징 항목에서 아래로 스크롤하여 `Apple 앱 구성`에서 사용 중인 iOS 앱의 Bundle ID를 확인하고 `APN 인증 키` 하위의 업로드 버튼을 클릭합니다.
+3. 업로드가 완료되면 APNs 인증키가 등록된 것을 확인할 수 있습니다.
 
-![Apple 앱 구성 및 APN 인증 키 업로드 버튼](../images/sdk/ios/firebase-step3-apns-key-upload.png)
-
-4. 내려받은 `.p8` 파일, Key ID, Team ID를 입력하고 업로드합니다.
-
-![APN 인증 키 업로드 다이얼로그](../images/sdk/ios/firebase-step4-apns-key-dialog.png)
+![APN 인증 키 업로드 완료 예시](../images/sdk/ios/firebase-step3-uploaded-sign.png)
 
 참고 링크:
 
-- 키 ID: <https://developer.apple.com/account/resources/authkeys/list> 에서 생성한 Key
-- 팀 ID: <https://developer.apple.com/account> 의 멤버십 세부 사항
-- APNS 연동 공식 문서: <https://firebase.google.com/docs/cloud-messaging/ios/client?hl=ko>
+- APNS 연동 공식 문서: [Firebase Cloud Messaging for iOS](https://firebase.google.com/docs/cloud-messaging/ios/client?hl=ko)
+- Apple Auth Key 관리: [Apple Developer Auth Keys](https://developer.apple.com/account/resources/authkeys/list)
+- Apple Team 정보: [Apple Developer Account](https://developer.apple.com/account)
 
 ---
 
