@@ -164,5 +164,5 @@ Flutter 앱에서는 Android에서 응답을 JSON 문자열로 직렬화해 Dart
 ## 함께 보면 좋은 문서
 
 - [Android SDK 개요 및 캠페인](./android-sdk-overview.md)
-- [Android SDK 화면 이벤트 및 행동 이력 연동](./android-sdk-screen-events.md)
+- [Android SDK 행동 이력 수집](./android-sdk-actions.md)
 - [Android Flutter SDK MethodChannel 연동](./android-flutter-method-channel.md)

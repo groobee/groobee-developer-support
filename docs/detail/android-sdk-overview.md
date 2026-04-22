@@ -104,7 +104,7 @@ Android SDK 연동 전에 아래 항목을 점검해야 합니다.
 설치 후 기능별 연동을 진행하려면:
 
 - [회원 정보 및 푸시 상태 연동](./android-sdk-member-push.md)
-- [화면 이벤트 및 행동 이력 연동](./android-sdk-screen-events.md)
+- [행동 이력 수집](./android-sdk-actions.md)
 - [하이브리드 앱 데이터 동기화](./android-sdk-hybrid-sync.md)
 - [추천 상품 연동](./android-sdk-recommend.md)
 - Flutter 앱인 경우 [Flutter MethodChannel 연동](./android-flutter-method-channel.md)
