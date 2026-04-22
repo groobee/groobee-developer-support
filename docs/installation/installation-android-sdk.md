@@ -158,25 +158,33 @@ public class MyApplication extends Application {
 
 ### 주요 설정 항목
 
-| 클래스 | 메소드 | 필수 여부 | 설명 |
-| --- | --- | --- | --- |
-| `GroobeeConfig` | `setApiKey()` | 필수 | Groobee 어드민에서 발급받은 서비스키를 등록합니다. |
-| `GroobeeConfig` | `setSmallNotificationIcon()` | 필수 | 푸시 알림에 사용할 small icon을 등록합니다. |
-| `GroobeeConfig` | `setPushMoveActivityEnabled()` | 선택 | 푸시 클릭 시 특정 액티비티로 이동할지 여부를 설정합니다. |
-| `GroobeeConfig` | `setPushMoveActivityClassName()` | 조건부 필수 | `setPushMoveActivityEnabled(true)`일 때 이동할 액티비티를 지정합니다. |
-| `GroobeeConfig` | `setHandlePushDeepLinks()` | 선택 | 푸시 클릭 시 딥링크 이동을 허용할지 설정합니다. |
-| `GroobeeConfig` | `setInAppMsgMarginTop()` | 선택 | 인앱메시지 상단 여백을 설정합니다. |
-| `GroobeeConfig` | `setInAppMsgMarginBottom()` | 선택 | 인앱메시지 하단 여백을 설정합니다. |
-| `GroobeeConfig` | `setPushImportance()` | 선택 | 푸시 메시지 중요도를 설정합니다. |
-| `GroobeeConfig` | `setRetryAuthConnection()` | 선택 | Groobee 인증 실패 시 재인증 여부를 설정합니다. |
-| `GroobeeConfig` | `setNotificationSettingsButton()` | 선택 | 푸시 알림 하단에 수신 설정 버튼을 추가합니다. 문자열 리소스와 설정 화면 딥링크가 필요합니다. |
-| `Groobee` | `configure()` | 필수 | 구성한 `GroobeeConfig`를 앱 컨텍스트에 적용합니다. |
-| `Groobee` | `getActivityLifecycleCallbacks()` | 필수 | 앱 생명주기에 맞춰 Groobee 세션을 처리할 콜백을 반환합니다. `Application.registerActivityLifecycleCallbacks()`에 등록해 사용합니다. |
-| `LoggerUtils` | `setLogLevel()` | 선택 | 로그 레벨을 설정합니다. |
-| `LoggerUtils` | `setOptions()` | 선택 | 여러 로그 옵션을 키-값 형태로 한 번에 설정합니다. 지원 옵션: `DETAIL_LOG_ENABLED` (boolean) — 상세 로그 활성화, `TRACE_ENABLED` (boolean) — 추적 아이디 활성화, `LOG_CALLBACK` (`LoggerUtils.LogCallback`) — 로그 콜백 등록. |
+| 클래스 | 메소드 | 필수 여부 | 설명                                                                                                                                                                              |
+| --- | --- | --- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `GroobeeConfig` | `setApiKey()` | 필수 | Groobee 어드민에서 발급받은 서비스키를 등록합니다.                                                                                                                                                 |
+| `GroobeeConfig` | `setSmallNotificationIcon()` | 필수 | 푸시 알림에 사용할 small icon을 등록합니다.                                                                                                                                                   |
+| `GroobeeConfig` | `setPushMoveActivityEnabled()` | 선택 | 푸시 클릭 시 특정 액티비티로 이동할지 여부를 설정합니다.                                                                                                                                                |
+| `GroobeeConfig` | `setPushMoveActivityClassName()` | 조건부 필수 | `setPushMoveActivityEnabled(true)`일 때 이동할 액티비티를 지정합니다.                                                                                                                          |
+| `GroobeeConfig` | `setHandlePushDeepLinks()` | 선택 | 푸시 클릭 시 딥링크 이동을 허용할지 설정합니다.                                                                                                                                                     |
+| `GroobeeConfig` | `setInAppMsgMarginTop()` | 선택 | 인앱메시지 상단 여백을 설정합니다.                                                                                                                                                             |
+| `GroobeeConfig` | `setInAppMsgMarginBottom()` | 선택 | 인앱메시지 하단 여백을 설정합니다.                                                                                                                                                             |
+| `GroobeeConfig` | `setPushImportance()` | 선택 | 푸시 메시지 중요도를 설정합니다.                                                                                                                                                              |
+| `GroobeeConfig` | `setRetryAuthConnection()` | 선택 | Groobee 인증 실패 시 재인증 여부를 설정합니다.                                                                                                                                                  |
+| `GroobeeConfig` | `setNotificationSettingsButton()` | 선택 | 푸시 알림 하단에 수신 설정 버튼을 추가합니다. 문자열 리소스와 설정 화면 딥링크가 필요합니다.                                                                                                                           |
+| `Groobee` | `configure()` | 필수 | 구성한 `GroobeeConfig`를 앱 컨텍스트에 적용합니다.                                                                                                                                             |
+| `Groobee` | `getActivityLifecycleCallbacks()` | 필수 | 앱 생명주기에 맞춰 Groobee 세션을 처리할 콜백을 반환합니다. `Application.registerActivityLifecycleCallbacks()`에 등록해 사용합니다.                                                                            |
+| `LoggerUtils` | `setLogLevel()` | 선택 | 로그 레벨을 설정합니다.                                                                                                                                                                   |
+| `LoggerUtils` | `setOptions()` | 선택 | 여러 로그 옵션을 키-값 형태로 한 번에 설정합니다. 지원 옵션은 아래 표 참고. |
 | `FirebaseApp` | `initializeApp()` | 푸시 사용 시 필수 | FCM 연동을 초기화합니다. |
 
 `setNotificationSettingsButton()`에 전달하는 첫 번째 값은 문자열 리소스 ID입니다. 실제 버튼에는 `groobee_noti_config` 같은 리소스 키가 아니라 현재 언어 설정에 맞는 문자열이 노출되어야 합니다.
+
+`LoggerUtils.setOptions()` 지원 옵션:
+
+| 키 | 자료형 | 설명 |
+| --- | --- | --- |
+| `DETAIL_LOG_ENABLED` | `boolean` | 상세 로그 활성화 |
+| `TRACE_ENABLED` | `boolean` | 추적 아이디 활성화 |
+| `LOG_CALLBACK` | `LoggerUtils.LogCallback` | 로그 콜백 등록 |
 
 ### 푸시 중요도 설정
 

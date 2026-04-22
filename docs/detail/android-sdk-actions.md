@@ -154,7 +154,7 @@ Goods goodsItem = Goods.builder()
 ### `setScreenData(activity, screenId)`
 
 - 상품 관련 행동이 없는 일반 화면에서 호출해 화면 진입 이력을 수집합니다.
-- 예: 메인, 이벤트, 브랜드 소개.
+- 예: 이벤트, 브랜드 소개.
 
 | 파라미터 | 자료형 | 설명 | 예시 |
 | --- | --- | --- | --- |
@@ -187,15 +187,14 @@ Goods goodsItem = Goods.builder()
 | 주문 완료 | `setGoodsOrderComplete()` |
 | 카테고리 진입 | `setCategory()` |
 | 일반 화면 진입 | `setScreenData()` |
-| 비즈니스 커스텀 이벤트 | `setCustomEvent()` |
+| 커스텀 이벤트 | `setCustomEvent()` |
 
 ---
 
 <a id="flutter-usage"></a>
 ## Flutter 앱에서의 적용
 
-Flutter에서는 사용자 행동을 Dart에서 감지하더라도, 실제 Groobee 메소드 호출은 Android Activity 컨텍스트에서 처리해야 합니다.  
-특히 아래 메소드는 `Activity` 인자가 필요하므로 `MainActivity` 등 Android 브리지 쪽에서 처리하세요.
+Flutter에서는 사용자 행동을 Dart에서 감지하더라도, Groobee 메소드들은 `Activity` 인자가 필요하므로 `MainActivity` 등 Android 브리지 쪽에서 처리하세요.
 
 - `setMemberJoin()`
 - `setSearchKeyword()`

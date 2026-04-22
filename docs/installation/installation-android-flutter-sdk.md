@@ -45,6 +45,8 @@
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.2
+  
   firebase_core: ^<compatible-version>
   firebase_core_platform_interface: ^<compatible-version>
   firebase_messaging: ^<compatible-version>
@@ -203,10 +205,18 @@ public class MyApplication extends Application {
 | `Groobee` | `configure()` | 필수 | 구성한 `GroobeeConfig`를 앱 컨텍스트에 적용합니다. |
 | `Groobee` | `getActivityLifecycleCallbacks()` | 필수 | 앱 생명주기에 맞춰 Groobee 세션을 처리할 콜백을 반환합니다. `Application.registerActivityLifecycleCallbacks()`에 등록해 사용합니다. |
 | `LoggerUtils` | `setLogLevel()` | 선택 | 로그 레벨을 설정합니다. |
-| `LoggerUtils` | `setOptions()` | 선택 | 여러 로그 옵션을 키-값 형태로 한 번에 설정합니다. 지원 옵션: `DETAIL_LOG_ENABLED` (boolean) — 상세 로그 활성화, `TRACE_ENABLED` (boolean) — 추적 아이디 활성화, `LOG_CALLBACK` (`LoggerUtils.LogCallback`) — 로그 콜백 등록. |
+| `LoggerUtils` | `setOptions()` | 선택 | 여러 로그 옵션을 키-값 형태로 한 번에 설정합니다. 지원 옵션은 아래 표 참고. |
 | `FirebaseApp` | `initializeApp()` | 필수 | FCM 연동에 사용됩니다. |
 
 `setNotificationSettingsButton()`에 전달하는 첫 번째 값은 문자열 리소스 ID입니다. 실제 버튼에는 `groobee_noti_config` 같은 리소스 키가 아니라 현재 언어 설정에 맞는 문자열이 노출되어야 합니다.
+
+`LoggerUtils.setOptions()` 지원 옵션:
+
+| 키 | 자료형 | 설명 |
+| --- | --- | --- |
+| `DETAIL_LOG_ENABLED` | `boolean` | 상세 로그 활성화 |
+| `TRACE_ENABLED` | `boolean` | 추적 아이디 활성화 |
+| `LOG_CALLBACK` | `LoggerUtils.LogCallback` | 로그 콜백 등록 |
 
 > Flutter 앱은 일반적으로 Firebase 초기화를 Dart 측(`Firebase.initializeApp()`)에서 수행합니다. Android `Application` 측에서는 위 설정표처럼 `FirebaseApp.initializeApp()`가 필수로 요구되므로, 실제 프로젝트의 Firebase 초기화 방식과 SDK 요구사항을 함께 확인하세요.
 

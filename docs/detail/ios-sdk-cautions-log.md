@@ -77,7 +77,16 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 | `setDetailLogEnabled` | 평소에는 간략하게 표기되는 일부 로그를, 디버깅이 필요할 때 더 상세하게 출력하도록 전환하는 옵션입니다. |
 | `setTraceEnabled` | 추적 아이디를 활성화합니다. |
 | `setLogCallback` | 로그 내용을 별도로 처리할 수 있는 콜백을 등록합니다. |
-| `setOptions` | 위 옵션들을 키-값 형태로 한 번에 설정하는 대체 API입니다. 지원 옵션: `LOG_LEVEL` (`GroobeeLogLevel` raw value) — 로그 레벨, `DETAIL_LOG_ENABLED` (boolean) — 상세 로그 활성화, `TRACE_ENABLED` (boolean) — 추적 아이디 활성화, `LOG_CALLBACK` (`GroobeeLogCallback`) — 로그 콜백 등록. |
+| `setOptions` | 위 옵션들을 키-값 형태로 한 번에 설정하는 대체 API입니다. 지원 옵션은 아래 표 참고. |
+
+`LoggerUtils.setOptions` 지원 옵션:
+
+| 키 | 자료형 | 설명 |
+| --- | --- | --- |
+| `LOG_LEVEL` | `GroobeeLogLevel` raw value | 로그 레벨 |
+| `DETAIL_LOG_ENABLED` | `Bool` | 상세 로그 활성화 |
+| `TRACE_ENABLED` | `Bool` | 추적 아이디 활성화 |
+| `LOG_CALLBACK` | `GroobeeLogCallback` | 로그 콜백 등록 |
 
 Swift 예시:
 
