@@ -64,7 +64,7 @@ SDK가 정상적으로 설치되어 있어도 **데이터 수집이 이루어지
 ![사용 플랫폼 직접 입력 예시](../images/prerequisites/app-platform-useragent.png)
 
 > 위 예시처럼 `MyAppCustomUserAgent`를 등록했다면, 앱의 웹뷰에도 User-Agent에 동일 문자열이 포함되도록 설정해야 합니다.
-> 웹뷰 User-Agent에 커스텀 값을 지정하는 방법은 각 플랫폼별 가이드를 참고하세요.
+> 각 플랫폼(Android `WebView`, iOS `WKWebView`, Flutter `webview_flutter`)에서 웹뷰 User-Agent에 커스텀 값을 설정하는 방법은 [부록: 웹뷰 커스텀 User-Agent 설정](../appendix/webview-custom-user-agent.md)을 참고하세요.
 
 ### 주의 사항
 
