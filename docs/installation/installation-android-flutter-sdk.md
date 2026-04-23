@@ -30,7 +30,7 @@
 
 - Groobee 서비스키
 - [앱 정보 등록 (앱 패키지명 / Bundle ID / 플랫폼 정보)](../prerequisites/app-name-registration.md)
-- 푸시 사용 시 Firebase 프로젝트 설정
+- 푸시 사용 시 Firebase 프로젝트 설정과 Firebase 비공개키 업로드 — 어드민 등록 방법은 [어드민 푸시 설정 가이드](https://docs.groobee.ai/new-admin/settings/push)를 참고하세요.
 - `android/app/google-services.json` 파일 준비
 - Flutter 프로젝트에서 Android 모듈을 수정할 수 있는 환경
 

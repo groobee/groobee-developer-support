@@ -35,7 +35,7 @@
 - 앱에서 사용할 Groobee 서비스키
 - 어드민 사이트에 앱 패키지명 / 플랫폼 정보 등록  
   👉 [앱 정보 등록 가이드](../prerequisites/app-name-registration.md)
-- 푸시를 사용할 경우 Firebase 프로젝트 설정과 Firebase 비공개키 등록
+- 푸시를 사용할 경우 Firebase 프로젝트 설정과 Firebase 비공개키 등록 — 어드민 등록 방법은 [어드민 푸시 설정 가이드](https://docs.groobee.ai/new-admin/settings/push)를 참고하세요.
 - Flutter 앱인 경우 `google-services.json` 준비 및 Android 모듈 편집 환경 확인
 - 하이브리드 앱인 경우 데이터 동기화 방향 결정  
   웹뷰 중심 앱은 `syncWebToNative`, 네이티브 중심 앱은 `syncNativeToWeb`를 사용합니다.

@@ -30,7 +30,7 @@ Flutter 앱(Android 빌드)에서 `MethodChannel`로 연동하는 경우에는 [
 
 - Groobee 서비스키
 - [앱 정보 등록 (앱 패키지명 / Bundle ID / 플랫폼 정보)](../prerequisites/app-name-registration.md)
-- 푸시 사용 시 Firebase 프로젝트 설정과 Firebase 비공개키 업로드
+- 푸시 사용 시 Firebase 프로젝트 설정과 Firebase 비공개키 업로드 — 어드민 등록 방법은 [어드민 푸시 설정 가이드](https://docs.groobee.ai/new-admin/settings/push)를 참고하세요.
 
 SDK 개요와 캠페인 설명은 [Android SDK 개요 및 캠페인](../detail/android-sdk-overview.md) 문서에 정리했습니다.
 
