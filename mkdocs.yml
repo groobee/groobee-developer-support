@@ -11,6 +11,7 @@ site_dir: site
 theme:
   name: material
   language: ko
+  font: false
   features:
     - navigation.instant
     - navigation.tracking
@@ -74,6 +75,9 @@ plugins:
       lang:
         - ko
         - en
+
+extra_css:
+  - stylesheets/extra.css
 
 validation:
   nav:
