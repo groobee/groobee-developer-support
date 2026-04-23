@@ -5,5 +5,5 @@
 
 - [웹 도메인 등록](web-domain-registration.md)
 - [웹 페이지 URL 등록](web-page-url-registration.md)
-- [앱 등록](app-registration.md)
-- [푸시키 등록](push-registration.md)
+- [앱 정보 등록](app-name-registration.md)
+- [회원 정보 설정](member-data-setting.md)

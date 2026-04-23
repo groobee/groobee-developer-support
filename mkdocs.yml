@@ -1,0 +1,153 @@
+site_name: Groobee 개발자 지원 문서
+site_description: Groobee SDK 및 스크립트 연동을 위한 개발자/운영자용 가이드
+site_url: https://groobee.github.io/groobee-developer-support/
+repo_url: https://github.com/groobee/groobee-developer-support
+repo_name: groobee/groobee-developer-support
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로 전환
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로 전환
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search:
+      lang:
+        - ko
+        - en
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+    absolute_links: warn
+  links:
+    not_found: warn
+    absolute_links: warn
+    unrecognized_links: info
+    anchors: warn
+
+nav:
+  - 홈: index.md
+  - 빠른 시작:
+      - Web 스크립트: getting-started/gettingstart-web.md
+      - Android SDK: getting-started/gettingstart-aos.md
+      - iOS SDK: getting-started/gettingstart-ios.md
+  - 사전 설정:
+      - 개요: prerequisites/README.md
+      - 웹 도메인 등록: prerequisites/web-domain-registration.md
+      - 웹 페이지 URL 등록: prerequisites/web-page-url-registration.md
+      - 앱 이름 등록: prerequisites/app-name-registration.md
+      - 회원 데이터 설정: prerequisites/member-data-setting.md
+  - 설치 가이드:
+      - 개요: installation/README.md
+      - Web:
+          - 공통 스크립트: installation/installation-web-common-script.md
+          - 회원 정보 연동: installation/installation-web-member-data.md
+          - 행동 이력 수집: installation/installation-web-action.md
+          - AI 추천: installation/installation-web-recommend.md
+      - Android:
+          - Native SDK: installation/installation-android-sdk.md
+          - Flutter SDK: installation/installation-android-flutter-sdk.md
+          - 공통 추가 설정: installation/installation-android-common-settings.md
+      - iOS:
+          - Native SDK: installation/installation-ios-sdk.md
+          - Flutter SDK: installation/installation-ios-flutter-sdk.md
+  - 상세 가이드:
+      - 개요: detail/README.md
+      - Android:
+          - 개요 및 캠페인: detail/android-sdk-overview.md
+          - 회원 정보 및 푸시: detail/android-sdk-member-push.md
+          - 행동 이력 수집: detail/android-sdk-actions.md
+          - 하이브리드 동기화: detail/android-sdk-hybrid-sync.md
+          - 추천 상품 연동: detail/android-sdk-recommend.md
+          - Flutter MethodChannel: detail/android-flutter-method-channel.md
+      - iOS:
+          - 개요 및 지원 범위: detail/ios-sdk-overview.md
+          - 회원 정보 및 푸시: detail/ios-sdk-member-push.md
+          - 행동 이력 수집: detail/ios-sdk-actions.md
+          - 하이브리드 동기화: detail/ios-sdk-hybrid-sync.md
+          - 추천 상품 연동: detail/ios-sdk-recommend.md
+          - 주의사항 및 로그: detail/ios-sdk-cautions-log.md
+          - Flutter MethodChannel: detail/ios-flutter-method-channel.md
+      - Web:
+          - AI 추천 DIV형: detail/web-recommend-div.md
+          - AI 추천 스크립트형: detail/web-recommend-script.md
+          - 추천 데이터 요청: detail/web-recommend-data-request.md
+          - 추천 전체 데이터 요청: detail/web-recommend-data-request-all.md
+  - 스펙:
+      - 행동 유형: specs/action/README.md
+      - 행동 스키마: specs/action/schema.md
+  - 부록:
+      - WebView User-Agent: appendix/webview-custom-user-agent.md
+  - 트러블슈팅: troubleshooting/README.md
+  - 변경 이력:
+      - 문서 변경 이력: changelog/document-history.md
+      - Android SDK 변경 로그: changelog/sdk-android-changelog.md
+      - Android SDK 기능 지원: changelog/sdk-android-feature-support.md
+      - iOS SDK 변경 로그: changelog/sdk-ios-changelog.md
+      - iOS SDK 기능 지원: changelog/sdk-ios-feature-support.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/groobee/groobee-developer-support
