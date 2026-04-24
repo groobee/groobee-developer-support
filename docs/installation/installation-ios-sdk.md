@@ -50,7 +50,7 @@ SDK 개요와 iOS 버전 이슈는 [iOS SDK 개요 및 지원 범위](../detail/
 Native:
 
 ```ruby
-pod 'FirebaseFirestore'
+pod 'FirebaseCore'
 pod 'FirebaseMessaging'
 pod 'GroobeeKit'
 ```
