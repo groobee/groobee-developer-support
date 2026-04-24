@@ -342,3 +342,4 @@ case "getPushAgreedSync": {
 - [Android SDK 회원 정보 및 푸시 상태 연동](./android-sdk-member-push.md)
 - [Android SDK 행동 이력 수집](./android-sdk-actions.md)
 - [Android SDK 추천 상품 연동](./android-sdk-recommend.md)
+- [부록: 푸시 수신 동의 값 매트릭스](../appendix/push-agreement-matrix.md)

@@ -143,6 +143,7 @@ nav:
       - 행동 스키마: specs/action/schema.md
   - 부록:
       - WebView User-Agent: appendix/webview-custom-user-agent.md
+      - 푸시 동의 값 매트릭스: appendix/push-agreement-matrix.md
   - 트러블슈팅: troubleshooting/README.md
   - 변경 이력:
       - 문서 변경 이력: changelog/document-history.md

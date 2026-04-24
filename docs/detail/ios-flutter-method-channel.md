@@ -312,4 +312,5 @@ Flutter 브리지에서 자주 연결하게 되는 `GroobeeKit` 메소드를 기
 - [iOS SDK 회원 정보 및 푸시 상태 연동](./ios-sdk-member-push.md)
 - [iOS SDK 행동 이력 수집](./ios-sdk-actions.md)
 - [iOS SDK 추천 상품 연동](./ios-sdk-recommend.md)
+- [부록: 푸시 수신 동의 값 매트릭스](../appendix/push-agreement-matrix.md)
 - [iOS SDK 주의사항 및 로그 유틸리티](./ios-sdk-cautions-log.md)

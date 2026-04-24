@@ -222,6 +222,8 @@ Objective-C:
 
 아래 세 메소드는 각각 전체 푸시 / 광고 푸시 / 야간 푸시 수신 동의 상태를 SDK에 전달합니다.
 
+> 세 값의 조합별 푸시 발송 결과는 [부록: 푸시 수신 동의 값 매트릭스](../appendix/push-agreement-matrix.md)에서 전체 경우의 수를 표로 확인할 수 있습니다.
+
 ### 공통 주의 사항
 
 - 세 메소드 모두 **사용자가 설정에서 토글을 변경할 때뿐 아니라 현재 상태도 한 번 호출해 동기화**해야 합니다. 변경 시점에만 호출하면 초기값이 전달되지 않아 해당 사용자가 `false`로 집계될 수 있습니다.
@@ -384,3 +386,4 @@ Objective-C:
 - [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md)
 - [iOS SDK 행동 이력 수집](./ios-sdk-actions.md)
 - [iOS SDK 하이브리드 앱 데이터 동기화](./ios-sdk-hybrid-sync.md)
+- [부록: 푸시 수신 동의 값 매트릭스](../appendix/push-agreement-matrix.md)
