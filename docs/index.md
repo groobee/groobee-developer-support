@@ -7,10 +7,10 @@ Groobee SDK 및 스크립트를 사용하는 **개발자와 서비스 운영자*
 
 ## 현재 최신 SDK 버전 (Stable)
 
-| 플랫폼 | 최신 버전 | 변경 로그 |
-| --- | --- | --- |
-| Android SDK | **1.0.81** | [변경 로그 보기](changelog/sdk-android-changelog.md) |
-| iOS SDK | **1.1.5** | [변경 로그 보기](changelog/sdk-ios-changelog.md) |
+| 플랫폼 | 최신 버전      | 변경 로그 |
+| --- |------------| --- |
+| Android SDK | **1.0.82** | [변경 로그 보기](changelog/sdk-android-changelog.md) |
+| iOS SDK | **1.1.6**  | [변경 로그 보기](changelog/sdk-ios-changelog.md) |
 
 ---
 
