@@ -83,6 +83,7 @@ groobee("siteType", "custom");
     groobee("행동코드", {/*행동에 맞는 데이터*/});
 </script>
 ```
+
 ---
 
 <a id="spa"></a>
@@ -389,4 +390,3 @@ groobee("siteType", "wisa_m"); // PC : wisa, 모바일 : wisa_m
 
 ## 다음 단계
 [회원 정보 연동](installation-web-member-data.md)로 이동하여 회원 정보 연동 설정을 해주세요. 
-
