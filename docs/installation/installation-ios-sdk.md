@@ -385,7 +385,10 @@ iOS의 경우 APNs 인증키를 FCM에 등록해야 FCM을 통한 푸시 발송�
 - Apple Auth Key 관리: [Apple Developer Auth Keys](https://developer.apple.com/account/resources/authkeys/list)
 - Apple Team 정보: [Apple Developer Account](https://developer.apple.com/account)
 
+<a id="ios-fcm-groobee-message-linkage"></a>
 ### FCM과 GroobeeKit 간 메시지 연동
+
+아래 예시는 현재 권장 SDK 기준입니다. v.1.1.5 이상에서는 `UNNotificationResponse`를 SDK에 전달하면 일반 푸시 본체 탭과 알림 설정 액션 탭을 함께 처리할 수 있습니다.
 
 Swift:
 
@@ -430,14 +433,10 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        let notification = response.notification
-        let userInfo = notification.request.content.userInfo
-
-        switch response.actionIdentifier {
-        case UNNotificationDefaultActionIdentifier:
-            Groobee.getInstance().userNotificationCenter(userInfo: userInfo)
-        default:
-            print("nil")
+        if Groobee.getInstance().userNotificationCenter(response: response) {
+            // SDK가 처리됨 (일반 푸시 본체 탭 / 알림 설정 액션 탭 모두 포함)
+        } else {
+            // 호스트 앱의 비-Groobee 푸시 처리 로직
         }
 
         completionHandler()
@@ -479,6 +478,49 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void (^)(void))completionHandler {
+    if ([[Groobee getInstance] userNotificationCenterWithResponse:response]) {
+        // SDK가 처리됨 (일반 푸시 본체 탭 / 알림 설정 액션 탭 모두 포함)
+    } else {
+        // 호스트 앱의 비-Groobee 푸시 처리 로직
+    }
+
+    completionHandler();
+}
+```
+
+<details>
+<summary>v.1.1.5 미만 SDK 사용 시</summary>
+
+v.1.1.5 미만 SDK를 사용 중이라면 위 `didReceive` 메소드 대신 아래 코드를 사용하세요. `setNotificationSettingsButton` 액션 처리는 v.1.1.5 이상에서 지원됩니다.
+
+Swift:
+
+```swift
+func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+) {
+    let notification = response.notification
+    let userInfo = notification.request.content.userInfo
+
+    switch response.actionIdentifier {
+    case UNNotificationDefaultActionIdentifier:
+        Groobee.getInstance().userNotificationCenter(userInfo: userInfo)
+    default:
+        print("nil")
+    }
+
+    completionHandler()
+}
+```
+
+Objective-C:
+
+```objectivec
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     if ([response.actionIdentifier isEqualToString:@"com.apple.UNNotificationDefaultActionIdentifier"]) {
         [[Groobee getInstance] userNotificationCenterWithUserInfo:userInfo];
@@ -486,6 +528,8 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     completionHandler();
 }
 ```
+
+</details>
 
 ---
 

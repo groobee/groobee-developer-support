@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-05-20
+작성자: 김훈기
+
+- iOS Native SDK 설치 가이드의 [FCM과 GroobeeKit 간 메시지 연동](../installation/installation-ios-sdk.md#ios-fcm-groobee-message-linkage)에 v.1.1.5 이상 기준 Swift/Objective-C 푸시 응답 처리 예시를 추가
+
+---
+
 ## 2026-04-23
 작성자: 김훈기
 
