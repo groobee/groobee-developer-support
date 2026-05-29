@@ -390,6 +390,8 @@ iOS의 경우 APNs 인증키를 FCM에 등록해야 FCM을 통한 푸시 발송�
 
 아래 예시는 현재 권장 SDK 기준입니다. v.1.1.5 이상에서는 `UNNotificationResponse`를 SDK에 전달하면 일반 푸시 본체 탭과 알림 설정 액션 탭을 함께 처리할 수 있습니다.
 
+알림 응답 처리는 `Groobee.getInstance().userNotificationCenter(response:)`에서 처리합니다. 이 메소드는 Groobee 푸시의 알림 본문 탭과 알림 설정 버튼 액션을 처리합니다. `GroobeeNotification.getInstance().receiveService()`는 아래 Rich Push 섹션의 `Notification Service Extension`에서 알림 표시 전 내용을 가공할 때 사용하는 메소드이며, 알림 응답 처리용이 아닙니다.
+
 Swift:
 
 ```swift
@@ -531,26 +533,37 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 </details>
 
+메소드별 역할은 다음과 같습니다.
+
+| 위치 | 메소드 | 역할 |
+| --- | --- | --- |
+| `AppDelegate` | `Groobee.getInstance().didReceiveRemoteNotification(userInfo:)` | 푸시 수신 이벤트를 Groobee에 전달합니다. |
+| `AppDelegate` | `Groobee.getInstance().userNotificationCenter(response:)` | 알림 본문 탭과 알림 설정 버튼 액션 등 Groobee 푸시 응답을 처리합니다. |
+| `Notification Service Extension` | `GroobeeNotification.getInstance().receiveService(...)` | Rich Push 이미지 첨부, 알림 카테고리 설정 등 표시 전 가공을 처리합니다. |
+| `Notification Content Extension` | `GroobeeNotification.getInstance().receiveContent(...)` | 커스텀 알림 UI 표시를 처리합니다. |
+
 ---
 
 <a id="rich-push"></a>
 ## Rich Push 설정
 
+Service와 Content Extension은 기본 푸시 수신, 푸시 오픈/응답 처리, 푸시 토큰 등록에는 필수가 아닙니다.
+
+일반 텍스트 푸시 수신과 푸시 본문 탭 응답 처리는 위 AppDelegate 연동만으로 처리할 수 있습니다. 알림 설정 버튼 액션 응답도 `userNotificationCenter(response:)`에서 처리하지만, 버튼을 실제 알림에 표시하려면 알림 카테고리가 적용되어야 합니다. `Notification Service Extension`을 추가하면 `receiveService()`가 알림 표시 전에 카테고리와 첨부 파일을 가공합니다.
+
 Service와 Content를 추가한 Rich Push 방식을 사용하면 푸시 메시지 전환 상태 측정과 커스텀 푸시 메시지 확장이 가능합니다.
-
-향후 확장될 메시지 유형들을 유연하게 제공하는 것을 목표로 하고 있으며, 사용자들에게 다양하고 원활한 정보 전달을 위해 그루비는 Rich Push를 사용하고 있습니다.
-
-따라서 `Notification Service Extension`, `Notification Content Extension`을 추가하고 가이드에 맞춰 진행하시길 바랍니다.
 
 ### Notification Service Extension
 
 사용자에게 전달되기 전 Remote Notification의 내용을 수정하는 확장입니다. 이미지, 비디오, 오디오, 특별한 형식의 콘텐츠를 알림에 추가하거나, 알림 메시지를 동적으로 생성하여 사용자에게 더 풍부한 정보를 제공할 수 있습니다.
 
-`Notification Service Extension`을 사용하지 않을 경우 iOS 단말기에서는 이미지를 Push Message에 등록할 수 없는 문제가 발생할 수 있습니다.
+`Notification Service Extension`은 이미지 첨부나 알림 표시 전 가공이 필요한 경우에만 추가합니다. 사용하지 않으면 일반 텍스트 푸시 수신/응답 처리는 가능하지만, 이미지가 포함된 Rich Push나 알림 표시 전 카테고리 설정은 처리되지 않습니다.
 
 ### Notification Content Extension
 
 앱의 알림에 대한 사용자 지정 인터페이스를 표시하는 확장입니다. 사용자 지정 색상, 브랜딩, 미디어, 동적 콘텐츠를 알림 인터페이스에 통합할 수 있습니다.
+
+`Notification Content Extension`은 커스텀 알림 UI가 필요한 경우에만 추가합니다.
 
 참고 링크:
 

@@ -21,7 +21,7 @@
 3. [4단계: AppDelegate 설정](#appdelegate-config)
 4. [5단계: LifeCycle 설정](#lifecycle-config)
 5. [6단계: Push Messaging Service 설정](#push-service)
-6. [7단계: Service 와 Content Extension 추가 (Rich Push)](#rich-push)
+6. [7단계: Service 와 Content Extension 추가 (Rich Push, 선택)](#rich-push)
 7. [Flutter 브리지 구현 문서](#method-channel)
 8. [설치 후 연동 문서](#sdk-methods)
 
@@ -51,16 +51,12 @@ Flutter 프로젝트 하위의 `pubspec.yaml`에 Firebase 관련 패키지를 �
 dependencies:
   flutter:
     sdk: flutter
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
 
-  firebase_messaging: ^14.1.0
-  firebase_core: ^2.7.0
-  firebase_core_platform_interface: ^4.5.3
+  firebase_core:
+  firebase_messaging:
 ```
 
-위 예시는 `firebase_messaging: ^14.1.0`, `firebase_core: ^2.7.0`, `firebase_core_platform_interface: ^4.5.3` 조합을 기준으로 작성되었습니다. 실제 적용 시에는 현재 사용하는 Flutter SDK 및 Firebase 구성과 호환되는 버전을 사용하세요.
+이미 Firebase 관련 패키지를 사용 중인 프로젝트라면 기존 설정을 유지해도 됩니다.
 
 ### 2단계: GroobeeKit Podfile 작성
 
@@ -95,13 +91,14 @@ Swift (`AppDelegate.swift`):
 ```swift
 import UIKit
 import Flutter
-import Firebase
+import FirebaseCore
+import FirebaseMessaging
 import GroobeeKit
 import UserNotifications
 import AppTrackingTransparency
 import AdSupport
 
-@UIApplicationMain
+@main
 @objc class AppDelegate: FlutterAppDelegate {
     ...
 }
@@ -114,11 +111,9 @@ Objective-C (`AppDelegate.m`):
 #import "GeneratedPluginRegistrant.h"
 #import <GroobeeKit/GroobeeKit-Swift.h>
 
-@import Firebase;
-@import FirebaseMessaging;
 @import UserNotifications;
 
-@interface AppDelegate () <UNUserNotificationCenterDelegate, FIRMessagingDelegate>
+@interface AppDelegate () <UNUserNotificationCenterDelegate>
 
 @end
 
@@ -127,7 +122,7 @@ Objective-C (`AppDelegate.m`):
 ...
 ```
 
-> Flutter iOS 앱은 `FlutterAppDelegate`를 상속받아야 하며, `@UIApplicationMain` 어노테이션과 `GeneratedPluginRegistrant`를 통한 Flutter 플러그인 등록이 필수입니다.
+> Flutter iOS 앱은 `FlutterAppDelegate`를 상속받아야 하며, 기존 프로젝트에서 이미 생성된 `AppDelegate` 구조가 있다면 해당 구조를 유지한 상태로 Groobee 설정만 추가하세요.
 
 ### AppDelegate에 설정할 Groobee 기능별 정리
 
@@ -137,13 +132,15 @@ Objective-C (`AppDelegate.m`):
 | `GroobeeConfig` | `setInAppMsgMarginTop` | (선택) 인앱메시지 상단 노출일 경우 마진값 설정. |
 | `GroobeeConfig` | `setInAppMsgMarginBottom` | (선택) 인앱메시지 하단 노출일 경우 마진값 설정. |
 | `GroobeeConfig` | `setNotificationSettingsButton` | (선택) 푸시 알림 하단에 수신 설정 버튼 추가. 버튼 텍스트는 `NSLocalizedString`으로 다국어화된 텍스트를 권장하며, 앱에 알림 수신 설정 페이지 딥링크 처리가 추가로 필요합니다. |
-| `Groobee` | `configure` | (필수) 설정한 `GroobeeConfig`와 AppContext 전달. |
-| `FirebaseApp` | `initializeApp` | (필수) FCM 활용을 위한 Firebase 연동. |
-| `Messaging` | `messaging().delegate` | (필수) FCM 활용을 위한 Firebase Messaging 연동. |
+| `Groobee` | `configure` | (필수) 설정한 `GroobeeConfig`를 SDK에 적용. |
+| `Firebase` | `Firebase.initializeApp()` 또는 `FirebaseApp.configure()` | (푸시 사용 시 필수) FCM 토큰 발급 전에 Firebase 초기화. Flutter에서는 일반적으로 Dart 측에서 처리합니다. |
+| `Messaging` | `Messaging.messaging().delegate` | (선택) FCM 토큰을 AppDelegate에서 직접 수신할 때 설정. Dart에서 `firebase_messaging`으로 토큰을 받아 `setPushToken`으로 전달하는 구조라면 생략할 수 있습니다. |
 
 ### Swift 예시
 
 `AppDelegate.swift`의 `application(_:didFinishLaunchingWithOptions:)` 메소드에 다음 코드를 추가합니다.
+
+아래 예시는 Groobee SDK 초기화와 iOS 푸시 권한 요청만 포함합니다. Flutter 앱에서 FCM 토큰은 보통 Dart 측 `firebase_messaging`에서 발급받아 MethodChannel로 `Groobee.getInstance().setPushToken(pushToken:)`에 전달합니다.
 
 ```swift
 func application(
@@ -183,11 +180,13 @@ func pushNotiConfirmation() {
 }
 ```
 
-> Flutter 앱은 일반적으로 Firebase 초기화를 Dart 측(`Firebase.initializeApp()`)에서 먼저 수행합니다. 한편 위 설정표에는 `FirebaseApp.initializeApp`이 필수로 표기되어 있으므로, 프로젝트의 Firebase 초기화 방식과 SDK 요구사항을 확인한 뒤 AppDelegate에도 필요 시 `FirebaseApp.configure()`와 `Messaging.messaging().delegate = self`를 추가하세요.
+> FCM 토큰을 AppDelegate의 `MessagingDelegate`에서 직접 수신하는 구조라면 기존 Firebase 초기화 정책에 맞춰 `FirebaseApp.configure()`와 `Messaging.messaging().delegate = self`를 추가하세요. Firebase 초기화는 앱에서 한 번만 수행되어야 합니다.
 
 ### Objective-C 예시
 
 `AppDelegate.m`의 `application:didFinishLaunchingWithOptions:` 메소드에 다음 코드를 추가합니다.
+
+Objective-C 예시도 Groobee SDK 초기화와 iOS 푸시 권한 요청만 포함합니다. FCM 토큰을 AppDelegate에서 직접 수신하는 구조라면 기존 Firebase 초기화 정책에 맞춰 Firebase 초기화와 `FIRMessagingDelegate` 설정을 추가하세요.
 
 ```objectivec
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -203,10 +202,7 @@ func pushNotiConfirmation() {
 
     [Groobee configureWithGroobeeConfig:groobeeConfig];
 
-    [FIRApp configure];
-    [FIRMessaging messaging].delegate = self;
     [self pushNotiConfirmation];
-    [application registerForRemoteNotifications];
 
     return YES;
 }
@@ -219,6 +215,11 @@ func pushNotiConfirmation() {
         [[UNUserNotificationCenter currentNotificationCenter]
             requestAuthorizationWithOptions:authOptions
             completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIApplication.sharedApplication registerForRemoteNotifications];
+                    });
+                }
         }];
     }
 }
@@ -378,18 +379,123 @@ iOS의 경우 APNs 인증키를 FCM에 등록해야 FCM을 통한 푸시 발송�
 - Apple Auth Key 관리: [Apple Developer Auth Keys](https://developer.apple.com/account/resources/authkeys/list)
 - Apple Team 정보: [Apple Developer Account](https://developer.apple.com/account)
 
+### Runner 타겟 Push Capability 확인
+
+Flutter iOS 프로젝트에서 실제 APNs/FCM 푸시를 사용하려면 Runner 타겟에 푸시 권한과 백그라운드 수신 설정이 포함되어 있어야 합니다.
+
+1. `ios/Runner.xcworkspace`를 Xcode로 엽니다.
+2. `Runner` 타겟의 **Signing & Capabilities** 탭으로 이동합니다.
+3. `+ Capability`를 눌러 **Push Notifications**를 추가합니다.
+4. **Background Modes**를 추가하고 **Remote notifications**를 체크합니다.
+
+Xcode에서 `Push Notifications`를 추가하면 `Runner.entitlements`에 `aps-environment` 항목이 포함됩니다. 이 설정이 없으면 APNs 토큰이 발급되지 않고, 결과적으로 FCM 토큰 및 Groobee 푸시 발송 대상 등록도 정상 처리되지 않습니다.
+
+### Flutter AppDelegate 푸시 수신 및 응답 처리
+
+Flutter 앱에서 `firebase_messaging` 등 다른 Flutter 플러그인과 Groobee SDK를 함께 사용하는 경우, iOS 푸시 수신/응답 콜백을 Groobee SDK와 Flutter 플러그인 양쪽에 전달해야 합니다.
+
+알림 응답 처리는 `Groobee.getInstance().userNotificationCenter(response:)`에서 처리합니다. 이 메소드는 Groobee 푸시의 알림 본문 탭과 알림 설정 버튼 액션을 처리합니다. `GroobeeNotification.getInstance().receiveService()`는 아래 Rich Push 섹션의 `Notification Service Extension`에서 알림 표시 전 내용을 가공할 때 사용하는 메소드이며, 알림 응답 처리용이 아닙니다.
+
+Swift:
+
+```swift
+override func application(
+    _ application: UIApplication,
+    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+) {
+    let isFirebaseProxyDisabled =
+        (Bundle.main.object(forInfoDictionaryKey: "FirebaseAppDelegateProxyEnabled") as? Bool) == false
+
+    if isFirebaseProxyDisabled, FirebaseApp.app() != nil {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+
+    super.application(
+        application,
+        didRegisterForRemoteNotificationsWithDeviceToken: deviceToken
+    )
+}
+
+override func application(
+    _ application: UIApplication,
+    didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+    fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
+) {
+    Groobee.getInstance().didReceiveRemoteNotification(userInfo: userInfo)
+
+    let isFirebaseProxyDisabled =
+        (Bundle.main.object(forInfoDictionaryKey: "FirebaseAppDelegateProxyEnabled") as? Bool) == false
+
+    if isFirebaseProxyDisabled, FirebaseApp.app() != nil {
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+    }
+
+    super.application(
+        application,
+        didReceiveRemoteNotification: userInfo,
+        fetchCompletionHandler: completionHandler
+    )
+}
+
+override func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+) {
+    if #available(iOS 14.0, *) {
+        completionHandler([.banner, .list, .badge, .sound])
+    } else {
+        completionHandler([.alert, .badge, .sound])
+    }
+}
+
+override func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+) {
+    if Groobee.getInstance().userNotificationCenter(response: response) {
+        completionHandler()
+        return
+    }
+
+    super.userNotificationCenter(
+        center,
+        didReceive: response,
+        withCompletionHandler: completionHandler
+    )
+}
+```
+
+`FirebaseAppDelegateProxyEnabled`를 `false`로 둔 프로젝트는 APNs 토큰과 메시지 수신 이벤트를 Firebase Messaging에 수동 전달해야 합니다. 기본값(`true` 또는 키 없음)에서는 Firebase swizzling이 처리하므로 위 조건처럼 중복 호출을 피하세요.
+
+`didReceiveRemoteNotification`에서 `super.application(...)`을 호출하면 Flutter 플러그인 쪽으로도 푸시 이벤트가 전달됩니다. 이 경우 `completionHandler`는 중복 호출하지 않도록 주의하세요.
+
+메소드별 역할은 다음과 같습니다.
+
+| 위치 | 메소드 | 역할 |
+| --- | --- | --- |
+| `AppDelegate` | `Groobee.getInstance().didReceiveRemoteNotification(userInfo:)` | 푸시 수신 이벤트를 Groobee에 전달합니다. |
+| `AppDelegate` | `Groobee.getInstance().userNotificationCenter(response:)` | 알림 본문 탭과 알림 설정 버튼 액션 등 Groobee 푸시 응답을 처리합니다. |
+| `Notification Service Extension` | `GroobeeNotification.getInstance().receiveService(...)` | Rich Push 이미지 첨부, 알림 카테고리 설정 등 표시 전 가공을 처리합니다. |
+| `Notification Content Extension` | `GroobeeNotification.getInstance().receiveContent(...)` | 커스텀 알림 UI 표시를 처리합니다. |
+
 ---
 
 <a id="rich-push"></a>
-## 7단계: Service 와 Content Extension 추가 (Rich Push)
+## 7단계: Service 와 Content Extension 추가 (Rich Push, 선택)
 
-Service와 Content를 추가한 Rich Push 방식을 사용하면 푸시 메시지 전환 상태 측정과 커스텀 푸시 메시지 확장이 가능합니다. Notification Service Extension, Notification Content Extension을 추가하고 가이드에 맞춰 진행해 주세요.
+Service와 Content Extension은 기본 푸시 수신, 푸시 오픈/응답 처리, 푸시 토큰 등록에는 필수가 아닙니다.
+
+일반 텍스트 푸시 수신과 푸시 본문 탭 응답 처리는 위 AppDelegate 연동만으로 처리할 수 있습니다. 알림 설정 버튼 액션 응답도 `userNotificationCenter(response:)`에서 처리하지만, 버튼을 실제 알림에 표시하려면 알림 카테고리가 적용되어야 합니다. `Notification Service Extension`을 추가하면 `receiveService()`가 알림 표시 전에 카테고리와 첨부 파일을 가공합니다.
+
+Service와 Content를 추가한 Rich Push 방식을 사용하면 푸시 메시지 전환 상태 측정과 커스텀 푸시 메시지 확장이 가능합니다.
 
 ### Notification Service Extension
 
 사용자에게 전달되기 전 Remote Notification의 내용을 수정하는 확장입니다. 이미지, 비디오, 오디오, 특수 형식 콘텐츠를 알림에 추가할 수 있습니다.
 
-`Notification Service Extension`을 사용하지 않을 경우 iOS 단말기에서는 이미지를 Push Message에 등록할 수 없는 문제가 발생할 수 있습니다.
+`Notification Service Extension`은 이미지 첨부나 알림 표시 전 가공이 필요한 경우에만 추가합니다. 사용하지 않으면 일반 텍스트 푸시 수신/응답 처리는 가능하지만, 이미지가 포함된 Rich Push나 알림 표시 전 카테고리 설정은 처리되지 않습니다.
 
 Apple 공식 문서: <https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension>
 
@@ -397,7 +503,29 @@ Apple 공식 문서: <https://developer.apple.com/documentation/usernotification
 
 앱의 알림에 대한 사용자 지정 인터페이스를 표시하는 확장입니다. 사용자 지정 색상, 브랜딩, 미디어, 동적 콘텐츠를 알림 인터페이스에 통합할 수 있습니다.
 
+`Notification Content Extension`은 커스텀 알림 UI가 필요한 경우에만 추가합니다.
+
 Apple 공식 문서: <https://developer.apple.com/documentation/usernotificationsui/unnotificationcontentextension>
+
+### Flutter 프로젝트 Podfile 설정
+
+Flutter iOS 프로젝트에서 Notification Service Extension 또는 Notification Content Extension을 추가한 경우, Extension 타겟에서도 `GroobeeKit`을 참조할 수 있어야 합니다. `ios/Podfile`에 Extension 타겟 이름에 맞춰 아래와 같이 추가한 뒤 `pod install`을 다시 실행하세요.
+
+```ruby
+target 'Service' do
+  use_frameworks!
+  pod 'GroobeeKit'
+end
+
+target 'Content' do
+  use_frameworks!
+  pod 'GroobeeKit'
+end
+```
+
+`Service`, `Content`는 아래 단계에서 생성하는 Extension의 `Product Name` 예시입니다. 실제 프로젝트에서 다른 이름으로 생성했다면 Podfile의 target 이름도 동일하게 맞춰야 합니다.
+
+Xcode가 Extension 타겟을 생성할 때 메인 앱 타겟의 **Build Phases > Embed App Extensions**에 Extension을 자동으로 추가합니다. 빌드 또는 실행 시 Rich Push Extension이 동작하지 않으면 이 항목이 누락되지 않았는지 함께 확인하세요.
 
 ### Service 설정
 
