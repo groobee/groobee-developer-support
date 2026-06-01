@@ -103,12 +103,12 @@ Future<void> setServiceLogin(String memberId) async {
 }
 ```
 
-예시 2) `setPushAgreedAP`
+예시 2) `setPushAgreeAP`
 
 ```dart
-Future<void> setPushAgreedAP(bool isAgreed) async {
+Future<void> setPushAgreeAP(bool isAgreed) async {
   const platform = MethodChannel('Groobee-iOS-Channel');
-  await platform.invokeMethod('setPushAgreedAP', {"isPushAgreedAP": isAgreed});
+  await platform.invokeMethod('setPushAgreeAP', {"isAgreed": isAgreed});
 }
 ```
 
@@ -122,12 +122,16 @@ methodChannel.setMethodCallHandler { (call, result) in
         let arguments = call.arguments as? [String: Any]
         let memberId = arguments?["memberId"] as? String
         Groobee.getInstance().setServiceLogin(memberId: memberId)
+        result(nil)
+        return
     }
 
-    if call.method == "setPushAgreedAP" {
+    if call.method == "setPushAgreeAP" {
         let arguments = call.arguments as? [String: Any]
-        let isAgreedAP = arguments?["isPushAgreedAP"] as? Bool
+        let isAgreedAP = arguments?["isAgreed"] as? Bool
         Groobee.getInstance().setPushAgreeAP(isPushAgreedAP: isAgreedAP ?? false)
+        result(nil)
+        return
     }
 }
 ```
@@ -260,9 +264,9 @@ Flutter 브리지에서 자주 연결하게 되는 `GroobeeKit` 메소드를 기
 | Dart 호출 메소드명 | iOS 메소드 | 설명 |
 | --- | --- | --- |
 | `setPushToken` | `Groobee.getInstance().setPushToken(pushToken:)` | FCM 토큰 등록. |
-| `setPushAgreedAP` | `Groobee.getInstance().setPushAgreeAP(...)` | 푸시 사용 동의(전체). |
-| `setPushAgreedAA` | `Groobee.getInstance().setPushAgreeAA(...)` | 광고 Push 사용 동의. |
-| `setPushAgreedAN` | `Groobee.getInstance().setPushAgreeAN(...)` | 야간 Push 사용 동의. |
+| `setPushAgreeAP` | `Groobee.getInstance().setPushAgreeAP(...)` | 푸시 사용 동의(전체). |
+| `setPushAgreeAA` | `Groobee.getInstance().setPushAgreeAA(...)` | 광고 Push 사용 동의. |
+| `setPushAgreeAN` | `Groobee.getInstance().setPushAgreeAN(...)` | 야간 Push 사용 동의. |
 | `getPushAgreed` | `Groobee.getInstance().getPushAgreed(memberId:responseAgreeds:)` | 푸시 동의 상태 조회 (비동기, 콜백). |
 | `getPushAgreedSync` | `Groobee.getInstance().getPushAgreed(memberId:)` | 푸시 동의 상태 조회 (동기). |
 
@@ -300,7 +304,7 @@ Flutter 브리지에서 자주 연결하게 되는 `GroobeeKit` 메소드를 기
 <a id="bridge-expansion"></a>
 ## 브리지 확장 순서 권장 사항
 
-1. `setPushToken()`, `setServiceLogin()`, `setPushAgreedAP()` 처럼 단순한 SET 메소드부터 연결합니다.
+1. `setPushToken()`, `setServiceLogin()`, `setPushAgreeAP()` 처럼 단순한 SET 메소드부터 연결합니다.
 2. 이후 `setScreenData()`와 `setSearchKeyword()` 같은 행동 이력 수집 메소드를 연결합니다.
 3. 다음으로 상품/주문 모델 변환이 필요한 `setViewGoods`, `setGoodsOrder`, `setGoodsOrderComplete` 등을 추가합니다.
 4. 마지막으로 `getPushAgreed()`, `getRecommendGoods()` 처럼 JSON 응답이 필요한 GET 계열을 확장합니다.

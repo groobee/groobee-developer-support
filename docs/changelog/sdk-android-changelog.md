@@ -4,7 +4,12 @@
 
 ## 현재 권장 버전 (Stable)
 
-- 1.0.82
+- 1.0.83
+
+---
+
+## [1.0.83] - 2026-05-28
+* fix: 액티비티가 종료 된 이후에 인앱 메시지가 노출이 시도되어도 크래시 리포트가 발생하지 않도록 수정
 
 ---
 
@@ -21,7 +26,15 @@
 
 ## [1.0.80] - 2026-04-17
 
-* Add: 정보통신망법 7차 개정안 대응 기능 추가: 알림 메시지에서 바로 알림 설정 페이지로 이동하는 딥링크 지원 (https://www.kisa.or.kr/401/form?postSeq=3608&lang_type=KO)
+* Add: 정보통신망법 7차 개정안 대응 기능 추가: 알림 메시지에서 바로 알림 설정 페이지로 이동하는 딥링크 지원 ([KISA 안내](https://www.kisa.or.kr/401/form?postSeq=3608&lang_type=KO))
+
+관련 변경 페이지:
+
+- [Android Native SDK 설치 가이드 - Application 설정](../installation/installation-android-sdk.md#application-config): `GroobeeConfig.Builder.setNotificationSettingsButton()` 예시와 주요 설정 항목 설명이 추가되었습니다. 버튼 문구로 사용할 문자열 리소스와 앱 알림 설정 화면으로 이동할 딥링크를 설정합니다.
+- [Android Flutter SDK 설치 가이드 - Application 설정](../installation/installation-android-flutter-sdk.md#application-config): Flutter Android 모듈의 `Application` 초기화 예시에 동일한 알림 설정 버튼/딥링크 설정이 추가되었습니다.
+- [Android SDK 기능 지원 범위](./sdk-android-feature-support.md): 초기 설정 기능 목록에 `setNotificationSettingsButton` 기반의 `푸시 알림 수신 설정 버튼` 지원 항목이 추가되었습니다.
+
+변경 요약: 푸시 알림 하단에 알림 수신 설정 버튼을 표시하고, 사용자가 버튼을 누르면 앱에서 정의한 알림 설정 화면 딥링크로 이동할 수 있도록 `setNotificationSettingsButton()` 설정이 추가되었습니다. 앱에서는 해당 딥링크 라우팅과 알림 수신 동의 화면/상태 동기화를 함께 구현해야 합니다.
 
 ---
 
