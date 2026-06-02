@@ -64,7 +64,7 @@
 groobee("행동코드", 값);
 ```
 
-<details>
+<details markdown="1">
 <summary>커스텀 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
@@ -402,7 +402,7 @@ groobee.action("행동코드", 값);
 > groobee.start() 함수를 호출하여 초기화 후 사용해야 합니다.  
 > [공통 스크립트 설치](../installation/installation-web-common-script.md)의 SPA 환경 섹션 문서를 참고해주세요.
 
-<details>
+<details markdown="1">
 <summary>SPA 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
@@ -729,7 +729,7 @@ groobee( "DC", {
 페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 cafe24유형으로 정상 설치 되어 있다면,
 스마트 디자인 편집기에서 아래 스크립트들을 삽입하여 행동 이력을 수집할 수 있습니다.
 
-<details>
+<details markdown="1">
 <summary>CAFE24 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
@@ -922,7 +922,7 @@ cafe24 유형은 현재 대카테고리 정보만 수집이 가능하며, 중/�
 페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 고도몰 유형 (godo5, godo5_m)으로 정상 설치 되어 있다면,
 아래 스크립트들을 삽입하여 행동 이력을 수집할 수 있습니다.
 
-<details>
+<details markdown="1">
 <summary>고도몰 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
@@ -1018,7 +1018,7 @@ cafe24 유형은 현재 대카테고리 정보만 수집이 가능하며, 중/�
 페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 고도몰(e나무) 유형 (godomall, godomall_m)으로 정상 설치 되어 있다면,
 아래 스크립트들을 삽입하여 행동 이력을 수집할 수 있습니다.
 
-<details>
+<details markdown="1">
 <summary>고도몰(e나무) 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
@@ -1110,7 +1110,7 @@ cafe24 유형은 현재 대카테고리 정보만 수집이 가능하며, 중/�
 > - 각 스크립트의 사이트주소 부분에는 **https://myshop.make.shop** 처럼 사이트 주소를 입력하면 됩니다.
 > - 메이크샵의 경우 스킨에 따라 스크립트 삽입 위치가 다를 수 있습니다. 아래 가이드는 참고용으로 제공되는 예시이므로, 실제 사용하시는 스킨에서 유사한 위치를 찾아 삽입해주시면 됩니다.
 
-<details>
+<details markdown="1">
 <summary>메이크샵 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)
@@ -1245,7 +1245,7 @@ cafe24 유형은 현재 대카테고리 정보만 수집이 가능하며, 중/�
 페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 위사(스마트윙) 유형 (wisa, wisa)으로 정상 설치 되어 있다면,
 아래 스크립트들을 삽입하여 행동 이력을 수집할 수 있습니다.
 
-<details>
+<details markdown="1">
 <summary>위사 (스마트윙) 웹 사이트 행동 이력 수집 방법 보기</summary>
 
 ### 메인 페이지 (MA)

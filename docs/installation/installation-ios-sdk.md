@@ -490,7 +490,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 }
 ```
 
-<details>
+<details markdown="1">
 <summary>v.1.1.5 미만 SDK 사용 시</summary>
 
 v.1.1.5 미만 SDK를 사용 중이라면 위 `didReceive` 메소드 대신 아래 코드를 사용하세요. `setNotificationSettingsButton` 액션 처리는 v.1.1.5 이상에서 지원됩니다.
