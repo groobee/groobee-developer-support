@@ -1,0 +1,23 @@
+.DS_Store
+
+# XcodeGen 생성물 (project.yml 로부터 재생성)
+GroobeeSample.xcodeproj/
+GroobeeSample/Info.plist
+GroobeeSample/GroobeeSample.entitlements
+
+# CocoaPods
+Pods/
+GroobeeSample.xcworkspace/
+Podfile.lock
+
+# 개발자 설정 파일 (서비스키 등) — 커밋 금지. Secrets.example.plist 참고
+GroobeeSample/Secrets.plist
+
+# Firebase (각자 발급 — 커밋 금지)
+GroobeeSample/GoogleService-Info.plist
+
+# Xcode
+xcuserdata/
+build/
+DerivedData/
+*.xcuserstate

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- ─────────── 스크롤되는 컨트롤 영역 ─────────── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:text="상태: 초기화 중…"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <!-- 회원 / 로그인 -->
+            <TextView style="@style/SectionHeader" android:text="① 회원 / 로그인" />
+
+            <Button android:id="@+id/btnLogin" style="@style/DemoButton"
+                android:text="로그인 (setServiceLogin)" />
+            <Button android:id="@+id/btnSetMember" style="@style/DemoButton"
+                android:text="회원정보 설정 (setMember)" />
+            <Button android:id="@+id/btnSignup" style="@style/DemoButton"
+                android:text="회원가입 완료 (setMemberJoin)" />
+            <Button android:id="@+id/btnSyncAgreed" style="@style/DemoButton"
+                android:text="동의상태 동기화 (syncMemberAgreed)" />
+            <Button android:id="@+id/btnLogout" style="@style/DemoButton"
+                android:text="로그아웃 (setServiceLogout)" />
+
+            <!-- 푸시 -->
+            <TextView style="@style/SectionHeader" android:text="② 푸시 (Push)" />
+
+            <Button android:id="@+id/btnPushToken" style="@style/DemoButton"
+                android:text="FCM 토큰 조회/전송 (setPushToken)" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchPush" style="@style/DemoSwitch"
+                android:text="전체 푸시 동의 (setAgreedPush)" />
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchAd" style="@style/DemoSwitch"
+                android:text="광고 푸시 동의 (setAgreedPushAdvertising)" />
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchNight" style="@style/DemoSwitch"
+                android:text="야간 푸시 동의 (setAgreedPushNight)" />
+
+            <Button android:id="@+id/btnQueryConsent" style="@style/DemoButton"
+                android:text="동의 상태 조회 (getPushAgreed)" />
+
+            <!-- 행동 이력 -->
+            <TextView style="@style/SectionHeader" android:text="③ 행동 이력 (Actions)" />
+
+            <Button android:id="@+id/btnSearch" style="@style/DemoButton"
+                android:text="검색 (setSearchKeyword)" />
+            <Button android:id="@+id/btnViewGoods" style="@style/DemoButton"
+                android:text="상품 상세 보기 (setViewGoods)" />
+            <Button android:id="@+id/btnCategory" style="@style/DemoButton"
+                android:text="카테고리 보기 (setCategory)" />
+            <Button android:id="@+id/btnCart" style="@style/DemoButton"
+                android:text="장바구니 (setShoppingCart)" />
+            <Button android:id="@+id/btnOrder" style="@style/DemoButton"
+                android:text="주문서 (setGoodsOrder)" />
+            <Button android:id="@+id/btnOrderComplete" style="@style/DemoButton"
+                android:text="주문 완료 (setGoodsOrderComplete)" />
+            <Button android:id="@+id/btnCustomEvent" style="@style/DemoButton"
+                android:text="커스텀 이벤트 (setCustomEvent)" />
+
+            <!-- AI 추천 -->
+            <TextView style="@style/SectionHeader" android:text="④ AI 추천 (Recommend)" />
+
+            <Button android:id="@+id/btnRecommend" style="@style/DemoButton"
+                android:text="추천 상품 요청 (getRecommendGoods)" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ─────────── 하단 로그 영역 ─────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#1E1E2A"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="로그 (LogBus)"
+                android:textColor="#9FA8DA"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnClearLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="6dp"
+                android:text="지우기"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text=""
+                android:textColor="#E0E0E0"
+                android:textSize="11sp" />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,19 @@
+platform :ios, '13.0'
+
+use_frameworks!
+
+target 'GroobeeSample' do
+  # ────────────────────────────────────────────────────────────────
+  # Groobee iOS SDK (CocoaPods)
+  #   현재 Stable: 1.1.6
+  #   설치 가이드 표기 그대로 쓰려면 버전 핀 없이 `pod 'GroobeeKit'` 만 두면
+  #   최신 릴리스를 받습니다. 아래는 1.1.x 안정 라인에 고정한 형태입니다.
+  # ────────────────────────────────────────────────────────────────
+  pod 'GroobeeKit', '~> 1.1.6'
+
+  # ── Firebase Cloud Messaging (푸시) ──────────────────────────────
+  #   푸시가 필요 없으면 아래 두 줄과
+  #   GroobeeSample/GoogleService-Info.plist 추가 단계를 생략하세요.
+  pod 'FirebaseCore'
+  pod 'FirebaseMessaging'
+end

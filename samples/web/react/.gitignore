@@ -1,0 +1,6 @@
+node_modules
+dist
+.DS_Store
+
+# 개발자 설정 파일 (서비스키 등) — 커밋 금지. .env.local.example 참고
+.env.local

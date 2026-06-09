@@ -1,0 +1,12 @@
+// Groobee Android SDK 정식 연동 샘플 - 최상위(root) 빌드 스크립트
+//
+// SDK / 빌드 도구 버전은 Groobee Android SDK 가 검증된 조합에 맞춰져 있습니다.
+//   - Android Gradle Plugin : 7.4.2
+//   - Kotlin                : 1.8.0
+//   - Gradle                : 7.5 (gradle/wrapper/gradle-wrapper.properties)
+//   - google-services       : 4.3.15 (FCM 푸시용)
+plugins {
+    id 'com.android.application' version '7.4.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
+    id 'com.google.gms.google-services' version '4.3.15' apply false
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Groobee Sample</string>
+    <!-- GroobeeConfig.setNotificationSettingsButton 에 사용되는 버튼 문구 -->
+    <string name="txt_notification_setting">알림 설정</string>
+</resources>
