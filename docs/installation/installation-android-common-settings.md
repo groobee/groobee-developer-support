@@ -58,7 +58,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 
 사용자에게 실제로 노출되는 권한 요청 다이얼로그 예시입니다.
 
-<img src="../images/sdk/android/push-permission-dialog.png" alt="Android 13 이상 푸시 권한 요청 다이얼로그" width="320" />
+![Android 13 이상 푸시 권한 요청 다이얼로그](../images/sdk/android/push-permission-dialog.png){ width="320" }
 
 ## 잠금 상태 기기에서 Push 수신
 

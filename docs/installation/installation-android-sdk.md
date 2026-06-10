@@ -203,7 +203,7 @@ Groobee SDK 1.0.44 버전부터 지원되며, Android 공식 문서 기준으로
 
 `IMPORTANCE_HIGH` 설정 시에는 아래와 같이 푸시 수신 순간 상단에 Toast 메시지가 함께 노출됩니다.
 
-<img src="../images/sdk/android/push-importance-high-toast.png" alt="IMPORTANCE_HIGH Toast 노출 예시" width="280" />
+![IMPORTANCE_HIGH Toast 노출 예시](../images/sdk/android/push-importance-high-toast.png){ width="280" }
 
 ---
 
