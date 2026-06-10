@@ -1,0 +1,5 @@
+{
+  "_comment": "이 파일을 groobee_config.json 으로 복사한 뒤 값을 채우세요: cp groobee_config.json.example groobee_config.json. 실행: flutter run --dart-define-from-file=groobee_config.json (groobee_config.json 은 .gitignore 대상)",
+  "GROOBEE_SERVICE_KEY": "YOUR_GROOBEE_SERVICE_KEY",
+  "GROOBEE_RECOMMEND_CAMPAIGN_KEY": "YOUR_RECOMMEND_CAMPAIGN_KEY"
+}

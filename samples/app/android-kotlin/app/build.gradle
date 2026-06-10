@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    // FCM 푸시를 위해 google-services 플러그인을 적용합니다.
+    // (app/google-services.json 파일을 본인의 Firebase 프로젝트 것으로 교체하세요)
+    id 'com.google.gms.google-services'
+}
+
+// ── 개발자 설정 파일(secrets.properties) 로드 ────────────────────────────
+// 루트의 secrets.properties 에서 서비스키/캠페인키/applicationId 를 읽습니다.
+// 파일이 없으면 placeholder 로 동작하므로 빌드는 그대로 됩니다.
+//   설정: cp secrets.properties.example secrets.properties  후 값 입력
+def secrets = new Properties()
+def secretsFile = rootProject.file('secrets.properties')
+if (secretsFile.exists()) {
+    secretsFile.withInputStream { secrets.load(it) }
+}
+def groobeeServiceKey = secrets.getProperty('groobee.serviceKey', 'YOUR_GROOBEE_SERVICE_KEY')
+def groobeeRecommendCampaignKey = secrets.getProperty('groobee.recommendCampaignKey', 'YOUR_RECOMMEND_CAMPAIGN_KEY')
+def groobeeApplicationId = secrets.getProperty('groobee.applicationId', 'io.groobee.sample')
+
+android {
+    namespace 'io.groobee.sample'
+    compileSdk 34
+
+    defaultConfig {
+        // applicationId 는 secrets.properties 의 groobee.applicationId 로 설정됩니다.
+        // (변경 시 app/google-services.json 의 package_name 도 일치시켜야 합니다)
+        applicationId groobeeApplicationId
+        // Firebase BOM 33.x / Groobee SDK 모두 안전하게 동작하도록 minSdk 24 사용
+        // (Groobee SDK 자체 최소 지원은 API 16 이지만, 푸시/AndroidX 의존성 기준으로 상향)
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        // 코드에서는 BuildConfig.GROOBEE_SERVICE_KEY / GROOBEE_RECOMMEND_CAMPAIGN_KEY 로 접근
+        buildConfigField "String", "GROOBEE_SERVICE_KEY", "\"${groobeeServiceKey}\""
+        buildConfigField "String", "GROOBEE_RECOMMEND_CAMPAIGN_KEY", "\"${groobeeRecommendCampaignKey}\""
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            // 난독화 시 Groobee/Retrofit/Gson 등 keep 규칙이 필요합니다.
+            // proguard-rules.pro 의 규칙을 참고하세요.
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // ──────────────────────────────────────────────────────────────────
+    // Groobee Android SDK (Maven Central)
+    //   group:    io.groobee.message
+    //   artifact: groobee-sdk-message
+    //   version:  1.0.83  (현재 Stable)
+    // 최신 버전은 변경 로그를 참고하세요:
+    //   docs/changelog/sdk-android-changelog.md
+    // ──────────────────────────────────────────────────────────────────
+    implementation "io.groobee.message:groobee-sdk-message:1.0.83"
+
+    // ── Firebase Cloud Messaging (푸시 수신) ───────────────────────────
+    implementation platform('com.google.firebase:firebase-bom:33.16.0')
+    implementation 'com.google.firebase:firebase-messaging'
+
+    // ── AndroidX / Material UI ─────────────────────────────────────────
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.activity:activity-ktx:1.8.2'
+}

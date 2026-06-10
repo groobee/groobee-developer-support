@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 추천 | Groobee Vanilla Sample</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- 회원 정보 메타 (비로그인: 빈 값 / 실서비스: 서버에서 회원 값 렌더링) -->
+  <meta property="groobee:member_id" content="" />
+  <meta property="groobee:member_grade" content="" />
+  <meta property="groobee:member_gender" content="" />
+  <meta property="groobee:member_type" content="" />
+  <meta property="groobee:member_age" content="" />
+
+  <!-- Groobee Script (모든 페이지 공통) -->
+  <script src="./groobee-config.js"></script>
+  <script type="text/javascript">
+    (function(a,i,u,e,o) {
+      a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+    })(window, document, "groobee");
+
+    groobee("serviceKey", window.GROOBEE_CONFIG.serviceKey);
+    groobee("siteType", "custom");
+  </script>
+  <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js" defer></script>
+  <!-- End of Groobee Script -->
+</head>
+<body>
+  <h1>Groobee Vanilla Sample (일반 웹)</h1>
+
+  <nav>
+    <a href="./index.html">메인 (MA)</a>
+    <a href="./search.html?q=겨울옷">검색 (SE)</a>
+    <a href="./product.html">상품 상세 (VG)</a>
+    <a href="./category.html">카테고리 (CA)</a>
+    <a href="./cart.html">장바구니 (VC)</a>
+    <a href="./order-complete.html">주문 완료 (PU)</a>
+    <a href="./recommend.html">AI 추천</a>
+  </nav>
+
+  <main>
+    <h2>AI 추천</h2>
+    <p>두 가지 노출 방식을 함께 시연합니다. (캠페인의 노출 페이지 설정이 이 페이지와 맞아야 응답이 옵니다)</p>
+
+    <!-- ① DIV 형 ──────────────────────────────────────────────────
+      class 는 groobee_recommendation 고정, id 는 추천 캠페인키입니다.
+      스크립트 실행 시점에 DIV 가 이미 존재해야 하므로,
+      바로 아래 동기 스크립트로 config 의 캠페인키를 id 에 넣습니다.
+      (디자인은 어드민 템플릿으로 렌더링됩니다) -->
+    <h3>① DIV 형</h3>
+    <div class="groobee_recommendation" id="YOUR_RECOMMEND_CAMPAIGN_KEY"></div>
+    <script>
+      document.querySelector(".groobee_recommendation").id =
+        window.GROOBEE_CONFIG.recommendCampaignKey;
+    </script>
+
+    <!-- ② 데이터 요청형 ───────────────────────────────────────────
+      getGroobeeRecommendAsync 로 직접 데이터를 받아 렌더링하고,
+      노출(DI)/클릭(CL) 통계를 groobee.send 로 전송합니다.
+      외부 스크립트 로드 지연에 대비해 가이드 권장 재시도 가드를 둡니다. -->
+    <h3>② 데이터 요청형</h3>
+    <ul id="recommend-list"><li>불러오는 중…</li></ul>
+
+    <script>
+      function renderRecommend(data) {
+        var list = document.getElementById("recommend-list");
+        var goodsList = (data && data.goodsList) || [];
+        list.innerHTML = "";
+
+        if (goodsList.length === 0) {
+          list.innerHTML = "<li>추천 결과가 비어 있습니다.</li>";
+          return;
+        }
+
+        goodsList.forEach(function (g) {
+          var li = document.createElement("li");
+          var btn = document.createElement("button");
+          btn.textContent = g.goodsNm + " (" + g.goodsCd + ") " + g.goodsSalePrc + "원";
+          btn.onclick = function () {
+            // 추천 상품 클릭 → 클릭(CL) 통계
+            groobee.send("CL", {
+              algorithmCd: data.algorithmCd,
+              campaignKey: data.campaignKey,
+              campaignTypeCd: "RE", // 고정값
+              goods: [{ goodsCd: g.goodsCd }]
+            });
+          };
+          li.appendChild(btn);
+          list.appendChild(li);
+        });
+
+        // 추천 상품이 화면에 노출됨 → 노출(DI) 통계
+        groobee.send("DI", {
+          algorithmCd: data.algorithmCd,
+          campaignKey: data.campaignKey,
+          campaignTypeCd: "RE", // 고정값
+          goods: goodsList.map(function (g) { return { goodsCd: g.goodsCd }; })
+        });
+      }
+
+      function showRecommendError(message) {
+        document.getElementById("recommend-list").innerHTML =
+          "<li>추천 요청 실패: " + message + "</li>";
+      }
+
+      // 외부 스크립트가 아직 로드되지 않았을 수 있어 재시도 가드를 둡니다.
+      function groobeeRecommendCall() {
+        var campaignKey = window.GROOBEE_CONFIG.recommendCampaignKey;
+        var call = function () {
+          groobee.getGroobeeRecommendAsync(campaignKey, 3000)
+            .then(renderRecommend)
+            .catch(function (e) { showRecommendError(e && e.message ? e.message : e); });
+        };
+
+        if (window.groobee && typeof groobee.getGroobeeRecommendAsync === "function") {
+          call();
+          return;
+        }
+        var tryCnt = 0;
+        var timer = setInterval(function () {
+          if (typeof groobee.getGroobeeRecommendAsync === "function") {
+            clearInterval(timer);
+            call();
+          } else if (++tryCnt >= 6) {
+            clearInterval(timer);
+            showRecommendError("Groobee 스크립트가 로드되지 않았습니다.");
+          }
+        }, 500);
+      }
+
+      groobeeRecommendCall();
+    </script>
+  </main>
+</body>
+</html>

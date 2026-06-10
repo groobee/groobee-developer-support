@@ -22,6 +22,21 @@ Groobee SDK 및 스크립트 사용하는 **개발자와 서비스 운영자**�
 
 ---
 
+## 연동 샘플
+
+배포된 SDK/스크립트를 사용하는 **동작 가능한 예제**가 [`samples/`](samples/README.md) 에 있습니다.  
+각 샘플의 README 에 키 설정·빌드·실행 방법이 정리되어 있습니다.
+
+| 플랫폼 | 샘플 | 비고 |
+| --- | --- | --- |
+| Android (Kotlin) | [samples/app/android-kotlin](samples/app/android-kotlin) | Maven Central `groobee-sdk-message` |
+| iOS (Swift) | [samples/app/ios-swift](samples/app/ios-swift) | CocoaPods `GroobeeKit` |
+| Flutter | [samples/app/flutter](samples/app/flutter) | MethodChannel 브리지 (Android/iOS) |
+| Web (일반) | [samples/web/vanilla](samples/web/vanilla) | 멀티 페이지, 자동 수집 + 직접 호출 |
+| Web (React SPA) | [samples/web/react](samples/web/react) | `isSPA` 모드, 라우트 전환 추적 |
+
+---
+
 ## 행동 유형 목록
 
 행동 유형 목록과 행동 유형별 설명은    

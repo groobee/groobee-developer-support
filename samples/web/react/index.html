@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groobee React SPA Sample</title>
+
+    <!-- Groobee Script (SPA 모드) ──────────────────────────────────────
+      공통 스크립트는 </head> 직전에 설치합니다.
+      - isSPA: "true" 설정 시 자동 수집이 꺼지고, 라우트 전환마다
+        window.groobee.start() / window.groobee.action() 을 직접 호출해야 합니다.
+      - start/action 스텁이 큐(q)에 쌓아 두므로, 외부 스크립트 로드 전에
+        호출돼도 로드 후 순서대로 처리됩니다.
+      - 서비스키는 .env(.local) 의 VITE_GROOBEE_SERVICE_KEY 가
+        빌드 시 %VITE_GROOBEE_SERVICE_KEY% 자리에 치환됩니다.
+      설치 가이드: docs/installation/installation-web-common-script.md -->
+    <script type="text/javascript">
+      (function(a,i,u,e,o) {
+        a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+        a[u].q = a[u].q || [];
+        a[u].start = a[u].start || function () {
+          a[u].q.push(["start"]);
+        };
+        a[u].action = a[u].action || function () {
+          a[u].q.push(["action"].concat([].slice.call(arguments)));
+        };
+      })(window, document, "groobee");
+
+      groobee("serviceKey", "%VITE_GROOBEE_SERVICE_KEY%");
+      groobee("siteType", "custom");
+      // 페이지 전환 시점을 직접 제어하므로 자동 수집을 끕니다.
+      groobee("isSPA", "true");
+    </script>
+    <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js" defer></script>
+    <!-- End of Groobee Script -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

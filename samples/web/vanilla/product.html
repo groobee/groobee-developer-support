@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상품 상세 | Groobee Vanilla Sample</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- 회원 정보 메타 (비로그인: 빈 값 / 실서비스: 서버에서 회원 값 렌더링) -->
+  <meta property="groobee:member_id" content="" />
+  <meta property="groobee:member_grade" content="" />
+  <meta property="groobee:member_gender" content="" />
+  <meta property="groobee:member_type" content="" />
+  <meta property="groobee:member_age" content="" />
+
+  <!-- Groobee Script (모든 페이지 공통) -->
+  <script src="./groobee-config.js"></script>
+  <script type="text/javascript">
+    (function(a,i,u,e,o) {
+      a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+    })(window, document, "groobee");
+
+    groobee("serviceKey", window.GROOBEE_CONFIG.serviceKey);
+    groobee("siteType", "custom");
+  </script>
+  <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js" defer></script>
+  <!-- End of Groobee Script -->
+</head>
+<body>
+  <h1>Groobee Vanilla Sample (일반 웹)</h1>
+
+  <nav>
+    <a href="./index.html">메인 (MA)</a>
+    <a href="./search.html?q=겨울옷">검색 (SE)</a>
+    <a href="./product.html">상품 상세 (VG)</a>
+    <a href="./category.html">카테고리 (CA)</a>
+    <a href="./cart.html">장바구니 (VC)</a>
+    <a href="./order-complete.html">주문 완료 (PU)</a>
+    <a href="./recommend.html">AI 추천</a>
+  </nav>
+
+  <main>
+    <h2>상품 상세 페이지 (VG)</h2>
+    <p>
+      <code>groobee("VG", { goods: [...] })</code> — 상품 정보가 전송됩니다.
+      필드 구성은 <a href="../../../docs/specs/action/schema.md">행동 스키마</a> 기준이며,
+      <code>cat</code> 은 최하위 카테고리 코드와 같아야 합니다.
+    </p>
+
+    <!-- 상품 상세 행동 이력 전송 (실서비스: 서버 템플릿이 실제 상품 값을 렌더링) -->
+    <script>
+      groobee("VG", {
+        goods: [
+          {
+            name: "파란색 줄무늬 티셔츠",
+            code: "0011",
+            prc: 25000,          // 판매가(원가)
+            salePrc: 20000,      // 할인 판매가(실제 판매가)
+            status: "",          // 품절·판매중지면 "SS"
+            img: "https://shop.example.com/product/0011.png",
+            cat: "C1234",  cateNm: "티셔츠",
+            catL: "C1",    cateLNm: "의류",
+            catM: "C12",   cateMNm: "남성",
+            catS: "C123",  cateSNm: "남성상의",
+            catD: "C1234", cateDNm: "티셔츠",
+            brand: "P1",   brandNm: "플래티어"
+          }
+        ]
+      });
+    </script>
+
+    <p>
+      <button onclick="addToCart()">장바구니 담기 (AC)</button>
+      <span id="ac-result"></span>
+    </p>
+    <script>
+      // 페이지 이동 없는 클릭형 이벤트 — 장바구니 담기(AC)
+      function addToCart() {
+        groobee("AC", {
+          goods: [
+            {
+              name: "파란색 줄무늬 티셔츠",
+              code: "0011",
+              amt: 20000,        // salePrc × cnt
+              prc: 25000,
+              salePrc: 20000,
+              cnt: 1,
+              cat: "C1234",  cateNm: "티셔츠",
+              catL: "C1",    cateLNm: "의류",
+              catM: "C12",   cateMNm: "남성",
+              catS: "C123",  cateSNm: "남성상의",
+              catD: "C1234", cateDNm: "티셔츠",
+              brand: "P1",   brandNm: "플래티어"
+            }
+          ]
+        });
+        document.getElementById("ac-result").textContent = 'groobee("AC", …) 전송됨';
+      }
+    </script>
+  </main>
+</body>
+</html>

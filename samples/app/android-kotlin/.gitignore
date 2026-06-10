@@ -1,0 +1,17 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# 개발자 설정 파일 (서비스키 등) — 커밋 금지. secrets.properties.example 참고
+secrets.properties
+
+# 본인의 Firebase 프로젝트 google-services.json 으로 교체 후에는
+# 실서비스 저장소에서 커밋 여부를 정책에 맞게 결정하세요.
+# (이 샘플은 형식 예시용 placeholder google-services.json 를 포함합니다)

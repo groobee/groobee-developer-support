@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>검색 결과 | Groobee Vanilla Sample</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- 회원 정보 메타 (비로그인: 빈 값 / 실서비스: 서버에서 회원 값 렌더링) -->
+  <meta property="groobee:member_id" content="" />
+  <meta property="groobee:member_grade" content="" />
+  <meta property="groobee:member_gender" content="" />
+  <meta property="groobee:member_type" content="" />
+  <meta property="groobee:member_age" content="" />
+
+  <!-- Groobee Script (모든 페이지 공통) -->
+  <script src="./groobee-config.js"></script>
+  <script type="text/javascript">
+    (function(a,i,u,e,o) {
+      a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+    })(window, document, "groobee");
+
+    groobee("serviceKey", window.GROOBEE_CONFIG.serviceKey);
+    groobee("siteType", "custom");
+  </script>
+  <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js" defer></script>
+  <!-- End of Groobee Script -->
+</head>
+<body>
+  <h1>Groobee Vanilla Sample (일반 웹)</h1>
+
+  <nav>
+    <a href="./index.html">메인 (MA)</a>
+    <a href="./search.html?q=겨울옷">검색 (SE)</a>
+    <a href="./product.html">상품 상세 (VG)</a>
+    <a href="./category.html">카테고리 (CA)</a>
+    <a href="./cart.html">장바구니 (VC)</a>
+    <a href="./order-complete.html">주문 완료 (PU)</a>
+    <a href="./recommend.html">AI 추천</a>
+  </nav>
+
+  <main>
+    <h2>검색 결과 페이지 (SE)</h2>
+    <p><code>groobee("SE", { keyword })</code> — 검색어는 URL 의 <code>?q=</code> 값을 사용합니다.</p>
+
+    <!-- 검색 행동 이력 전송 (실서비스: 서버 템플릿이 실제 검색어를 렌더링) -->
+    <script>
+      var keyword = new URLSearchParams(location.search).get("q") || "겨울옷";
+      groobee("SE", { keyword: keyword });
+      document.write("<p>전송된 검색어: <strong>" + keyword + "</strong></p>");
+    </script>
+  </main>
+</body>
+</html>

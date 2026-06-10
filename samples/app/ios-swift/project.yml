@@ -1,0 +1,69 @@
+# XcodeGen 프로젝트 정의
+#
+# .xcodeproj 파일은 Git 에 커밋하지 않고 이 파일로부터 생성합니다.
+#   1) brew install xcodegen
+#   2) xcodegen generate          # → GroobeeSample.xcodeproj 생성
+#   3) pod install                # → GroobeeSample.xcworkspace 생성 + GroobeeKit 연결
+#   4) open GroobeeSample.xcworkspace
+#
+# (setup.sh 가 1~3 을 한 번에 수행합니다)
+name: GroobeeSample
+
+options:
+  bundleIdPrefix: io.groobee
+  deploymentTarget:
+    iOS: "13.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    # 실기기 서명 시 본인 Apple Developer Team ID 를 입력하세요.
+    DEVELOPMENT_TEAM: ""
+
+targets:
+  GroobeeSample:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: GroobeeSample
+        excludes:
+          - "Secrets.example.plist"   # 예시 파일은 앱 번들에 포함하지 않음
+    settings:
+      base:
+        # ▼ 앱 번들 ID 는 여기서 변경하세요 (변경 시 GoogleService-Info.plist 도 일치)
+        PRODUCT_BUNDLE_IDENTIFIER: io.groobee.sample
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        # 푸시 사용 시 필요한 capability (entitlements 로 선언)
+    entitlements:
+      path: GroobeeSample/GroobeeSample.entitlements
+      properties:
+        aps-environment: development
+    info:
+      path: GroobeeSample/Info.plist
+      properties:
+        CFBundleDisplayName: Groobee Sample
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        UILaunchStoryboardName: LaunchScreen
+        # FCM 토큰/알림을 수동으로 처리하므로 Firebase swizzling 비활성화
+        FirebaseAppDelegateProxyEnabled: false
+        UIBackgroundModes:
+          - remote-notification
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+        # 푸시 알림 설정 버튼 딥링크용 URL Scheme
+        CFBundleURLTypes:
+          - CFBundleURLName: io.groobee.sample
+            CFBundleURLSchemes:
+              - groobeesample

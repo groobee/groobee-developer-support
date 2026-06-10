@@ -1,0 +1,20 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        // Groobee Android SDK(io.groobee.message:groobee-sdk-message)는
+        // Maven Central 에 정식 배포됩니다. 별도 저장소 URL/인증 정보가 필요 없습니다.
+        mavenCentral()
+    }
+}
+
+rootProject.name = "GroobeeAndroidSample"
+include ':app'

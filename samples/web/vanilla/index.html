@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메인 | Groobee Vanilla Sample</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- 회원 정보 연동 메타 태그 ─────────────────────────────────────
+    실서비스에서는 모든 페이지 공통 레이아웃(JSP/PHP 등)에 포함하고,
+    로그인한 회원의 값을 서버에서 렌더링합니다.
+    ⚠️ 비로그인 상태에서는 모든 값이 빈 문자열이어야 합니다.
+    가이드: docs/installation/installation-web-member-data.md -->
+  <meta property="groobee:member_id" content="" />
+  <meta property="groobee:member_grade" content="" />
+  <meta property="groobee:member_gender" content="" />
+  <meta property="groobee:member_type" content="" />
+  <meta property="groobee:member_age" content="" />
+
+  <!-- Groobee Script (일반/custom 모드) ─────────────────────────────
+    모든 페이지의 </head> 직전에 동일하게 설치합니다.
+    페이지가 전체 로드될 때마다 스크립트가 자동 실행되며,
+    메인(MA) 이력은 어드민에 페이지 URL 이 등록되어 있으면 자동 수집됩니다.
+    (SPA 와 달리 isSPA 설정과 start()/action() 호출이 필요 없습니다)
+    가이드: docs/installation/installation-web-common-script.md -->
+  <script src="./groobee-config.js"></script>
+  <script type="text/javascript">
+    (function(a,i,u,e,o) {
+      a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+    })(window, document, "groobee");
+
+    groobee("serviceKey", window.GROOBEE_CONFIG.serviceKey);
+    groobee("siteType", "custom");
+  </script>
+  <script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js" defer></script>
+  <!-- End of Groobee Script -->
+</head>
+<body>
+  <h1>Groobee Vanilla Sample (일반 웹)</h1>
+
+  <nav>
+    <a href="./index.html">메인 (MA)</a>
+    <a href="./search.html?q=겨울옷">검색 (SE)</a>
+    <a href="./product.html">상품 상세 (VG)</a>
+    <a href="./category.html">카테고리 (CA)</a>
+    <a href="./cart.html">장바구니 (VC)</a>
+    <a href="./order-complete.html">주문 완료 (PU)</a>
+    <a href="./recommend.html">AI 추천</a>
+  </nav>
+
+  <main>
+    <h2>메인 페이지 (MA)</h2>
+    <p>
+      메인 페이지 방문 이력은 <strong>별도 코드 없이 자동 수집</strong>됩니다.
+      (어드민에 이 페이지의 URL 이 등록되어 있어야 합니다 — 로컬은 <code>localhost</code> 등록)
+    </p>
+    <p>
+      각 메뉴를 클릭하면 <strong>페이지가 전체 로드</strong>되면서 공통 스크립트가 다시 실행되고,
+      해당 페이지의 <code>groobee("행동코드", 데이터)</code> 호출이 전송됩니다.
+    </p>
+  </main>
+
+  <footer>
+    전송 확인: 개발자도구 콘솔과 Network 탭에서 <code>*.groobee.io</code> 요청을 확인하세요.
+  </footer>
+</body>
+</html>

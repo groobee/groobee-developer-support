@@ -1,0 +1,13 @@
+body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: sans-serif;
+  background: #f5f5f7;
+}
+h1 { font-size: 20px; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+nav a { padding: 6px 10px; background: #e8eaf6; border-radius: 6px; text-decoration: none; color: #1a237e; font-size: 14px; }
+main { padding: 16px; background: #fff; border-radius: 8px; }
+code { background: #eee; padding: 1px 4px; border-radius: 4px; }
+footer { margin-top: 16px; font-size: 12px; color: #777; }
