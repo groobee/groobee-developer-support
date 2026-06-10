@@ -22,6 +22,21 @@ Groobee SDK 및 스크립트를 사용하는 **개발자와 서비스 운영자*
 
 ---
 
+## 연동 샘플
+
+배포된 SDK/스크립트를 사용하는 **동작 가능한 예제**가 GitHub 저장소의 [`samples/`](https://github.com/groobee/groobee-developer-support/tree/main/samples) 에 있습니다.
+각 샘플의 README 에 키 설정·빌드·실행 방법이 정리되어 있습니다.
+
+| 플랫폼 | 샘플 | 비고 |
+| --- | --- | --- |
+| Android (Kotlin) | [samples/app/android-kotlin](https://github.com/groobee/groobee-developer-support/tree/main/samples/app/android-kotlin) | Maven Central `groobee-sdk-message` |
+| iOS (Swift) | [samples/app/ios-swift](https://github.com/groobee/groobee-developer-support/tree/main/samples/app/ios-swift) | CocoaPods `GroobeeKit` |
+| Flutter | [samples/app/flutter](https://github.com/groobee/groobee-developer-support/tree/main/samples/app/flutter) | MethodChannel 브리지 (Android/iOS) |
+| Web (일반) | [samples/web/vanilla](https://github.com/groobee/groobee-developer-support/tree/main/samples/web/vanilla) | 멀티 페이지, 자동 수집 + 직접 호출 |
+| Web (React SPA) | [samples/web/react](https://github.com/groobee/groobee-developer-support/tree/main/samples/web/react) | `isSPA` 모드, 라우트 전환 추적 |
+
+---
+
 ## 주요 문서
 
 - [사전 설정](prerequisites/README.md) — 도메인, 앱, 회원 데이터 등 사전 준비 항목
