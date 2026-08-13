@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-08-13
+작성자: 김훈기
+
+- 하이브리드 앱 데이터 동기화 가이드([Android](../detail/android-sdk-hybrid-sync.md) · [iOS](../detail/ios-sdk-hybrid-sync.md))에 신규 SDK 업데이트 관련 (최근 본 상품 목록 동기화) 안내 추가
+- iOS 하이브리드 동기화 가이드에 신설 메소드 `syncNativeToWeb(_ domain:)`·`syncWebToNative(webView:urlRequest:)` 절 추가 (SDK 1.1.12)
+
+---
+
 ## 2026-05-20
 작성자: 김훈기
 

@@ -18,7 +18,7 @@
 
 ### [Android SDK 하이브리드 앱 데이터 동기화](android-sdk-hybrid-sync.md)
 
-- `syncWebToNative()`, `syncNativeToWeb()`, `getNativeCookie()` 사용 방법을 정리한 문서입니다.
+- `syncWebToNative()`, `syncNativeToWeb()`, `getNativeCookie()` 사용 방법을 정리한 문서입니다. 식별 쿠키와 함께 **최근 본 상품 목록**을 동기화합니다.
 
 ### [Android SDK 추천 상품 연동](android-sdk-recommend.md)
 
@@ -44,7 +44,7 @@
 
 ### [iOS SDK 하이브리드 앱 데이터 동기화](ios-sdk-hybrid-sync.md)
 
-- `getGroobeeWebCookies()`, `setWebViewCookies()` 사용 방법을 정리한 문서입니다.
+- `syncWebToNative()`, `syncNativeToWeb()`, `getGroobeeWebCookies()` 사용 방법을 정리한 문서입니다. 식별 쿠키와 함께 **최근 본 상품 목록**을 동기화합니다.
 
 ### [iOS SDK 추천 상품 연동](ios-sdk-recommend.md)
 
