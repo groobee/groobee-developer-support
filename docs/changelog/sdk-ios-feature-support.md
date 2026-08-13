@@ -76,7 +76,9 @@
 
 | 기능 | 메소드 | 최신 상태 | 비고 |
 |---|---|---|---|
-| 웹뷰 쿠키 동기화 | `setWebViewCookies(webView:urlRequest:)` | ✅ 지원 | `WKWebView`의 `didFinish navigation`에서 호출 권장 |
+| 웹뷰 → 네이티브 데이터 동기화 | `syncWebToNative(webView:urlRequest:)` | ✅ 지원 | 1.1.12 신설. `WKWebView`의 `didFinish navigation`에서 호출 권장 |
+| 웹뷰 쿠키 동기화 (기존 이름) | `setWebViewCookies(webView:urlRequest:)` | ✅ 지원 | `syncWebToNative`와 같은 동작. 기존 연동은 수정 불필요 |
+| 네이티브 → 웹뷰 데이터 동기화 | `syncNativeToWeb(_ domain:)` | ✅ 지원 | 1.1.12 신설. 최근 본 상품 목록 포함. `syncWebToNative`와 동시 사용 불가 |
 
 ### 추천 상품
 

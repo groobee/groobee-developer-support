@@ -8,6 +8,15 @@
 
 ---
 
+## [1.1.12] - 2026-08-13
+* add: 네이티브 → 웹뷰 동기화 메소드 **`syncNativeToWeb(_ domain:)`** 신설.
+* add: 하이브리드 동기화 메소드 호출시 최근 본 상품 목록을 함께 전달하도록 추가 (`syncWebToNative(webView:urlRequest:)`, `syncNativeToWeb(_ domain:)`)
+* 관련 변경 페이지: [iOS SDK 하이브리드 앱 데이터 동기화](../detail/ios-sdk-hybrid-sync.md)
+ 
+> ⚠️ **iOS 11 미만에서는 동작하지 않습니다.** `WKWebView`의 쿠키 저장소에 접근할 공개 API가 없어 쓰기(`syncNativeToWeb`)와 읽기(`syncWebToNative`) 모두 동작하지 않으며, SDK가 경고 로그를 남깁니다.
+
+---
+
 ## [1.1.11] - 2026-07-27
 * fix: 팝업 인앱 메시지의 이미지를 불러오지 못했을 때 앱이 종료되던 문제 수정
 * fix: 인앱 메시지의 닫기 버튼 이미지를 불러오지 못했을 때 버튼이 보이지 않아 메시지를 닫을 수 없던 문제 수정 (기본 닫기 아이콘으로 대체)

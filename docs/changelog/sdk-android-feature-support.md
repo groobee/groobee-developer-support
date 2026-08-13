@@ -68,11 +68,11 @@
 
 ### Native + 웹 데이터 동기화 (하이브리드)
 
-| 기능 | 메소드 | 최신 상태 | 비고 |
-|---|---|---|---|
-| 웹뷰 → 네이티브 데이터 동기화 | `syncWebToNative` | ✅ 지원 | 1.0.58 이전에는 `setWebViewLogger`로 제공 |
-| 네이티브 → 웹뷰 데이터 동기화 | `syncNativeToWeb` | ✅ 지원 | `syncWebToNative`와 동시 사용 불가 |
-| 네이티브 쿠키 획득 | `getNativeCookie` | ✅ 지원 | 직접 웹뷰에 적용할 때 사용 |
+| 기능 | 메소드 | 최신 상태 | 비고                                   |
+|---|---|---|--------------------------------------|
+| 웹뷰 → 네이티브 데이터 동기화 | `syncWebToNative` | ✅ 지원 | 1.0.58 이전에는 `setWebViewLogger`로 제공   |
+| 네이티브 → 웹뷰 데이터 동기화 | `syncNativeToWeb` | ✅ 지원 | `syncWebToNative`와 동시 사용 금지          |
+| 네이티브 쿠키 획득 | `getNativeCookie` | ✅ 지원 | 직접 웹뷰에 적용할 때 사용. 최근 본 상품 목록은 포함되지 않음 |
 
 ### 추천 상품
 
