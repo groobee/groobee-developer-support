@@ -12,8 +12,7 @@
 4. [네이티브에서 웹뷰로 동기화](#native-to-web)
 5. [그루비 웹 쿠키 직접 가져오기](#get-web-cookies)
 6. [동작 한계](#limitations)
-7. [Android SDK와의 메소드 대응](#platform-mapping)
-8. [함께 보면 좋은 문서](#related-docs)
+7. [함께 보면 좋은 문서](#related-docs)
 
 ---
 
