@@ -13,8 +13,7 @@
 5. [네이티브 쿠키 직접 가져오기](#get-native-cookie)
 6. [동작 한계](#limitations)
 7. [Flutter 앱에서의 적용](#flutter-usage)
-8. [iOS SDK와의 메소드 대응](#platform-mapping)
-9. [함께 보면 좋은 문서](#related-docs)
+8. [함께 보면 좋은 문서](#related-docs)
 
 ---
 
