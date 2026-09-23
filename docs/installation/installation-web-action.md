@@ -92,8 +92,8 @@ groobee( "SE", { keyword : "겨울옷" } );
 - 상품 상세 페이지는 상품 1개 기준으로 수집되므로, goods 배열에는 현재 페이지의 상품 1개만 전달해주세요. (첫 번째 상품만 상세 조회 상품으로 처리됩니다.)
 - 상품 상태(status) 필드는 품절이거나 상품이 판매상태가 아닐 경우에만 "SS" 값을 넣어주시면 됩니다.  
   정상 판매중인 상품의 경우에는 빈 문자열("") 또는 "FS"로 전달해주세요.
-- 상품별 커스텀 데이터는 상품 정보의 attribute 필드(객체)에, 행동 단위 커스텀 데이터는 extraData 필드(객체)에 담아 전달할 수 있습니다.  
-  👉 [커스텀 데이터 전달 (attribute / extraData)](#custom-data) 항목을 참고해주세요.
+- 상품 확장 속성은 상품 정보의 attribute 필드(객체)에, 행동 확장 데이터는 extraData 필드(객체)에 담아 전달할 수 있습니다.  
+  👉 [확장 필드 (attribute / extraData)](#extension-fields) 항목을 참고해주세요.
 
 ```javascript
 groobee( "VG", {
@@ -119,13 +119,13 @@ groobee( "VG", {
       brand: "P1",
       brandNm: "플래티",
       plan: ['A1', 'A2', 'B1'],
-      attribute: {           // (선택) 상품별 커스텀 데이터
+      attribute: {           // (선택) 상품 확장 속성
         color: "blue",
         season: "SS26"
       }
     }
   ],
-  extraData: {               // (선택) 행동 단위 커스텀 데이터
+  extraData: {               // (선택) 행동 확장 데이터
     referrer: "event_banner"
   }
 });
@@ -452,7 +452,7 @@ groobee.action( "SE", { keyword : "겨울옷" } );
 - 상품 상세 페이지는 상품 1개 기준으로 수집되므로, goods 배열에는 현재 페이지의 상품 1개만 전달해주세요. (첫 번째 상품만 상세 조회 상품으로 처리됩니다.)
 - 상품 상태(status) 필드는 품절이거나 상품이 판매상태가 아닐 경우에만 "SS" 값을 넣어주시면 됩니다.  
   정상 판매중인 상품의 경우에는 빈 문자열("")로 전달해주세요.
-- 상품별 커스텀 데이터(attribute), 행동 단위 커스텀 데이터(extraData)는 👉 [커스텀 데이터 전달 (attribute / extraData)](#custom-data) 항목을 참고해주세요.
+- 상품 확장 속성(attribute), 행동 확장 데이터(extraData)는 👉 [확장 필드 (attribute / extraData)](#extension-fields) 항목을 참고해주세요.
 
 ```javascript
 groobee.action( "VG", {
@@ -757,14 +757,16 @@ groobee.action( "DC", {
 
 ---
 
-<a id="custom-data"></a>
-## 커스텀 데이터 전달 (attribute / extraData)
+<a id="extension-fields"></a>
+## 확장 필드 (attribute / extraData)
 커스텀 웹 사이트(Custom)와 SPA 환경에서 행동 이력을 전달할 때, 정해진 필드 외에 고객사에서 정의한 데이터를 함께 전달할 수 있습니다.
+
+> 확장 필드는 개별 행동 이력에 함께 실려 전송되는 값이며, 회원·페이지 단위로 설정하는 **커스텀 데이터(customData)** 와는 다른 기능입니다.
 
 | 필드 | 위치 | 타입 | 설명 |
 |---|---|---|---|
-| attribute | goods 배열의 각 상품 정보 | Object | 상품별 커스텀 데이터 (예: 색상, 시즌, 소재 등) |
-| extraData | 행동 이력 값의 최상위 | Object | 행동 단위 커스텀 데이터 (예: 유입 경로, 노출 영역 등) |
+| attribute | goods 배열의 각 상품 정보 | Object | 상품 확장 속성 (예: 색상, 시즌, 소재 등) |
+| extraData | 행동 이력 값의 최상위 | Object | 행동 확장 데이터 (예: 유입 경로, 노출 영역 등) |
 
 - 두 필드 모두 **키-값 형태의 객체(`{ ... }`)** 로만 전달해야 합니다.  
   배열, 문자열, 숫자 등 객체가 아닌 값은 정상 처리되지 않습니다. (extraData와 VG 외 행동의 attribute는 객체가 아니면 전송에서 제외됩니다.)
