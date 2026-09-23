@@ -11,8 +11,8 @@
   - 예) catS 값이 있을 경우 catL, catM 값도 함께 전달
 - 장바구니 담기(AC) / 장바구니 제거(DC)에서는 code, prc, cnt가 필수입니다.  
   셋 중 하나라도 비어 있거나 0인 상품은 전송에서 제외됩니다.
-- attribute는 상품별 커스텀 데이터를 담는 객체입니다. 행동 단위 커스텀 데이터(extraData)와 함께  
-  👉 [커스텀 데이터 전달 (attribute / extraData)](../../installation/installation-web-action.md#custom-data) 항목을 참고해주세요.
+- attribute는 상품 확장 속성을 담는 객체입니다. 행동 확장 데이터(extraData)와 함께  
+  👉 [확장 필드 (attribute / extraData)](../../installation/installation-web-action.md#extension-fields) 항목을 참고해주세요.
 
 <table>
 <thead>
@@ -184,7 +184,7 @@
     <td>attribute</td>
     <td>Object</td>
     <td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td>
-    <td>상품별 커스텀 데이터 (키-값 객체, 키 이름은 자유 정의)</td>
+    <td>상품 확장 속성 (키-값 객체, 키 이름은 자유 정의)</td>
     <td>{ "color": "blue", "season": "SS26" }</td>
 </tr>
 </tbody>

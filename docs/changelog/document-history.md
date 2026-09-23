@@ -9,7 +9,7 @@
 작성자: 이도환
 
 - [행동 이력 수집 가이드](../installation/installation-web-action.md): 커스텀 사이트 장바구니 담기/제거 호출 방법을 `groobee.addToCart()` / `groobee.deleteFromCart()`로 수정, 웹 페이지 URL 등록을 필수로 변경, SPA `start()` / `action()` 안내 정정
-- [커스텀 데이터 전달 (attribute / extraData)](../installation/installation-web-action.md#custom-data) 항목 신설, [Schema](../specs/action/schema.md) Goods에 `attribute` 필드 추가
+- [확장 필드 (attribute / extraData)](../installation/installation-web-action.md#extension-fields) 항목 신설, [Schema](../specs/action/schema.md) Goods에 `attribute` 필드 추가
 - [웹 페이지 URL 등록](../prerequisites/web-page-url-registration.md): 페이지 유형별 URL 매칭 방식 정정
 - AI 추천 가이드: 기본 타임아웃(5000ms), 클릭 예시 함수 인자 순서, 스크립트형 기획전(`planCd`) 응답, DIV형 속성, `recommendBaseType`(`BRAND`, `MEMBER_DATA`) 정정
 - 공통 스크립트 `grbDisabled` 동작 범위, 웹뷰 User-Agent 봇 판정 주의사항 추가
