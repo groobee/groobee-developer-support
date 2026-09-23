@@ -9,6 +9,10 @@
 - 카테고리 대중소세(catL,catM,catS,catD) 필드 중 하위 카테고리 코드가 있을 경우 상위 카테고리 코드도 함께 전달해주셔야 합니다.  
   전달되지 않는 경우 추천 품질에 영향을 미칠 수 있습니다.
   - 예) catS 값이 있을 경우 catL, catM 값도 함께 전달
+- 장바구니 담기(AC) / 장바구니 제거(DC)에서는 code, prc, cnt가 필수입니다.  
+  셋 중 하나라도 비어 있거나 0인 상품은 전송에서 제외됩니다.
+- attribute는 상품별 커스텀 데이터를 담는 객체입니다. 행동 단위 커스텀 데이터(extraData)와 함께  
+  👉 [커스텀 데이터 전달 (attribute / extraData)](../../installation/installation-web-action.md#custom-data) 항목을 참고해주세요.
 
 <table>
 <thead>
@@ -175,6 +179,13 @@
     <td>●</td><td></td><td></td><td></td><td></td><td></td>
     <td>기획전 코드</td>
     <td>["SPRING_SALE_2026"]</td>
+</tr>
+<tr>
+    <td>attribute</td>
+    <td>Object</td>
+    <td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td>
+    <td>상품별 커스텀 데이터 (키-값 객체, 키 이름은 자유 정의)</td>
+    <td>{ "color": "blue", "season": "SS26" }</td>
 </tr>
 </tbody>
 </table>

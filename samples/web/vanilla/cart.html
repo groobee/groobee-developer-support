@@ -88,8 +88,9 @@
     </p>
     <script>
       // 페이지 이동 없는 클릭형 이벤트 — 장바구니 빼기(DC). cnt 는 "뺀 수량"
+      // 커스텀 사이트에서 groobee("DC", …) 는 수집되지 않으므로 전용 함수를 사용한다(스크립트 로드 이후 사용 가능)
       function removeFromCart() {
-        groobee("DC", {
+        groobee.deleteFromCart({
           goods: [
             {
               name: "파란색 줄무늬 티셔츠",
@@ -107,7 +108,7 @@
             }
           ]
         });
-        document.getElementById("dc-result").textContent = 'groobee("DC", …) 전송됨';
+        document.getElementById("dc-result").textContent = 'groobee.deleteFromCart(…) 전송됨';
       }
     </script>
   </main>

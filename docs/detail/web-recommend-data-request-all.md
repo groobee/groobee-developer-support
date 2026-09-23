@@ -26,18 +26,24 @@ groobee.getGroobeeKeyBaseRecommendAsync("캠페인키", "추천타입", "타입�
 ### 파라미터
 - `campaignKey` (string): 캠페인키
 - `recommendBaseType` (string): 추천 종류(대문자)
-- `recommendValue` (string): 추천 검색 값
-- `timeSet` (int): 타임아웃 시간 (기본 3000ms)
+- `recommendValue` (string | object): 추천 검색 값 (`MEMBER_DATA` 인 경우에만 object)
+- `timeSet` (int): 타임아웃 시간 (기본 5000ms)
 
 #### recommendBaseType 종류
 - `CATEGORY`
 - `GOODS`
 - `KEYWORD`
+- `BRAND`
+- `MEMBER_DATA`
+
+> recommendBaseType은 반드시 대문자로 입력해야 합니다. 목록에 없는 값을 입력하면 추천 결과 대신 오류 메시지 문자열이 반환됩니다.
 
 #### recommendBaseType에 따른 recommendValue
 - `CATEGORY`: 카테고리 코드
 - `GOODS`: 상품코드
 - `KEYWORD`: 검색어
+- `BRAND`: 브랜드 코드
+- `MEMBER_DATA`: 성별·연령대 객체 `{ genderCode: "성별 코드", ageCode: "연령대 코드" }`
 
 ### 호출 예시
 ```javascript
@@ -242,7 +248,7 @@ function groobeeDisplayInsert(campaignKey, algorithmCd, goodsList) {
   groobee.send("DI", groobeeObj);
 }
 
-function clickGroobeeProduct(campaignKey, algorithmCd, goodsCd) {
+function clickGroobeeProduct(algorithmCd, campaignKey, goodsCd) {
   var groobeeObj = {
     algorithmCd: algorithmCd,
     campaignKey: campaignKey,

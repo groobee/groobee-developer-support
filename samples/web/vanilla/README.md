@@ -79,11 +79,11 @@ python3 -m http.server 5500        # 또는: npx serve .
 | --- | --- | --- |
 | `index.html` | (코드 없음 — URL 등록 시 자동 수집) | MA |
 | `search.html?q=…` | `groobee("SE", { keyword })` | SE |
-| `product.html` | `groobee("VG", { goods })` + 버튼 `groobee("AC", { goods })` | VG · AC |
+| `product.html` | `groobee("VG", { goods })` + 버튼 `groobee.addToCart({ goods })` | VG · AC |
 | `category.html` | `groobee("CA", { category })` | CA |
-| `cart.html` | `groobee("VC", { goods })` + 버튼 `groobee("DC", { goods })` | VC · DC |
+| `cart.html` | `groobee("VC", { goods })` + 버튼 `groobee.deleteFromCart({ goods })` | VC · DC |
 | `order-complete.html` | `groobee("PU", { orderNo, goods })` | PU |
-| `recommend.html` | DIV 형(`groobee_recommendation`) + `getGroobeeRecommendAsync()` → `groobee.send("DI"/"CL")` | AI 추천 |
+| `recommend.html` | DIV 형(`id` = 캠페인키) + `getGroobeeRecommendAsync()` → `groobee.send("DI"/"CL")` | AI 추천 |
 
 데모의 상품/카테고리 값은 [행동 스키마](../../../docs/specs/action/schema.md) 기준이며,
 실서비스에서는 서버 템플릿이 실제 값을 렌더링합니다.

@@ -25,7 +25,7 @@ groobee.getGroobeeRecommendAsync("캠페인키", 타임아웃)
 
 ### 파라미터
 - `campaignKey` (string): 캠페인키
-- `timeSet` (int): 타임아웃 시간 (기본 3000ms)
+- `timeSet` (int): 타임아웃 시간 (기본 5000ms)
 - `{}` (object, optional): 임시(생략 가능)
 
 ### 호출 예시
@@ -199,7 +199,7 @@ function groobeeDisplayInsert(campaignKey, algorithmCd, goodsList) {
   groobee.send("DI", groobeeObj);
 }
 
-function clickGroobeeProduct(campaignKey, algorithmCd, goodsCd) {
+function clickGroobeeProduct(algorithmCd, campaignKey, goodsCd) {
   var groobeeObj = {
     algorithmCd: algorithmCd,
     campaignKey: campaignKey,
