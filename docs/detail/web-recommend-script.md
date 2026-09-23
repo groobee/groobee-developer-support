@@ -39,6 +39,22 @@ goodsArray = [
 ];
 ```
 
+> 기획전 추천 알고리즘(`PL01`, `PL02`)인 경우에는 상품코드 대신 기획전 코드(`planCd`)가 내려옵니다.  
+> `algorithmCd` 값에 따라 `goodsCd` / `planCd` 를 구분해서 처리해주세요.
+
+```javascript
+// algorithmCd 가 PL01, PL02 인 경우
+goodsArray = [
+  { planCd: "추천기획전코드1" },
+  { planCd: "추천기획전코드2" }
+];
+```
+
+> **호출 조건**  
+>  
+> - 어드민에서 추천 템플릿을 스크립트형으로 설정한 캠페인에 대해서만 호출됩니다.  
+> - Groobee가 추천 결과를 받은 시점에 `window.setGroobeeRecommend` 함수가 전역에 선언되어 있어야 합니다. 선언되어 있지 않으면 호출되지 않습니다.
+
 ## DI (노출)
 실제 고객사에서 노출된 상품/기획전 정보를 Groobee로 보내 통계에 집계합니다.
 

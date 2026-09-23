@@ -75,8 +75,9 @@
     </p>
     <script>
       // 페이지 이동 없는 클릭형 이벤트 — 장바구니 담기(AC)
+      // 커스텀 사이트에서 groobee("AC", …) 는 수집되지 않으므로 전용 함수를 사용한다(스크립트 로드 이후 사용 가능)
       function addToCart() {
-        groobee("AC", {
+        groobee.addToCart({
           goods: [
             {
               name: "파란색 줄무늬 티셔츠",
@@ -94,7 +95,7 @@
             }
           ]
         });
-        document.getElementById("ac-result").textContent = 'groobee("AC", …) 전송됨';
+        document.getElementById("ac-result").textContent = 'groobee.addToCart(…) 전송됨';
       }
     </script>
   </main>

@@ -16,8 +16,10 @@
 
 - **(필수)** 공통 스크립트가 설치 되어있어야 합니다.  
 👉 [공통 스크립트 설치 가이드](../installation/installation-web-common-script.md)
-- **(권장)** 웹 페이지 URL이 등록 되어있어야 합니다.  
+- **(필수)** 웹 페이지 URL이 등록 되어있어야 합니다.  
 👉 [웹 페이지 경로 등록 가이드](../prerequisites/web-page-url-registration.md)
+  - 커스텀 웹 사이트(Custom)는 현재 페이지 URL이 등록된 페이지 경로(상품상세, 검색, 장바구니 등)와 일치할 때만 `groobee("행동코드", 값)` 호출을 처리합니다.  
+    URL이 등록되어 있지 않으면 호출한 행동 이력 대신 기타 페이지(LO)로 수집됩니다.
 
 ---
 
@@ -64,6 +66,13 @@
 groobee("행동코드", 값);
 ```
 
+> **참고**  
+>  
+> - `groobee("행동코드", 값)` 형태의 페이지 방문 이력(SE, VG, VC, OR, PU, CA)은 **페이지당 1회**, 공통 스크립트가 로드되기 전 또는 로드 직후에 호출해주세요.  
+>   스크립트는 페이지 로드 시점에 한 번만 호출 내역을 확인하며, 그 이후에 호출하거나 여러 번 호출한 내역은 수집되지 않습니다.  
+> - 장바구니 담기(AC) / 장바구니 제거(DC)처럼 버튼 클릭 등 사용자 동작 시점에 발생하는 이벤트는 `groobee("행동코드", 값)` 형태로 호출하면 수집되지 않습니다.  
+>   아래 [장바구니 담기 (AC)](#custom-ac), [장바구니 제거 (DC)](#custom-dc) 항목의 전용 함수를 사용해주세요.
+
 <details markdown="1">
 <summary>커스텀 웹 사이트 행동 이력 수집 방법 보기</summary>
 
@@ -80,8 +89,11 @@ groobee( "SE", { keyword : "겨울옷" } );
 ### 상품 상세 페이지 (VG)
 - 상품 상세 페이지 방문 이력은 상품 정보 목록과 함께 호출해주어야 됩니다.
 - 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
+- 상품 상세 페이지는 상품 1개 기준으로 수집되므로, goods 배열에는 현재 페이지의 상품 1개만 전달해주세요. (첫 번째 상품만 상세 조회 상품으로 처리됩니다.)
 - 상품 상태(status) 필드는 품절이거나 상품이 판매상태가 아닐 경우에만 "SS" 값을 넣어주시면 됩니다.  
   정상 판매중인 상품의 경우에는 빈 문자열("") 또는 "FS"로 전달해주세요.
+- 상품별 커스텀 데이터는 상품 정보의 attribute 필드(객체)에, 행동 단위 커스텀 데이터는 extraData 필드(객체)에 담아 전달할 수 있습니다.  
+  👉 [커스텀 데이터 전달 (attribute / extraData)](#custom-data) 항목을 참고해주세요.
 
 ```javascript
 groobee( "VG", {
@@ -106,9 +118,16 @@ groobee( "VG", {
       cateDNm: "티셔츠",
       brand: "P1",
       brandNm: "플래티",
-      plan: ['A1', 'A2', 'B1']
+      plan: ['A1', 'A2', 'B1'],
+      attribute: {           // (선택) 상품별 커스텀 데이터
+        color: "blue",
+        season: "SS26"
+      }
     }
-  ]
+  ],
+  extraData: {               // (선택) 행동 단위 커스텀 데이터
+    referrer: "event_banner"
+  }
 });
 ```
 
@@ -298,12 +317,17 @@ groobee( "CA", {
 });
 ```
 
+<a id="custom-ac"></a>
+
 ### 장바구니 담기 (AC)
 - 장바구니 담기 이벤트는 장바구니에 담긴 상품 정보와 함께 호출해주어야 됩니다.
 - 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
+- 커스텀 웹 사이트에서는 `groobee("AC", 값)` 형태가 아닌 **`groobee.addToCart(값)`** 함수로 호출해주세요.  
+  이 함수는 공통 스크립트 로드 이후에 사용할 수 있으므로, 장바구니 담기 버튼 클릭 시점 등에 호출하면 됩니다.
+- 상품코드(code), 판매가(prc), 수량(cnt)은 필수 값입니다. 셋 중 하나라도 비어 있거나 0인 상품은 전송에서 제외되며, 전송할 상품이 없으면 이벤트가 수집되지 않습니다.
 
 ```javascript
-groobee( "AC", {
+groobee.addToCart({
   goods : [
     {
       name: "파란색 줄무늬 티셔츠",
@@ -349,14 +373,19 @@ groobee( "AC", {
 });
 ```
 
+<a id="custom-dc"></a>
+
 ### 장바구니 제거 (DC)
 - 장바구니 제거 이벤트는 장바구니에서 제거된 상품 정보와 함께 호출해주어야 됩니다.
 - 상품 정보(goods)의 타입은 Goods 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
+- 커스텀 웹 사이트에서는 `groobee("DC", 값)` 형태가 아닌 **`groobee.deleteFromCart(값)`** 함수로 호출해주세요.  
+  이 함수는 공통 스크립트 로드 이후에 사용할 수 있으므로, 장바구니 삭제 버튼 클릭 시점 등에 호출하면 됩니다.
+- 상품코드(code), 판매가(prc), 수량(cnt)은 필수 값입니다. 셋 중 하나라도 비어 있거나 0인 상품은 전송에서 제외되며, 전송할 상품이 없으면 이벤트가 수집되지 않습니다.
 - 상품수(cnt) 필드는 장바구니에서 제거된 수량을 의미합니다.  
   - 예) 장바구니에 3개 담긴 상품을 모두 제거한 경우 cnt: 3 으로 전달
 
 ```javascript
-groobee( "DC", {
+groobee.deleteFromCart({
   goods : [
     {
       name: "파란색 줄무늬 티셔츠",
@@ -397,9 +426,11 @@ groobee.action("행동코드", 값);
 
 > **중요**  
 >   
-> SPA 모드로 공통 스크립트를 설치한 경우,      
-> groobee.start()가 호출되지 않으면, groobee.action() 함수를 사용할 수 없습니다.      
-> groobee.start() 함수를 호출하여 초기화 후 사용해야 합니다.  
+> SPA 모드로 공통 스크립트를 설치한 경우, 페이지(라우트) 전환마다 아래 중 하나를 호출해주세요.  
+>   
+> - 전달할 행동 이력이 있는 페이지(SE, VG, VC, OR, PU, CA 등): `groobee.action("행동코드", 값)`만 호출하면 됩니다. (`groobee.start()`를 먼저 호출할 필요는 없습니다.)  
+> - 그 외 페이지(메인 MA, 기타 LO): `groobee.start()`를 호출하면 등록된 웹 페이지 URL을 기준으로 메인 / 기타 페이지를 판별해 수집합니다.  
+>   
 > [공통 스크립트 설치](../installation/installation-web-common-script.md)의 SPA 환경 섹션 문서를 참고해주세요.
 
 <details markdown="1">
@@ -418,8 +449,10 @@ groobee.action( "SE", { keyword : "겨울옷" } );
 ### 상품 상세 페이지 (VG)
 - 상품 상세 페이지 방문 이력은 상품 정보 목록과 함께 호출해주어야 됩니다.
 - 상품 정보 목록(goods)의 타입은 Goods[] 이며, 상세한 필드별 설명은 [스키마 문서](../specs/action/schema.md)의 Goods 섹션를 참고해주세요.
+- 상품 상세 페이지는 상품 1개 기준으로 수집되므로, goods 배열에는 현재 페이지의 상품 1개만 전달해주세요. (첫 번째 상품만 상세 조회 상품으로 처리됩니다.)
 - 상품 상태(status) 필드는 품절이거나 상품이 판매상태가 아닐 경우에만 "SS" 값을 넣어주시면 됩니다.  
   정상 판매중인 상품의 경우에는 빈 문자열("")로 전달해주세요.
+- 상품별 커스텀 데이터(attribute), 행동 단위 커스텀 데이터(extraData)는 👉 [커스텀 데이터 전달 (attribute / extraData)](#custom-data) 항목을 참고해주세요.
 
 ```javascript
 groobee.action( "VG", {
@@ -694,7 +727,7 @@ groobee.action( "AC", {
   - 예) 장바구니에 3개 담긴 상품을 모두 제거한 경우 cnt: 3 으로 전달
 
 ```javascript
-groobee( "DC", {
+groobee.action( "DC", {
   goods : [
     {
       name: "파란색 줄무늬 티셔츠",
@@ -721,6 +754,48 @@ groobee( "DC", {
 ```
 
 </details>
+
+---
+
+<a id="custom-data"></a>
+## 커스텀 데이터 전달 (attribute / extraData)
+커스텀 웹 사이트(Custom)와 SPA 환경에서 행동 이력을 전달할 때, 정해진 필드 외에 고객사에서 정의한 데이터를 함께 전달할 수 있습니다.
+
+| 필드 | 위치 | 타입 | 설명 |
+|---|---|---|---|
+| attribute | goods 배열의 각 상품 정보 | Object | 상품별 커스텀 데이터 (예: 색상, 시즌, 소재 등) |
+| extraData | 행동 이력 값의 최상위 | Object | 행동 단위 커스텀 데이터 (예: 유입 경로, 노출 영역 등) |
+
+- 두 필드 모두 **키-값 형태의 객체(`{ ... }`)** 로만 전달해야 합니다.  
+  배열, 문자열, 숫자 등 객체가 아닌 값은 정상 처리되지 않습니다. (extraData와 VG 외 행동의 attribute는 객체가 아니면 전송에서 제외됩니다.)
+- 객체 내부의 키 이름과 값은 고객사에서 자유롭게 정의할 수 있으며, 입력한 그대로 전송됩니다.
+- extraData는 SE, VG, VC, OR, PU, CA, AC, DC 행동 이력에 함께 전달할 수 있습니다.
+- attribute는 상품 정보(goods)를 전달하는 행동 이력(VG, VC, OR, PU, AC, DC)에 사용할 수 있습니다.
+
+```javascript
+// 커스텀 웹 사이트 : groobee("VG", {...}) / SPA : groobee.action("VG", {...})
+groobee( "VG", {
+  goods : [
+    {
+      name: "파란색 줄무늬 티셔츠",
+      code: "0011",
+      prc: 25000,
+      salePrc: 20000,
+      status : "",
+      cat: "1234",
+      attribute: {
+        color: "blue",
+        season: "SS26",
+        material: "cotton"
+      }
+    }
+  ],
+  extraData: {
+    referrer: "event_banner",
+    abGroup: "B"
+  }
+});
+```
 
 ---
 
@@ -1242,7 +1317,7 @@ cafe24 유형은 현재 대카테고리 정보만 수집이 가능하며, 중/�
 
 <a id="wisawing"></a>
 ## 위사 (스마트윙)
-페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 위사(스마트윙) 유형 (wisa, wisa)으로 정상 설치 되어 있다면,
+페이지 내에 [공통 스크립트](../installation/installation-web-common-script.md)가 위사(스마트윙) 유형 (wisa, wisa_m)으로 정상 설치 되어 있다면,
 아래 스크립트들을 삽입하여 행동 이력을 수집할 수 있습니다.
 
 <details markdown="1">

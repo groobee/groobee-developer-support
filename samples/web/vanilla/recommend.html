@@ -44,14 +44,14 @@
     <p>두 가지 노출 방식을 함께 시연합니다. (캠페인의 노출 페이지 설정이 이 페이지와 맞아야 응답이 옵니다)</p>
 
     <!-- ① DIV 형 ──────────────────────────────────────────────────
-      class 는 groobee_recommendation 고정, id 는 추천 캠페인키입니다.
+      id 는 추천 캠페인키입니다. (스크립트는 id 로만 영역을 찾습니다)
       스크립트 실행 시점에 DIV 가 이미 존재해야 하므로,
       바로 아래 동기 스크립트로 config 의 캠페인키를 id 에 넣습니다.
       (디자인은 어드민 템플릿으로 렌더링됩니다) -->
     <h3>① DIV 형</h3>
-    <div class="groobee_recommendation" id="YOUR_RECOMMEND_CAMPAIGN_KEY"></div>
+    <div id="YOUR_RECOMMEND_CAMPAIGN_KEY"></div>
     <script>
-      document.querySelector(".groobee_recommendation").id =
+      document.getElementById("YOUR_RECOMMEND_CAMPAIGN_KEY").id =
         window.GROOBEE_CONFIG.recommendCampaignKey;
     </script>
 
