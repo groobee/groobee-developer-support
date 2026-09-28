@@ -5,6 +5,19 @@
 
 ---
 
+## 2026-09-28
+작성자: 김훈기
+
+- [Android SDK 변경 로그](./sdk-android-changelog.md)에 1.0.88 버전 변경 내역 추가 (가로 인앱 팝업 표출 개선, 딤 영역 탭 동작 변경, 높이 상한 설정 신설)
+- [Android SDK 설치 가이드](../installation/installation-android-sdk.md)에 인앱 팝업 이미지 높이 상한 설정 절 추가 (`setInAppMsgMaxHeightRatioPortrait`·`setInAppMsgMaxHeightRatioLandscape`, SDK 1.0.88)
+- [Android SDK 기능 지원 범위](./sdk-android-feature-support.md)에 인앱 팝업 높이 상한 설정 2건 추가
+- [iOS SDK 변경 로그](./sdk-ios-changelog.md)에 1.1.13 버전 변경 내역 추가 (가로·폴더블 인앱 팝업 잘림 수정, 닫기 버튼 크기 조정, 높이 상한 설정 신설)
+- [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md)에 인앱 팝업 이미지 높이 상한 설정 절 추가 (`setInAppMsgMaxHeightRatioPortrait`·`setInAppMsgMaxHeightRatioLandscape`, SDK 1.1.13)
+- [iOS SDK 기능 지원 범위](./sdk-ios-feature-support.md)에 인앱 팝업 높이 상한 설정 2건 추가
+- 현재 권장 버전(Stable) 갱신 — Android 1.0.83 → 1.0.88, iOS 1.1.11 → 1.1.13
+
+---
+
 ## 2026-09-23
 작성자: 이도환
 

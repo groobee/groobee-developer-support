@@ -170,6 +170,8 @@ public class MyApplication extends Application {
 | `GroobeeConfig` | `setHandlePushDeepLinks()` | 선택 | 푸시 클릭 시 딥링크 이동을 허용할지 설정합니다.                                                                                                                                                     |
 | `GroobeeConfig` | `setInAppMsgMarginTop()` | 선택 | 인앱메시지 상단 여백을 설정합니다.                                                                                                                                                             |
 | `GroobeeConfig` | `setInAppMsgMarginBottom()` | 선택 | 인앱메시지 하단 여백을 설정합니다.                                                                                                                                                             |
+| `GroobeeConfig` | `setInAppMsgMaxHeightRatioPortrait()` | 선택 | 세로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.0.88 신설)                                                                                              |
+| `GroobeeConfig` | `setInAppMsgMaxHeightRatioLandscape()` | 선택 | 가로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.0.88 신설)                                                                                              |
 | `GroobeeConfig` | `setPushImportance()` | 선택 | 푸시 메시지 중요도를 설정합니다.                                                                                                                                                              |
 | `GroobeeConfig` | `setRetryAuthConnection()` | 선택 | Groobee 인증 실패 시 재인증 여부를 설정합니다.                                                                                                                                                  |
 | `GroobeeConfig` | `setNotificationSettingsButton()` | 선택 | 푸시 알림 하단에 수신 설정 버튼을 추가합니다. 문자열 리소스와 설정 화면 딥링크가 필요합니다.                                                                                                                           |
@@ -188,6 +190,33 @@ public class MyApplication extends Application {
 | `DETAIL_LOG_ENABLED` | `boolean` | 상세 로그 활성화 |
 | `TRACE_ENABLED` | `boolean` | 추적 아이디 활성화 |
 | `LOG_CALLBACK` | `LoggerUtils.LogCallback` | 로그 콜백 등록 |
+
+<a id="inapp-popup-height-ratio"></a>
+#### 인앱 팝업 이미지 높이 상한 (SDK 1.0.88 이상)
+
+`setInAppMsgMaxHeightRatioPortrait()` / `setInAppMsgMaxHeightRatioLandscape()`로 **인앱 팝업(POPUP) 이미지**가 차지할 수 있는 높이의 상한을 조절할 수 있습니다. 두 메소드 모두 **선택 사항**이며, 호출하지 않으면 기본값으로 동작합니다.
+
+```java
+GroobeeConfig config = new GroobeeConfig.Builder()
+        .setApiKey("발급받은 서비스키")
+        .setInAppMsgMaxHeightRatioPortrait(0.8f)   // 세로 화면 상한
+        .setInAppMsgMaxHeightRatioLandscape(0.7f)  // 가로 화면 상한
+        .build();
+```
+
+| 항목 | 값 |
+| --- | --- |
+| 기본값 | `0.9` (세로 · 가로 동일) |
+| 허용 범위 | `0.4` ~ `0.9` |
+| 범위를 벗어난 값 | 가까운 끝값으로 조정됩니다 (`0.9` 초과 → `0.9`, `0.4` 미만 → `0.4`). 경고 로그가 남고 팝업은 정상 노출됩니다 |
+| `0` 이하 또는 유효하지 않은 값 | 기본값 `0.9`으로 동작합니다 |
+
+- **기준은 화면 전체 높이가 아니라 「팝업이 쓸 수 있는 높이」입니다.** 상태바와 내비게이션 바를 제외한 높이를 기준으로 계산합니다.
+- **적용 대상은 인앱 메시지 중 팝업(POPUP, 이미지 팝업)뿐입니다.**
+- **세로 화면에서는 값을 낮춰도 차이가 거의 없습니다.** 세로에서는 보통 이미지의 폭이 먼저 화면에 닿기 때문에 높이 상한까지 도달하지 않습니다. 화면보다 세로로 긴 소재에서만 좌우 여백이 생기는 형태로 나타납니다.
+- **가로 화면에서는 이 값이 곧 팝업 크기입니다.** 값을 낮추면 팝업이 작아지고 위아래 딤(어두운) 배경이 더 보입니다.
+- 가로·세로 구분은 기기의 물리적 방향이 아니라 **그 순간 앱이 쓸 수 있는 영역의 가로세로 비율**로 판단합니다(폴더블 접기/펼치기, 멀티윈도우 포함).
+- 값은 내부적으로 백분율 정수로 저장되어 **실질 정밀도는 소수점 둘째 자리(0.01 단위)** 입니다.
 
 ### 푸시 중요도 설정
 

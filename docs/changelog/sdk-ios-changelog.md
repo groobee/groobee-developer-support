@@ -8,6 +8,18 @@
 
 ---
 
+## [1.1.13] - 2026-09-28
+* fix: **가로 화면과 폴더블 기기에서 인앱 팝업이 화면 밖으로 잘리던 문제 수정.** 원본 비율을 유지한 채 안전영역 안에 표시되며, 화면 회전 시 다시 계산됩니다.
+* improve: 인앱 팝업 닫기(X) 버튼 크기를 팝업 크기에 맞춰 조정 (기존 20pt 고정 → 팝업 폭의 7.5%, 최소 32pt·최대 44pt). 탭 영역은 항상 44pt로 유지됩니다.
+* add: 인앱 팝업 이미지의 높이 상한을 SDK 초기화 시 조절할 수 있는 설정 신설 (`setInAppMsgMaxHeightRatioPortrait`, `setInAppMsgMaxHeightRatioLandscape`)
+* 관련 변경 페이지: [iOS SDK 설치 가이드 - 인앱 팝업 이미지 높이 상한](../installation/installation-ios-sdk.md#inapp-popup-height-ratio)
+
+변경 요약: 가로 화면에서 인앱 팝업이 잘려 보이던 문제를 수정했습니다. 앱 코드 수정 없이 SDK 버전만 올리면 적용되며, 높이 상한 설정은 선택 사항입니다. 최소 지원 OS 변경은 없습니다.
+
+> **팝업 크기 참고**: 이번 버전에서 팝업이 기존보다 커지는 경우는 없습니다. 1.1.12에서 화면 밖으로 넘치던 경우(가로 화면 전반, 세로 9:16 소재)는 화면 안으로 들어오며, 높이 상한 기본값 0.9가 적용되어 작아지는 경우가 있습니다.
+
+---
+
 ## [1.1.12] - 2026-08-13
 * add: 네이티브 → 웹뷰 동기화 메소드 **`syncNativeToWeb(_ domain:)`** 신설.
 * add: 하이브리드 동기화 메소드 호출시 최근 본 상품 목록을 함께 전달하도록 추가 (`syncWebToNative(webView:urlRequest:)`, `syncNativeToWeb(_ domain:)`)
