@@ -170,8 +170,8 @@ public class MyApplication extends Application {
 | `GroobeeConfig` | `setHandlePushDeepLinks()` | 선택 | 푸시 클릭 시 딥링크 이동을 허용할지 설정합니다.                                                                                                                                                     |
 | `GroobeeConfig` | `setInAppMsgMarginTop()` | 선택 | 인앱메시지 상단 여백을 설정합니다.                                                                                                                                                             |
 | `GroobeeConfig` | `setInAppMsgMarginBottom()` | 선택 | 인앱메시지 하단 여백을 설정합니다.                                                                                                                                                             |
-| `GroobeeConfig` | `setInAppMsgMaxHeightRatioPortrait()` | 선택 | 세로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.0.88 신설)                                                                                              |
-| `GroobeeConfig` | `setInAppMsgMaxHeightRatioLandscape()` | 선택 | 가로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.0.88 신설)                                                                                              |
+| `GroobeeConfig` | `setInAppMsgMaxHeightRatioPortrait()` | 선택 | 세로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.0.89 이상)                                                                                              |
+| `GroobeeConfig` | `setInAppMsgMaxHeightRatioLandscape()` | 선택 | 가로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.0.89 이상)                                                                                              |
 | `GroobeeConfig` | `setPushImportance()` | 선택 | 푸시 메시지 중요도를 설정합니다.                                                                                                                                                              |
 | `GroobeeConfig` | `setRetryAuthConnection()` | 선택 | Groobee 인증 실패 시 재인증 여부를 설정합니다.                                                                                                                                                  |
 | `GroobeeConfig` | `setNotificationSettingsButton()` | 선택 | 푸시 알림 하단에 수신 설정 버튼을 추가합니다. 문자열 리소스와 설정 화면 딥링크가 필요합니다.                                                                                                                           |
@@ -192,9 +192,11 @@ public class MyApplication extends Application {
 | `LOG_CALLBACK` | `LoggerUtils.LogCallback` | 로그 콜백 등록 |
 
 <a id="inapp-popup-height-ratio"></a>
-#### 인앱 팝업 이미지 높이 상한 (SDK 1.0.88 이상)
+#### 인앱 팝업 이미지 높이 상한 (SDK 1.0.89 이상)
 
 `setInAppMsgMaxHeightRatioPortrait()` / `setInAppMsgMaxHeightRatioLandscape()`로 **인앱 팝업(POPUP) 이미지**가 차지할 수 있는 높이의 상한을 조절할 수 있습니다. 두 메소드 모두 **선택 사항**이며, 호출하지 않으면 기본값으로 동작합니다.
+
+> SDK 1.0.88에서는 두 메소드를 호출하면 앱 빌드 시 컴파일 오류(`cannot find symbol`)가 발생합니다. 1.0.89 이상으로 올린 뒤 사용하세요. 호출하지 않는 경우 기본값 `0.9`는 1.0.88에도 적용되어 있습니다.
 
 ```java
 GroobeeConfig config = new GroobeeConfig.Builder()

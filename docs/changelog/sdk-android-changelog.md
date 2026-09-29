@@ -4,17 +4,25 @@
 
 ## 현재 권장 버전 (Stable)
 
-- 1.0.88
+- 1.0.89
+
+---
+
+## [1.0.89] - 2026-09-29
+* fix: 1.0.88에서 인앱 팝업 이미지 높이 상한 설정 메소드(`setInAppMsgMaxHeightRatioPortrait`, `setInAppMsgMaxHeightRatioLandscape`)를 호출하면 앱 빌드 시 컴파일 오류(`cannot find symbol`)가 발생하던 문제 수정
+* 관련 변경 페이지: [Android SDK 설치 가이드 - 인앱 팝업 이미지 높이 상한](../installation/installation-android-sdk.md#inapp-popup-height-ratio)
+
+변경 요약: 높이 상한 설정을 사용하려면 1.0.89 이상이 필요합니다. 이 설정을 사용하지 않는 앱은 1.0.88과 동작이 같습니다.
 
 ---
 
 ## [1.0.88] - 2026-09-28
 * improve: **가로 화면 인앱 팝업 표출 개선.** 팝업이 이미지 크기에 맞게 표시되어 좌우 빈 영역이 사라지고, 닫기 버튼이 이미지 모서리에 붙습니다.
 * change: **가로 팝업의 좌우 딤(어두운) 영역을 탭하면 랜딩되지 않고 팝업이 닫힙니다.** 기존에는 이미지 클릭으로 처리되어 랜딩되었습니다.
-* add: 인앱 팝업 이미지의 높이 상한을 SDK 초기화 시 조절할 수 있는 설정 신설 (`setInAppMsgMaxHeightRatioPortrait`, `setInAppMsgMaxHeightRatioLandscape`)
+* add: 인앱 팝업 이미지 높이 상한 도입 (기본값 `0.9`). 상한을 조절하는 설정 메소드(`setInAppMsgMaxHeightRatioPortrait`, `setInAppMsgMaxHeightRatioLandscape`)는 이 버전에서 호출하면 컴파일 오류가 발생하므로 **1.0.89 이상**에서 사용하세요.
 * 관련 변경 페이지: [Android SDK 설치 가이드 - 인앱 팝업 이미지 높이 상한](../installation/installation-android-sdk.md#inapp-popup-height-ratio)
 
-변경 요약: 가로 화면에서 인앱 팝업이 어색하게 표출되던 문제를 개선했습니다. 앱 코드 수정 없이 SDK 버전만 올리면 적용되며, 높이 상한 설정은 선택 사항입니다.
+변경 요약: 가로 화면에서 인앱 팝업이 어색하게 표출되던 문제를 개선했습니다. 앱 코드 수정 없이 SDK 버전만 올리면 적용되며, 높이 상한 설정은 선택 사항입니다(1.0.89 이상).
 
 > **팝업 크기 참고**: 이번 버전에서 팝업이 기존보다 커지는 경우는 없습니다. 높이가 먼저 차는 경우(가로 화면 전반, 태블릿 세로에서 세로로 긴 소재)에는 쓸 수 있는 높이의 90%까지만 사용하므로 가로·세로 각 최대 10% 작아질 수 있습니다.
 
