@@ -5,6 +5,17 @@
 
 ---
 
+## 2026-09-29
+작성자: 김훈기
+
+- [Android SDK 변경 로그](./sdk-android-changelog.md)에 1.0.89 버전 변경 내역 추가 (1.0.88에서 높이 상한 설정 메소드 호출 시 컴파일 오류가 발생하던 문제 수정), 1.0.88 항목에 높이 상한 설정 메소드는 1.0.89 이상에서 사용 가능함을 명시
+- [Android SDK 설치 가이드](../installation/installation-android-sdk.md#inapp-popup-height-ratio)의 인앱 팝업 이미지 높이 상한 지원 버전을 1.0.89 이상으로 정정
+- [Android SDK 기능 지원 범위](./sdk-android-feature-support.md)의 인앱 팝업 높이 상한 설정 2건 지원 버전을 1.0.89 이상으로 정정
+- 현재 최신 SDK 버전 갱신 — Android 1.0.86 → 1.0.89, iOS 1.1.12 → 1.1.13
+- 현재 권장 버전(Stable) 갱신 — Android 1.0.88 → 1.0.89
+
+---
+
 ## 2026-09-28
 작성자: 김훈기
 
