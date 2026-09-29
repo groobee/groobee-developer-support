@@ -48,7 +48,7 @@ flutter {
 
 dependencies {
     // Groobee Android SDK (Maven Central)
-    implementation("io.groobee.message:groobee-sdk-message:1.0.83")
+    implementation("io.groobee.message:groobee-sdk-message:1.0.89")
     // MethodChannel 응답(JSON 직렬화)에 사용
     implementation("com.google.code.gson:gson:2.10.1")
 }
