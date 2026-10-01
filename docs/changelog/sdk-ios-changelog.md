@@ -4,7 +4,12 @@
 
 ## 현재 권장 버전 (Stable)
 
-- 1.1.11
+- 1.1.13
+
+---
+
+## [1.1.14] - 2026-10-01
+* add: 인앱 팝업 닫기 버튼 크기 조정 설정 추가 (`setInAppMsgCloseButtonScale`, [설치 가이드](../installation/installation-ios-sdk.md#inapp-close-button-scale))
 
 ---
 
