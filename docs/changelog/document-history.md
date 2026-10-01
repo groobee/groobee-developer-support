@@ -11,7 +11,10 @@
 - [Android SDK 변경 로그](./sdk-android-changelog.md)에 1.0.90·1.0.91 버전 변경 내역 추가 (인앱 팝업 닫기 버튼 크기 조정 설정 추가, 닫기 버튼 표시 개선)
 - [Android SDK 설치 가이드](../installation/installation-android-sdk.md#inapp-close-button-scale)에 인앱 팝업 닫기 버튼 크기 설정 절 추가 (`setInAppMsgCloseButtonScale`, SDK 1.0.91 이상)
 - [Android SDK 기능 지원 범위](./sdk-android-feature-support.md)에 인앱 팝업 닫기 버튼 크기 설정 추가
-- 현재 최신 SDK 버전 갱신 — Android 1.0.89 → 1.0.91
+- [iOS SDK 변경 로그](./sdk-ios-changelog.md)에 1.1.14 버전 변경 내역 추가 (인앱 팝업 닫기 버튼 크기 조정 설정 추가)
+- [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md#inapp-close-button-scale)에 인앱 팝업 닫기 버튼 크기 설정 절 추가 (`setInAppMsgCloseButtonScale`, SDK 1.1.14)
+- [iOS SDK 기능 지원 범위](./sdk-ios-feature-support.md)에 인앱 팝업 닫기 버튼 크기 설정 추가
+- 현재 최신 SDK 버전 갱신 — Android 1.0.89 → 1.0.91, iOS 1.1.13 → 1.1.14
 
 ---
 

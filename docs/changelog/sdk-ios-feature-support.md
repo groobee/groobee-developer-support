@@ -29,6 +29,7 @@
 | 인앱 메시지 하단 마진 | `setInAppMsgMarginBottom` | ✅ 지원 | 선택 |
 | 인앱 팝업 세로 높이 상한 | `setInAppMsgMaxHeightRatioPortrait` | ✅ 지원 | 1.1.13 신설. 선택. 기본값 0.9, 허용 범위 0.4~0.9. 안전영역 높이 기준, 팝업(POPUP) 이미지에만 적용 |
 | 인앱 팝업 가로 높이 상한 | `setInAppMsgMaxHeightRatioLandscape` | ✅ 지원 | 1.1.13 신설. 선택. 기본값 0.9, 허용 범위 0.4~0.9. 안전영역 높이 기준, 팝업(POPUP) 이미지에만 적용 |
+| 인앱 팝업 닫기 버튼 크기 | `setInAppMsgCloseButtonScale` | ✅ 지원 | 1.1.14 신설. 선택. 기본값 1.0(기본 크기), 허용 범위 1.0~2.0. 팝업(POPUP)에만 적용 |
 | 푸시 알림 수신 설정 버튼 | `setNotificationSettingsButton` | ✅ 지원 | 텍스트 + 딥링크 URL 지정, 다국어 처리 시 `NSLocalizedString` 권장 |
 | 앱 생명주기 연동 | `GroobeeKitLifeCycle` | ✅ 지원 | iOS 13 미만: AppDelegate, iOS 13 이상: SceneDelegate에 각 Life Cycle 메소드 연결 |
 | Firebase 초기화 | `FirebaseApp.configure` | ✅ 지원 | 필수 |

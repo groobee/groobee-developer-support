@@ -142,6 +142,7 @@ React-Native 참고:
 | `GroobeeConfig` | `setInAppMsgMarginBottom()` | 선택. 인앱메시지 하단 노출일 경우 마진값을 설정합니다. |
 | `GroobeeConfig` | `setInAppMsgMaxHeightRatioPortrait()` | 선택. 세로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.1.13 신설) |
 | `GroobeeConfig` | `setInAppMsgMaxHeightRatioLandscape()` | 선택. 가로 화면에서 인앱 팝업 이미지가 쓸 수 있는 높이 비율의 상한을 설정합니다. 기본값 `0.9`, 허용 범위 `0.4` ~ `0.9`. (SDK 1.1.13 신설) |
+| `GroobeeConfig` | `setInAppMsgCloseButtonScale()` | 선택. 인앱 팝업 닫기(X) 버튼을 기본 크기의 몇 배로 표시할지 설정합니다. 기본값 `1.0`, 허용 범위 `1.0` ~ `2.0`. (SDK 1.1.14 신설) |
 | `GroobeeConfig` | `setNotificationSettingsButton()` | 선택. 푸시 알림 하단에 수신 설정 버튼을 추가합니다. 버튼 텍스트는 `NSLocalizedString`으로 다국어화된 텍스트 사용을 권장하며, 앱에 알림 수신 설정 페이지로 이동할 딥링크 처리가 별도로 필요합니다. |
 | `Groobee` | `configure()` | 필수. 설정한 `GroobeeConfig`를 앱에 적용합니다. |
 | `FirebaseApp` | `configure()` | 필수. FCM 활용을 위한 Firebase 연동입니다. |
@@ -272,6 +273,37 @@ GroobeeConfig *groobeeConfig = [[[[[[GroobeeConfigBuilder alloc] init]
 - 가로·세로 구분은 기기의 물리적 방향이 아니라 **그 순간 앱이 쓸 수 있는 영역의 가로세로 비율**로 판단합니다.
 
 > Android SDK에도 같은 이름·같은 규칙의 설정이 있습니다(기준 높이만 플랫폼에 따라 다릅니다). [Android SDK 설치 가이드](./installation-android-sdk.md#inapp-popup-height-ratio) 참고.
+
+---
+
+<a id="inapp-close-button-scale"></a>
+### 인앱 팝업 닫기 버튼 크기 (SDK 1.1.14 이상)
+
+`setInAppMsgCloseButtonScale()`로 **인앱 팝업(POPUP)의 닫기(X) 버튼**을 기본 크기의 몇 배로 표시할지 설정할 수 있습니다. 예를 들어 `1.8`을 넣으면 닫기 버튼이 기본의 1.8배 크기로 표시됩니다. **선택 사항**이며, 호출하지 않으면 기본 크기 그대로 표시됩니다.
+
+```swift
+let groobeeConfig = GroobeeConfig.GroobeeConfigBuilder()
+    .setServiceKey(serviceKey: serviceKey, bundleId: bundleID)
+    .setInAppMsgCloseButtonScale(1.8)  // 닫기 버튼을 기본의 1.8배로
+    .build()
+
+Groobee.configure(groobeeConfig: groobeeConfig)
+```
+
+```objectivec
+GroobeeConfig *groobeeConfig = [[[[[GroobeeConfigBuilder alloc] init]
+    setServiceKeyWithServiceKey:serviceKey bundleId:bundleId]
+    setInAppMsgCloseButtonScale:1.8]
+    build];
+```
+
+| 항목 | 값 |
+| --- | --- |
+| 기본값 | `1.0` (기본 크기) |
+| 허용 범위 | `1.0` ~ `2.0` |
+| 범위를 벗어난 값 | 가까운 끝값으로 조정됩니다 (`2.0` 초과 → `2.0`, `1.0` 미만 → `1.0`) |
+
+- **적용 대상은 인앱 메시지 중 팝업(POPUP)뿐입니다.** 다른 유형의 인앱 메시지 닫기 버튼은 크기가 바뀌지 않습니다.
 
 ---
 
