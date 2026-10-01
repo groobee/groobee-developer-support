@@ -15,6 +15,7 @@
 - [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md#inapp-close-button-scale)에 인앱 팝업 닫기 버튼 크기 설정 절 추가 (`setInAppMsgCloseButtonScale`, SDK 1.1.14)
 - [iOS SDK 기능 지원 범위](./sdk-ios-feature-support.md)에 인앱 팝업 닫기 버튼 크기 설정 추가
 - 현재 최신 SDK 버전 갱신 — Android 1.0.89 → 1.0.91, iOS 1.1.13 → 1.1.14
+- [iOS SDK 변경 로그](./sdk-ios-changelog.md)의 현재 권장 버전(Stable)을 1.1.13으로 정정 — 2026-09-28 이력에 적힌 갱신(1.1.11 → 1.1.13)이 변경 로그에 반영되지 않았던 것을 바로잡음
 
 ---
 
