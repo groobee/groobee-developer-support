@@ -10,7 +10,7 @@ Maven Central 에 배포된 **Groobee Android SDK** 를 사용하는 최소 동�
 | 항목 | 값 |
 | --- | --- |
 | 저장소 | `mavenCentral()` (별도 URL/인증 불필요) |
-| 의존성 | `io.groobee.message:groobee-sdk-message:1.0.83` |
+| 의존성 | `io.groobee.message:groobee-sdk-message:1.0.89` |
 | 푸시 | Firebase Cloud Messaging (`firebase-bom:33.16.0`) |
 
 빌드 도구 버전은 SDK 가 검증된 조합(AGP 7.4.2 / Kotlin 1.8.0 / Gradle 7.5)에 맞춰져 있습니다.

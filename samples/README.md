@@ -7,7 +7,7 @@ Groobee SDK / 스크립트 적용 예제 모음입니다.
 
 | 샘플 | 설명 | 정식 SDK |
 | --- | --- | --- |
-| [android-kotlin](app/android-kotlin) | Android(Kotlin) 네이티브 데모 | `io.groobee.message:groobee-sdk-message:1.0.83` (Maven Central) |
+| [android-kotlin](app/android-kotlin) | Android(Kotlin) 네이티브 데모 | `io.groobee.message:groobee-sdk-message:1.0.89` (Maven Central) |
 | [ios-swift](app/ios-swift) | iOS(Swift) 네이티브 데모 | `pod 'GroobeeKit', '~> 1.1.6'` (CocoaPods) |
 | [flutter](app/flutter) | Flutter(Dart) 데모 — MethodChannel 브리지 | 위 두 네이티브 SDK 를 그대로 사용 |
 

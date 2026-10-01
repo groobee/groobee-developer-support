@@ -253,7 +253,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // 주의: SDK 1.0.83 의 onFailed 는 (exceptMsg, campaignKey) 2개 인자입니다.
+                // 주의: onFailed 는 (exceptMsg, campaignKey) 2개 인자입니다.
                 override fun onFailed(exceptMsg: String, campaignKey: String) {
                     LogBus.log("추천 실패: $exceptMsg (campaignKey=$campaignKey)")
                 }

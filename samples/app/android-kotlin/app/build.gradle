@@ -71,11 +71,11 @@ dependencies {
     // Groobee Android SDK (Maven Central)
     //   group:    io.groobee.message
     //   artifact: groobee-sdk-message
-    //   version:  1.0.83  (현재 Stable)
+    //   version:  1.0.89  (현재 Stable)
     // 최신 버전은 변경 로그를 참고하세요:
     //   docs/changelog/sdk-android-changelog.md
     // ──────────────────────────────────────────────────────────────────
-    implementation "io.groobee.message:groobee-sdk-message:1.0.83"
+    implementation "io.groobee.message:groobee-sdk-message:1.0.89"
 
     // ── Firebase Cloud Messaging (푸시 수신) ───────────────────────────
     implementation platform('com.google.firebase:firebase-bom:33.16.0')
