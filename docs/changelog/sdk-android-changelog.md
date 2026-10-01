@@ -8,6 +8,16 @@
 
 ---
 
+## [1.0.91] - 2026-10-01
+* improve: 인앱 팝업 닫기 버튼 표시 개선
+
+---
+
+## [1.0.90] - 2026-10-01
+* add: 인앱 팝업 닫기 버튼 크기 조정 설정 추가 (`setInAppMsgCloseButtonScale`, [설치 가이드](../installation/installation-android-sdk.md#inapp-close-button-scale))
+
+---
+
 ## [1.0.89] - 2026-09-29
 * fix: 1.0.88에서 인앱 팝업 이미지 높이 상한 설정 메소드(`setInAppMsgMaxHeightRatioPortrait`, `setInAppMsgMaxHeightRatioLandscape`)를 호출하면 앱 빌드 시 컴파일 오류(`cannot find symbol`)가 발생하던 문제 수정
 * 관련 변경 페이지: [Android SDK 설치 가이드 - 인앱 팝업 이미지 높이 상한](../installation/installation-android-sdk.md#inapp-popup-height-ratio)

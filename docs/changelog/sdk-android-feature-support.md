@@ -24,6 +24,7 @@
 | 인앱 메시지 하단 마진 | `setInAppMsgMarginBottom` | ✅ 지원 | 선택 |
 | 인앱 팝업 세로 높이 상한 | `setInAppMsgMaxHeightRatioPortrait` | ✅ 지원 | 1.0.89 이상. 선택. 기본값 0.9, 허용 범위 0.4~0.9. 팝업(POPUP)에만 적용 |
 | 인앱 팝업 가로 높이 상한 | `setInAppMsgMaxHeightRatioLandscape` | ✅ 지원 | 1.0.89 이상. 선택. 기본값 0.9, 허용 범위 0.4~0.9. 팝업(POPUP)에만 적용 |
+| 인앱 팝업 닫기 버튼 크기 | `setInAppMsgCloseButtonScale` | ✅ 지원 | 1.0.91 이상. 선택. 기본값 1.0(기존 크기), 허용 범위 1.0~2.0. 팝업(POPUP)에만 적용 |
 | 푸시 메시지 중요도 설정 | `setPushImportance` | ✅ 지원 | Android N 이상에서 `IMPORTANCE_DEFAULT` / `IMPORTANCE_HIGH` 사용 |
 | 재인증 수행 여부 | `setRetryAuthConnection` | ✅ 지원 | 선택 |
 | 푸시 알림 수신 설정 버튼 | `setNotificationSettingsButton` | ✅ 지원 | 앱 설정 페이지 딥링크 처리 필요 |
