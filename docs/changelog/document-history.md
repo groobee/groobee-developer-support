@@ -5,6 +5,15 @@
 
 ---
 
+## 2026-10-08
+작성자: 김훈기
+
+- [Android SDK 행동 수집 상세](../detail/android-sdk-actions.md)에 장바구니 담기(`setAddToCart`)·제거(`setDeleteFromCart`) 추가 (SDK 배포 전, 지원 버전 미정)
+- [iOS SDK 행동 수집 상세](../detail/ios-sdk-actions.md)에 장바구니 담기(`setAddToCart`)·제거(`setDeleteFromCart`) 추가 (SDK 배포 전, 지원 버전 미정)
+- [Android SDK 기능 지원 범위](./sdk-android-feature-support.md)·[iOS SDK 기능 지원 범위](./sdk-ios-feature-support.md)에 장바구니 담기·제거 추가
+
+---
+
 ## 2026-10-01
 작성자: 김훈기
 

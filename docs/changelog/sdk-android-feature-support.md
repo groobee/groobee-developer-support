@@ -61,7 +61,9 @@
 |---|---|---|---|
 | 검색 키워드 | `setSearchKeyword` | ✅ 지원 | 선택 |
 | 상품 상세 | `setViewGoods` | ✅ 지원 | 선택 |
-| 장바구니 | `setShoppingCart` | ✅ 지원 | 선택 |
+| 장바구니 | `setShoppingCart` | ✅ 지원 | 선택 (장바구니 화면 조회) |
+| 장바구니 담기 | `setAddToCart` | ✅ 지원 | 다음 버전(미정) 이상. 선택 |
+| 장바구니 제거 | `setDeleteFromCart` | ✅ 지원 | 다음 버전(미정) 이상. 선택. `goodsCnt`는 뺄 수량 |
 | 주문하기 | `setGoodsOrder` | ✅ 지원 | 선택 |
 | 주문 완료 | `setGoodsOrderComplete` | ✅ 지원 | 선택, 전환 측정 |
 | 카테고리 | `setCategory` | ✅ 지원 | 선택 |

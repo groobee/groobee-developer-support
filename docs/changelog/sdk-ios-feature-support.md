@@ -68,7 +68,9 @@
 |---|---|---|---|
 | 검색 키워드 | `setSearchKeyword(searchKwd:screenId:)` | ✅ 지원 | 선택 |
 | 상품 상세 | `setViewGoods(goods:screenId:)` | ✅ 지원 | 선택 |
-| 장바구니 | `setShoppingCart(goods:screenId:)` | ✅ 지원 | 선택 |
+| 장바구니 | `setShoppingCart(goods:screenId:)` | ✅ 지원 | 선택 (장바구니 화면 조회) |
+| 장바구니 담기 | `setAddToCart(goods:screenId:clickButton:)` | ✅ 지원 | 다음 버전(미정) 이상. 선택 |
+| 장바구니 제거 | `setDeleteFromCart(goods:screenId:clickButton:)` | ✅ 지원 | 다음 버전(미정) 이상. 선택. `goodsCnt`는 뺄 수량 |
 | 주문하기 | `setGoodsOrder(goods:screenId:)` | ✅ 지원 | 선택 |
 | 주문 완료 | `setGoodsOrderComplete(orderNo:goods:screenId:)` | ✅ 지원 | 선택, 전환 측정 |
 | 카테고리 | `setCategory(cateCd:cateNm:screenId:)` | ✅ 지원 | 선택 |
