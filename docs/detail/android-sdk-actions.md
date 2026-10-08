@@ -119,6 +119,41 @@ Goods goodsItem = Goods.builder()
 | `goodsList` | `List<Goods>` | 장바구니에 담긴 상품 목록 | `listOf(goodsA, goodsB)` |
 | `screenId` | `String` | 화면 식별 ID | `"SCREEN_CART"` |
 
+### `setAddToCart(activity, goodsList, screenId)`
+
+- 사용자가 상품을 장바구니에 **담은 시점**에 호출합니다. (장바구니 담기, AC)
+- `goodsList`의 각 `Goods`는 `setShoppingCart()`와 같은 필드를 사용하며, `goodsCnt`는 담은 수량입니다.
+
+| 파라미터 | 자료형 | 설명 | 예시 |
+| --- | --- | --- | --- |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
+| `goodsList` | `List<Goods>` | 장바구니에 담은 상품 목록 | `listOf(goodsItem)` |
+| `screenId` | `String` | 화면 식별 ID | `"SCREEN_PRODUCT_DETAIL"` |
+
+```kotlin
+Groobee.getInstance().setAddToCart(this, listOf(goodsItem), "SCREEN_PRODUCT_DETAIL")
+```
+
+### `setDeleteFromCart(activity, goodsList, screenId)`
+
+- 사용자가 장바구니에서 상품을 **제거한 시점**에 호출합니다. (장바구니 제거, DC)
+- `goodsCnt`는 장바구니에서 **뺄 수량(양수)**입니다. 남은 수량이 아닙니다.
+
+| 파라미터 | 자료형 | 설명 | 예시 |
+| --- | --- | --- | --- |
+| `activity` | `Activity` | 호출하는 Activity 컨텍스트 | `MyActivity.this` or `this@MyActivity` |
+| `goodsList` | `List<Goods>` | 장바구니에서 뺀 상품 목록 | `listOf(goodsItem)` |
+| `screenId` | `String` | 화면 식별 ID | `"SCREEN_CART"` |
+
+```kotlin
+Groobee.getInstance().setDeleteFromCart(this, listOf(goodsItem), "SCREEN_CART")
+```
+
+- 호출 시점: `setShoppingCart()`는 **장바구니 화면 조회** 시, `setAddToCart`/`setDeleteFromCart`는 **장바구니에 담거나 뺄 때** 호출합니다. 서로 대체하지 않으며 각각의 시점에 호출하세요.
+- `goodsCd`가 없거나 `goodsCnt`가 `null`·0 이하인 상품은 SDK가 제외하고, 남은 상품이 없으면 전송하지 않습니다(로그만 남김).
+- `setDeleteFromCart()`의 `goodsCnt`는 장바구니에서 **뺄 수량(양수)**입니다. 남은 수량이 아닙니다.
+- 지원 버전: SDK 1.0.92 이상
+
 ### `setGoodsOrder(activity, goodsList, screenId)`
 
 - 주문하기 화면 진입 시 호출해 구매 전환 직전 행동 데이터를 수집합니다.
@@ -182,7 +217,9 @@ Goods goodsItem = Goods.builder()
 | --- | --- |
 | 검색어 입력 | `setSearchKeyword()` |
 | 상품 상세 조회 | `setViewGoods()` |
-| 장바구니 담기 / 조회 | `setShoppingCart()` |
+| 장바구니 화면 조회 | `setShoppingCart()` |
+| 장바구니 담기 | `setAddToCart()` |
+| 장바구니 제거 | `setDeleteFromCart()` |
 | 주문 진행 | `setGoodsOrder()` |
 | 주문 완료 | `setGoodsOrderComplete()` |
 | 카테고리 진입 | `setCategory()` |

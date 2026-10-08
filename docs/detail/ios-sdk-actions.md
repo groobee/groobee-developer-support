@@ -153,6 +153,53 @@ NSMutableArray<Goods *> *goodsList = [NSMutableArray array];
 - `setShoppingCart()` 메소드는 장바구니 진입 시 호출을 권장합니다.
 - 세그먼트 변수 생성, AI 분석(RFM, 구매확률), 전환 상태 측정, 트리거 옵션 기능에 활용됩니다.
 
+### `setAddToCart(goods, screenId)`
+
+사용자가 상품을 장바구니에 **담은 시점**에 호출합니다. (장바구니 담기, AC) `goodsCnt`는 담은 수량입니다.
+
+Swift:
+
+```swift
+Groobee.getInstance().setAddToCart(goods: [goodsItem], screenId: SCREEN_ID)
+```
+
+Objective-C:
+
+```objectivec
+[[Groobee getInstance] setAddToCartWithGoods:@[goodsItem]
+                                    screenId:SCREEN_ID
+                                 clickButton:NULL];
+```
+
+### `setDeleteFromCart(goods, screenId)`
+
+사용자가 장바구니에서 상품을 **제거한 시점**에 호출합니다. (장바구니 제거, DC) `goodsCnt`는 장바구니에서 **뺄 수량(양수)**입니다. 남은 수량이 아닙니다.
+
+Swift:
+
+```swift
+Groobee.getInstance().setDeleteFromCart(goods: [goodsItem], screenId: SCREEN_ID)
+```
+
+Objective-C:
+
+```objectivec
+[[Groobee getInstance] setDeleteFromCartWithGoods:@[goodsItem]
+                                         screenId:SCREEN_ID
+                                      clickButton:NULL];
+```
+
+| 변수명 | 자료형 | 설명 | 예시 |
+| --- | --- | --- | --- |
+| `goods` | `Array<Goods>` | 담거나 뺀 상품 목록. `setShoppingCart()`와 같은 `Goods` 필드 사용 | 위 코드와 같이 상품정보를 입력 |
+| `SCREEN_ID` | `String` | 화면 식별 ID | `SCREEN_PAGE_01` |
+| `clickButton` | `DetectClickedButton?` | 클릭 버튼 감지용 (선택, 기본값 `nil`) | `nil` |
+
+- 호출 시점: `setShoppingCart()`는 **장바구니 화면 조회** 시, `setAddToCart`/`setDeleteFromCart`는 **장바구니에 담거나 뺄 때** 호출합니다. 서로 대체하지 않으며 각각의 시점에 호출하세요.
+- `goodsCd`가 없거나 `goodsCnt`가 `null`·0 이하인 상품은 SDK가 제외하고, 남은 상품이 없으면 전송하지 않습니다(로그만 남김).
+- `setDeleteFromCart()`의 `goodsCnt`는 장바구니에서 **뺄 수량(양수)**입니다. 남은 수량이 아닙니다.
+- 지원 버전: SDK 1.1.15 이상
+
 <a id="order"></a>
 ## 주문하기
 
