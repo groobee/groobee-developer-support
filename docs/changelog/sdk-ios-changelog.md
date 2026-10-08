@@ -8,6 +8,11 @@
 
 ---
 
+## [1.1.15] - 2026-10-08
+* add: 장바구니 담기(AC)·제거(DC) 행동 수집 API 추가 (`setAddToCart`, `setDeleteFromCart`, [행동 수집 상세](../detail/ios-sdk-actions.md#setaddtocartgoods-screenid))
+
+---
+
 ## [1.1.14] - 2026-10-01
 * add: 인앱 팝업 닫기 버튼 크기 조정 설정 추가 (`setInAppMsgCloseButtonScale`, [설치 가이드](../installation/installation-ios-sdk.md#inapp-close-button-scale))
 

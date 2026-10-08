@@ -198,7 +198,7 @@ Objective-C:
 - 호출 시점: `setShoppingCart()`는 **장바구니 화면 조회** 시, `setAddToCart`/`setDeleteFromCart`는 **장바구니에 담거나 뺄 때** 호출합니다. 서로 대체하지 않으며 각각의 시점에 호출하세요.
 - `goodsCd`가 없거나 `goodsCnt`가 `null`·0 이하인 상품은 SDK가 제외하고, 남은 상품이 없으면 전송하지 않습니다(로그만 남김).
 - `setDeleteFromCart()`의 `goodsCnt`는 장바구니에서 **뺄 수량(양수)**입니다. 남은 수량이 아닙니다.
-- 지원 버전: 다음 버전(미정) 이상. 배포 후 버전이 확정되면 갱신합니다.
+- 지원 버전: SDK 1.1.15 이상
 
 <a id="order"></a>
 ## 주문하기

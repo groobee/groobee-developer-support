@@ -8,6 +8,11 @@
 
 ---
 
+## [1.0.92] - 2026-10-08
+* add: 장바구니 담기(AC)·제거(DC) 행동 수집 API 추가 (`setAddToCart`, `setDeleteFromCart`, [행동 수집 상세](../detail/android-sdk-actions.md#setaddtocartactivity-goodslist-screenid))
+
+---
+
 ## [1.0.91] - 2026-10-01
 * improve: 인앱 팝업 닫기 버튼 표시 개선
 

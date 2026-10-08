@@ -8,9 +8,12 @@
 ## 2026-10-08
 작성자: 김훈기
 
-- [Android SDK 행동 수집 상세](../detail/android-sdk-actions.md)에 장바구니 담기(`setAddToCart`)·제거(`setDeleteFromCart`) 추가 (SDK 배포 전, 지원 버전 미정)
-- [iOS SDK 행동 수집 상세](../detail/ios-sdk-actions.md)에 장바구니 담기(`setAddToCart`)·제거(`setDeleteFromCart`) 추가 (SDK 배포 전, 지원 버전 미정)
+- [Android SDK 변경 로그](./sdk-android-changelog.md)에 1.0.92 버전 변경 내역 추가 (장바구니 담기·제거 API 추가)
+- [Android SDK 행동 수집 상세](../detail/android-sdk-actions.md)에 장바구니 담기(`setAddToCart`)·제거(`setDeleteFromCart`) 추가 (SDK 1.0.92 이상)
+- [iOS SDK 변경 로그](./sdk-ios-changelog.md)에 1.1.15 버전 변경 내역 추가 (장바구니 담기·제거 API 추가)
+- [iOS SDK 행동 수집 상세](../detail/ios-sdk-actions.md)에 장바구니 담기(`setAddToCart`)·제거(`setDeleteFromCart`) 추가 (SDK 1.1.15 이상)
 - [Android SDK 기능 지원 범위](./sdk-android-feature-support.md)·[iOS SDK 기능 지원 범위](./sdk-ios-feature-support.md)에 장바구니 담기·제거 추가
+- 현재 최신 SDK 버전 갱신 — Android 1.0.91 → 1.0.92, iOS 1.1.14 → 1.1.15
 
 ---
 
