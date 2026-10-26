@@ -79,7 +79,7 @@ pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.gi
     ```
 
     - 새 버전으로 올릴 때는 `:tag` 값을 바꾼 뒤 `pod update GroobeeKit`(또는 `pod install`)을 실행합니다. 태그는 `v` 없이 숫자만 씁니다.
-    - 최신 버전 번호는 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md) 또는 GitHub Releases에서 확인하세요.
+    - 최신 버전은 [groobee-ios-sdk-release 태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)에서 확인하고, 그 태그 이름을 `:tag`에 그대로 넣으세요. 변경 내용은 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md)에서 확인할 수 있습니다.
     - Notification Service/Content Extension 타깃에도 `GroobeeKit`을 추가했다면 메인 타깃과 **같은 `:tag`** 를 사용하세요.
 
 ### 2. Pod install
