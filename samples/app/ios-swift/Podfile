@@ -4,12 +4,13 @@ use_frameworks!
 
 target 'GroobeeSample' do
   # ────────────────────────────────────────────────────────────────
-  # Groobee iOS SDK (CocoaPods)
-  #   현재 Stable: 1.1.13
-  #   설치 가이드 표기 그대로 쓰려면 버전 핀 없이 `pod 'GroobeeKit'` 만 두면
-  #   최신 릴리스를 받습니다. 아래는 1.1.x 안정 라인에 고정한 형태입니다.
+  # Groobee iOS SDK (CocoaPods, 배포 저장소 git 태그)
+  #   현재 Stable: 1.1.15
+  #   최신 태그 확인: https://github.com/groobee/groobee-ios-sdk-release/tags
+  #   (CocoaPods Trunk 는 2026-12-02 부터 읽기 전용이라 :git + :tag 로 설치합니다.
+  #    버전을 올릴 때는 :tag 값을 바꾸세요.)
   # ────────────────────────────────────────────────────────────────
-  pod 'GroobeeKit', '~> 1.1.6'
+  pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 
   # ── Firebase Cloud Messaging (푸시) ──────────────────────────────
   #   푸시가 필요 없으면 아래 두 줄과

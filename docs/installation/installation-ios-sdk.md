@@ -52,7 +52,7 @@ Native:
 ```ruby
 pod 'FirebaseCore'
 pod 'FirebaseMessaging'
-pod 'GroobeeKit'
+pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 ```
 
 React-Native 참고:
@@ -61,8 +61,26 @@ React-Native 참고:
 pod 'GoogleUtilities', :modular_headers => true
 pod 'FirebaseCore', :modular_headers => true
 pod 'FirebaseMessaging', :modular_headers => true
-pod 'GroobeeKit'
+pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 ```
+
+!!! warning "CocoaPods Trunk 읽기 전용 전환 안내"
+    CocoaPods Trunk가 읽기 전용으로 바뀌어, 2026-11-01 ~ 11-07 시험 주간에는 새 버전 등록(push)이 실패하고 **2026-12-02부터는 계속 읽기 전용**이 됩니다. 이후 GroobeeKit 새 버전은 Trunk에 올라가지 않으므로, 위 예시처럼 Groobee 배포 저장소의 git 태그로 설치하세요.
+
+    - 이미 설치되어 있는 버전은 Trunk 전환 이후에도 계속 빌드됩니다.
+    - 기존 `Podfile`에서 바꿀 부분은 `GroobeeKit` 한 줄입니다.
+
+    ```ruby
+    # 변경 전 (Trunk)
+    pod 'GroobeeKit'
+
+    # 변경 후 (git 태그)
+    pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
+    ```
+
+    - 새 버전으로 올릴 때는 `:tag` 값을 바꾼 뒤 `pod update GroobeeKit`(또는 `pod install`)을 실행합니다. 태그는 `v` 없이 숫자만 씁니다.
+    - 최신 버전은 [groobee-ios-sdk-release 태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)에서 확인하고, 그 태그 이름을 `:tag`에 그대로 넣으세요. 변경 내용은 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md)에서 확인할 수 있습니다.
+    - Notification Service/Content Extension 타깃에도 `GroobeeKit`을 추가했다면 메인 타깃과 **같은 `:tag`** 를 사용하세요.
 
 ### 2. Pod install
 
@@ -71,6 +89,25 @@ pod 'GroobeeKit'
 ```bash
 pod install
 ```
+
+!!! tip "Xcode 27에서 최소 배포 버전 오류가 나는 경우"
+    Xcode 27은 최소 배포 버전(`IPHONEOS_DEPLOYMENT_TARGET`)이 iOS 15.0 미만인 타깃을 빌드하지 않습니다. `GroobeeKit`을 포함한 일부 Pod은 더 낮은 버전으로 설정되어 있어 Pods 타깃에서 이 오류가 날 수 있습니다. 이때는 `Podfile` 맨 아래에 아래 `post_install`을 추가하고 `pod install`을 다시 실행하세요.
+
+    ```ruby
+    post_install do |installer|
+      installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+          current = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
+          if current.nil? || Gem::Version.new(current) < Gem::Version.new('15.0')
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+          end
+        end
+      end
+    end
+    ```
+
+    - 15.0보다 높게 설정된 Pod은 그대로 둡니다.
+    - `Podfile`에 이미 `post_install`이 있으면 블록을 하나 더 만들지 말고 기존 블록 안에 내용을 합치세요(`post_install`은 한 번만 쓸 수 있습니다).
 
 ---
 

@@ -30,7 +30,7 @@ echo "▶ xcodegen generate"
 xcodegen generate
 
 echo "▶ pod install"
-# 로컬 스펙 인덱스가 오래되어 GroobeeKit 을 못 찾으면 --repo-update 로 재시도
+# GroobeeKit 은 배포 저장소 git 태그로 받는다. Firebase 등 다른 Pod 의 스펙 인덱스가 오래되어 실패하면 --repo-update 로 재시도
 pod install || pod install --repo-update
 
 echo ""

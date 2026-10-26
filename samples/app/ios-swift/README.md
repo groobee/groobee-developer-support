@@ -9,7 +9,7 @@ CocoaPods 로 배포되는 **Groobee iOS SDK(`GroobeeKit`)** 를 사용하는 �
 
 | 항목 | 값 |
 | --- | --- |
-| 패키지 | `pod 'GroobeeKit', '~> 1.1.6'` (현재 Stable 1.1.13) |
+| 패키지 | `pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'` (현재 Stable 1.1.15, 최신 태그: [태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)) |
 | 배포 | CocoaPods (`GroobeeKit.xcframework` 벤더링) |
 | 푸시 | Firebase Cloud Messaging (`FirebaseCore`, `FirebaseMessaging`) |
 | 최소 버전 | iOS 13.0 |
@@ -29,7 +29,7 @@ CocoaPods 로 배포되는 **Groobee iOS SDK(`GroobeeKit`)** 를 사용하는 �
 ```
 ios-swift/
 ├── project.yml                 # XcodeGen 프로젝트 정의 (타깃/서명/Info.plist 키)
-├── Podfile                     # ★ pod 'GroobeeKit'
+├── Podfile                     # ★ pod 'GroobeeKit' (배포 저장소 :git + :tag)
 ├── setup.sh                    # xcodegen generate + pod install 한 번에 실행
 └── GroobeeSample/
     ├── AppDelegate.swift        # ★ SDK 초기화 + 푸시(FCM/APNS) 처리
@@ -99,8 +99,10 @@ open GroobeeSample.xcworkspace
 
 ## 문제 해결
 
-- **`pod install` 시 `None of your spec sources contain a spec satisfying the dependency: GroobeeKit`**
-  → 로컬 CocoaPods 스펙 인덱스가 오래된 경우입니다. `pod install --repo-update` 로 인덱스를 갱신하세요.
+- **`pod install` 시 `GroobeeKit` 을 받지 못하는 경우(태그를 찾지 못함 등)**
+  → `Podfile` 의 `:tag` 값이 [groobee-ios-sdk-release 태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)에 있는 버전인지 확인하세요. 태그는 `v` 없이 숫자만 씁니다. GroobeeKit 은 CocoaPods Trunk 가 아니라 배포 저장소에서 받으므로 `--repo-update` 로는 해결되지 않습니다.
+- **Xcode 27 에서 최소 배포 버전(iOS 15.0) 오류**
+  → [iOS SDK 설치 가이드](../../../docs/installation/installation-ios-sdk.md#sdk-install)의 「Xcode 27에서 최소 배포 버전 오류가 나는 경우」대로 `Podfile` 에 `post_install` 을 추가하세요.
 - **`pod install` 시 `Unicode Normalization ... ASCII-8BIT` 오류**
   → 터미널 로케일이 UTF-8 이 아니어서 발생합니다. 아래를 실행한 뒤 다시 시도하세요.
     ```bash

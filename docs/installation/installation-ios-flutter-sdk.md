@@ -63,10 +63,13 @@ dependencies:
 Flutter iOS 앱 프로젝트 폴더(`ios/`)에 생성되어 있는 `Podfile`에 아래와 같이 `GroobeeKit`을 추가합니다.
 
 ```ruby
-pod 'GroobeeKit'
+pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 ```
 
-> Native iOS에서는 `FirebaseFirestore`, `FirebaseMessaging`을 별도로 추가하지만, Flutter iOS에서는 `pod 'GroobeeKit'` 단독으로만 추가합니다. Firebase 관련 의존성은 Flutter 측 `firebase_messaging`, `firebase_core` 패키지가 iOS에 플러그인 형태로 주입합니다.
+!!! warning "CocoaPods Trunk 읽기 전용 전환 안내"
+    CocoaPods Trunk가 읽기 전용으로 바뀌어 2026-12-02부터는 GroobeeKit 새 버전이 Trunk에 올라가지 않습니다(2026-11-01 ~ 11-07 시험 주간에도 등록 실패). 이미 설치된 버전은 계속 빌드되며, 새 버전은 위 예시처럼 Groobee 배포 저장소의 git 태그(`:git` + `:tag`)로 설치합니다. 기존 `pod 'GroobeeKit'`만 있던 줄을 위와 같이 바꾸고, 버전을 올릴 때는 `:tag` 값을 바꾼 뒤 `pod update GroobeeKit`(또는 `pod install`)을 실행하세요. 태그는 `v` 없이 숫자만 쓰며, 최신 버전은 [groobee-ios-sdk-release 태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)에서 확인하고 그 태그 이름을 `:tag`에 그대로 넣으세요. 변경 내용은 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md)에서 확인할 수 있습니다.
+
+> Native iOS에서는 `FirebaseFirestore`, `FirebaseMessaging`을 별도로 추가하지만, Flutter iOS에서는 `GroobeeKit` 단독으로만 추가합니다. Firebase 관련 의존성은 Flutter 측 `firebase_messaging`, `firebase_core` 패키지가 iOS에 플러그인 형태로 주입합니다.
 
 ### 3단계: GroobeeKit Pod install
 
@@ -509,17 +512,17 @@ Apple 공식 문서: <https://developer.apple.com/documentation/usernotification
 
 ### Flutter 프로젝트 Podfile 설정
 
-Flutter iOS 프로젝트에서 Notification Service Extension 또는 Notification Content Extension을 추가한 경우, Extension 타겟에서도 `GroobeeKit`을 참조할 수 있어야 합니다. `ios/Podfile`에 Extension 타겟 이름에 맞춰 아래와 같이 추가한 뒤 `pod install`을 다시 실행하세요.
+Flutter iOS 프로젝트에서 Notification Service Extension 또는 Notification Content Extension을 추가한 경우, Extension 타겟에서도 `GroobeeKit`을 참조할 수 있어야 합니다. `ios/Podfile`에 Extension 타겟 이름에 맞춰 아래와 같이 추가하고(**메인 타깃과 같은 `:tag`** 를 사용해야 합니다), `pod install`을 다시 실행하세요.
 
 ```ruby
 target 'Service' do
   use_frameworks!
-  pod 'GroobeeKit'
+  pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 end
 
 target 'Content' do
   use_frameworks!
-  pod 'GroobeeKit'
+  pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 end
 ```
 

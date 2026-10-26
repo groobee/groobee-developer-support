@@ -12,7 +12,7 @@ Flutter 앱에서 **Groobee SDK**(iOS `GroobeeKit`, Android `groobee-sdk-message
 | 플랫폼 | 정식 SDK |
 | --- | --- |
 | Android | `io.groobee.message:groobee-sdk-message:1.0.89` (Maven Central) |
-| iOS | `pod 'GroobeeKit', '~> 1.1.6'` (CocoaPods) |
+| iOS | `pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'` (CocoaPods, 최신 태그: [태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)) |
 | 공통(Dart) | `firebase_core`, `firebase_messaging` (FCM 토큰 발급용) |
 
 ---
@@ -94,7 +94,7 @@ flutter run --dart-define-from-file=groobee_config.json
 ```
 
 > 설정 파일 없이 `flutter run` 만 해도 placeholder 로 빌드·실행됩니다(서버 전송은 동작 안 함).
-> iOS 는 최초 1회 `cd ios && pod install` 이 필요합니다. (GroobeeKit 못 찾으면 `pod install --repo-update`)
+> iOS 는 최초 1회 `cd ios && pod install` 이 필요합니다. (GroobeeKit 은 배포 저장소 git 태그로 받습니다 — `ios/Podfile` 참고)
 
 ---
 

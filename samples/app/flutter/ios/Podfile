@@ -34,7 +34,8 @@ target 'Runner' do
 
   # Groobee iOS SDK. Firebase 는 firebase_messaging/firebase_core
   # Flutter 플러그인이 iOS 측에 주입하므로 별도 추가하지 않습니다.
-  pod 'GroobeeKit', '~> 1.1.6'
+  # 최신 태그 확인: https://github.com/groobee/groobee-ios-sdk-release/tags
+  pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 end
 
 post_install do |installer|

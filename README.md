@@ -30,7 +30,7 @@ Groobee SDK 및 스크립트 사용하는 **개발자와 서비스 운영자**�
 | 플랫폼 | 샘플 | 비고 |
 | --- | --- | --- |
 | Android (Kotlin) | [samples/app/android-kotlin](samples/app/android-kotlin) | Maven Central `groobee-sdk-message` |
-| iOS (Swift) | [samples/app/ios-swift](samples/app/ios-swift) | CocoaPods `GroobeeKit` |
+| iOS (Swift) | [samples/app/ios-swift](samples/app/ios-swift) | CocoaPods `GroobeeKit` (배포 저장소 git 태그 `:git` + `:tag`) |
 | Flutter | [samples/app/flutter](samples/app/flutter) | MethodChannel 브리지 (Android/iOS) |
 | Web (일반) | [samples/web/vanilla](samples/web/vanilla) | 멀티 페이지, 자동 수집 + 직접 호출 |
 | Web (React SPA) | [samples/web/react](samples/web/react) | `isSPA` 모드, 라우트 전환 추적 |
