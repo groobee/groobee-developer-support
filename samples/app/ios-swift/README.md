@@ -9,7 +9,7 @@ CocoaPods 로 배포되는 **Groobee iOS SDK(`GroobeeKit`)** 를 사용하는 �
 
 | 항목 | 값 |
 | --- | --- |
-| 패키지 | `pod 'GroobeeKit', '~> 1.1.6'` (현재 Stable 1.1.13) |
+| 패키지 | `pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'` (현재 Stable 1.1.15, 최신 태그: [태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)) |
 | 배포 | CocoaPods (`GroobeeKit.xcframework` 벤더링) |
 | 푸시 | Firebase Cloud Messaging (`FirebaseCore`, `FirebaseMessaging`) |
 | 최소 버전 | iOS 13.0 |

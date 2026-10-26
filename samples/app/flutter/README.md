@@ -12,7 +12,7 @@ Flutter 앱에서 **Groobee SDK**(iOS `GroobeeKit`, Android `groobee-sdk-message
 | 플랫폼 | 정식 SDK |
 | --- | --- |
 | Android | `io.groobee.message:groobee-sdk-message:1.0.89` (Maven Central) |
-| iOS | `pod 'GroobeeKit', '~> 1.1.6'` (CocoaPods) |
+| iOS | `pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'` (CocoaPods, 최신 태그: [태그 목록](https://github.com/groobee/groobee-ios-sdk-release/tags)) |
 | 공통(Dart) | `firebase_core`, `firebase_messaging` (FCM 토큰 발급용) |
 
 ---
