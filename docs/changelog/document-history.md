@@ -11,6 +11,7 @@
 - [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md#sdk-install)·[iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md)의 `GroobeeKit` Podfile 예시를 CocoaPods Trunk 대신 Groobee 배포 저장소 git 태그(`:git` + `:tag`, 예시 1.1.15) 방식으로 변경하고, Trunk 읽기 전용 전환(2026-12-02~) 안내 추가
 - [iOS 시작하기](../getting-started/gettingstart-ios.md)의 설치 안내 문구 맞춤
 - [iOS SDK 변경 로그](./sdk-ios-changelog.md)의 현재 권장 버전(Stable) 갱신 — iOS 1.1.13 → 1.1.15
+- [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md#sdk-install)에 Xcode 27 최소 배포 버전(iOS 15.0) 오류 시 `post_install` 설정 안내 추가
 
 ---
 

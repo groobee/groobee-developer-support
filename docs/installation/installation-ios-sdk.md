@@ -90,6 +90,25 @@ pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.gi
 pod install
 ```
 
+!!! tip "Xcode 27에서 최소 배포 버전 오류가 나는 경우"
+    Xcode 27은 최소 배포 버전(`IPHONEOS_DEPLOYMENT_TARGET`)이 iOS 15.0 미만인 타깃을 빌드하지 않습니다. `GroobeeKit`을 포함한 일부 Pod은 더 낮은 버전으로 설정되어 있어 Pods 타깃에서 이 오류가 날 수 있습니다. 이때는 `Podfile` 맨 아래에 아래 `post_install`을 추가하고 `pod install`을 다시 실행하세요.
+
+    ```ruby
+    post_install do |installer|
+      installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+          current = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
+          if current.nil? || Gem::Version.new(current) < Gem::Version.new('15.0')
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+          end
+        end
+      end
+    end
+    ```
+
+    - 15.0보다 높게 설정된 Pod은 그대로 둡니다.
+    - `Podfile`에 이미 `post_install`이 있으면 블록을 하나 더 만들지 말고 기존 블록 안에 내용을 합치세요(`post_install`은 한 번만 쓸 수 있습니다).
+
 ---
 
 <a id="appdelegate-config"></a>
