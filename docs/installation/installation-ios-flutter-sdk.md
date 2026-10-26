@@ -60,14 +60,38 @@ dependencies:
 
 ### 2단계: GroobeeKit Podfile 작성
 
-Flutter iOS 앱 프로젝트 폴더(`ios/`)에 생성되어 있는 `Podfile`에 아래와 같이 `GroobeeKit`을 추가합니다.
+Flutter iOS 앱 프로젝트 폴더(`ios/`)에 생성되어 있는 `Podfile`에 아래와 같이 `GroobeeKit`을 추가합니다. `source` 두 줄은 `Podfile` 맨 위에 한 번만 넣습니다.
 
 ```ruby
-pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
+source 'https://github.com/groobee/groobee-ios-specs.git'
+source 'https://cdn.cocoapods.org/'
+
+pod 'GroobeeKit'
 ```
 
 !!! warning "CocoaPods Trunk 읽기 전용 전환 안내"
-    CocoaPods Trunk가 읽기 전용으로 바뀌어 2026-12-02부터는 GroobeeKit 새 버전이 Trunk에 올라가지 않습니다(2026-11-01 ~ 11-07 시험 주간에도 등록 실패). 이미 설치된 버전은 계속 빌드되며, 새 버전은 위 예시처럼 Groobee 배포 저장소의 git 태그(`:git` + `:tag`)로 설치합니다. 기존 `pod 'GroobeeKit'`만 있던 줄을 위와 같이 바꾸고, 버전을 올릴 때는 `:tag` 값을 바꾼 뒤 `pod update GroobeeKit`(또는 `pod install`)을 실행하세요. 태그는 `v` 없이 숫자만 쓰며, 최신 버전은 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md) 또는 GitHub Releases에서 확인합니다.
+    CocoaPods Trunk가 읽기 전용으로 바뀌어 2026-12-02부터는 새 버전이 Trunk에 올라가지 않습니다(2026-11-01 ~ 11-07 시험 주간에도 등록 실패). **GroobeeKit 1.1.16부터는 Groobee Specs 저장소에서 배포**하므로 `Podfile` 맨 위에 `source` 줄을 추가해야 합니다. 이미 설치된 버전(1.1.15 이하)은 계속 빌드됩니다.
+
+    ```ruby
+    # 변경 전 (Trunk)
+    pod 'GroobeeKit'
+
+    # 변경 후 (Groobee Specs 저장소)
+    source 'https://github.com/groobee/groobee-ios-specs.git'
+    source 'https://cdn.cocoapods.org/'
+
+    pod 'GroobeeKit'
+    ```
+
+    - 처음 적용할 때는 `pod repo update` 또는 `pod install --repo-update`를 한 번 실행하고, 새 버전은 `pod update GroobeeKit`으로 받습니다. 버전을 고정하려면 `pod 'GroobeeKit', '~> 1.1'`처럼 씁니다.
+    - **Flutter 플러그인 등 다른 pod도 쓰므로 `https://cdn.cocoapods.org/` 줄을 반드시 같이 넣으세요.** `source`를 한 줄만 두면 다른 pod를 찾지 못합니다.
+
+??? note "대안: Specs 저장소를 사용할 수 없을 때 (git 태그 방식)"
+    Specs 저장소에 접근할 수 없다면 `source` 줄 없이 배포 저장소의 git 태그로 설치할 수 있습니다. 새 버전으로 올릴 때마다 `:tag` 값을 직접 바꿔야 하며, 태그는 `v` 없이 숫자만 씁니다([iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md) 참고).
+
+    ```ruby
+    pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
+    ```
 
 > Native iOS에서는 `FirebaseFirestore`, `FirebaseMessaging`을 별도로 추가하지만, Flutter iOS에서는 `GroobeeKit` 단독으로만 추가합니다. Firebase 관련 의존성은 Flutter 측 `firebase_messaging`, `firebase_core` 패키지가 iOS에 플러그인 형태로 주입합니다.
 
@@ -512,17 +536,17 @@ Apple 공식 문서: <https://developer.apple.com/documentation/usernotification
 
 ### Flutter 프로젝트 Podfile 설정
 
-Flutter iOS 프로젝트에서 Notification Service Extension 또는 Notification Content Extension을 추가한 경우, Extension 타겟에서도 `GroobeeKit`을 참조할 수 있어야 합니다. `ios/Podfile`에 Extension 타겟 이름에 맞춰 아래와 같이 추가하고(**메인 타깃과 같은 `:tag`** 를 사용해야 합니다), `pod install`을 다시 실행하세요.
+Flutter iOS 프로젝트에서 Notification Service Extension 또는 Notification Content Extension을 추가한 경우, Extension 타겟에서도 `GroobeeKit`을 참조할 수 있어야 합니다. `ios/Podfile`에 Extension 타겟 이름에 맞춰 아래와 같이 추가한 뒤 `pod install`을 다시 실행하세요. `source` 줄은 `Podfile` 맨 위에 이미 있으면 다시 넣지 않습니다.
 
 ```ruby
 target 'Service' do
   use_frameworks!
-  pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
+  pod 'GroobeeKit'
 end
 
 target 'Content' do
   use_frameworks!
-  pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
+  pod 'GroobeeKit'
 end
 ```
 

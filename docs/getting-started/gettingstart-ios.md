@@ -65,7 +65,7 @@ Groobee iOS SDK 설치는 다음 순서로 진행하는 것을 권장합니다.
 
 네이티브 앱은 [iOS Native SDK 설치 가이드](../installation/installation-ios-sdk.md), Flutter 앱은 [iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md) 문서의 **SDK 설치** 섹션을 참고하세요.
 
-`Podfile`에 `GroobeeKit`(Groobee 배포 저장소 git 태그 방식, CocoaPods Trunk 미사용), `FirebaseMessaging` 등을 추가하고 `pod install`을 수행합니다. Flutter 앱은 `pubspec.yaml`에 Firebase 패키지를 추가한 뒤 `flutter pub get` → `pod install` 순서로 진행합니다.
+`Podfile` 맨 위에 Groobee Specs 저장소 `source` 줄(CocoaPods Trunk 읽기 전용 전환에 따른 변경)을 넣고 `GroobeeKit`, `FirebaseMessaging` 등을 추가한 뒤 `pod install`을 수행합니다. Flutter 앱은 `pubspec.yaml`에 Firebase 패키지를 추가한 뒤 `flutter pub get` → `pod install` 순서로 진행합니다.
 
 ### 2. AppDelegate 초기화 설정
 
