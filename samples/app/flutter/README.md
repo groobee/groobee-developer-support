@@ -94,7 +94,7 @@ flutter run --dart-define-from-file=groobee_config.json
 ```
 
 > 설정 파일 없이 `flutter run` 만 해도 placeholder 로 빌드·실행됩니다(서버 전송은 동작 안 함).
-> iOS 는 최초 1회 `cd ios && pod install` 이 필요합니다. (GroobeeKit 못 찾으면 `pod install --repo-update`)
+> iOS 는 최초 1회 `cd ios && pod install` 이 필요합니다. (GroobeeKit 은 배포 저장소 git 태그로 받습니다 — `ios/Podfile` 참고)
 
 ---
 
