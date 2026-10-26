@@ -45,59 +45,42 @@ SDK 개요와 iOS 버전 이슈는 [iOS SDK 개요 및 지원 범위](../detail/
 
 ### 1. GroobeeKit 라이브러리 설치
 
-앱 프로젝트 폴더에 `Podfile`을 생성하고 아래와 같이 추가합니다. `source` 두 줄은 `Podfile` 맨 위에 한 번만 넣습니다.
+앱 프로젝트 폴더에 `Podfile`을 생성하고 아래와 같이 추가합니다.
 
 Native:
 
 ```ruby
-source 'https://github.com/groobee/groobee-ios-specs.git'
-source 'https://cdn.cocoapods.org/'
-
 pod 'FirebaseCore'
 pod 'FirebaseMessaging'
-pod 'GroobeeKit'
+pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 ```
 
 React-Native 참고:
 
 ```ruby
-source 'https://github.com/groobee/groobee-ios-specs.git'
-source 'https://cdn.cocoapods.org/'
-
 pod 'GoogleUtilities', :modular_headers => true
 pod 'FirebaseCore', :modular_headers => true
 pod 'FirebaseMessaging', :modular_headers => true
-pod 'GroobeeKit'
+pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 ```
 
 !!! warning "CocoaPods Trunk 읽기 전용 전환 안내"
-    CocoaPods Trunk가 읽기 전용으로 바뀌어, 2026-11-01 ~ 11-07 시험 주간에는 새 버전 등록(push)이 실패하고 **2026-12-02부터는 계속 읽기 전용**이 됩니다. **GroobeeKit 1.1.16부터는 Groobee Specs 저장소에서 배포**하므로, `Podfile` 맨 위에 `source` 줄을 추가해야 새 버전을 받을 수 있습니다.
+    CocoaPods Trunk가 읽기 전용으로 바뀌어, 2026-11-01 ~ 11-07 시험 주간에는 새 버전 등록(push)이 실패하고 **2026-12-02부터는 계속 읽기 전용**이 됩니다. 이후 GroobeeKit 새 버전은 Trunk에 올라가지 않으므로, 위 예시처럼 Groobee 배포 저장소의 git 태그로 설치하세요.
 
-    - 이미 설치되어 있는 버전(1.1.15 이하)은 Trunk 전환 이후에도 계속 빌드됩니다.
-    - `pod 'GroobeeKit'` 줄은 그대로 두고, `Podfile` 맨 위에 `source` 두 줄만 추가하면 됩니다.
+    - 이미 설치되어 있는 버전은 Trunk 전환 이후에도 계속 빌드됩니다.
+    - 기존 `Podfile`에서 바꿀 부분은 `GroobeeKit` 한 줄입니다.
 
     ```ruby
     # 변경 전 (Trunk)
     pod 'GroobeeKit'
 
-    # 변경 후 (Groobee Specs 저장소)
-    source 'https://github.com/groobee/groobee-ios-specs.git'
-    source 'https://cdn.cocoapods.org/'
-
-    pod 'GroobeeKit'
-    ```
-
-    - 새 버전은 `pod update GroobeeKit`으로 받습니다. 처음 적용할 때는 Specs 저장소를 내려받아야 하므로 `pod repo update` 또는 `pod install --repo-update`를 한 번 실행하세요.
-    - 버전을 고정하려면 `pod 'GroobeeKit', '~> 1.1'`처럼 버전 조건을 씁니다.
-    - **다른 pod(Firebase 등)도 함께 쓰므로 `https://cdn.cocoapods.org/` 줄을 반드시 같이 넣으세요.** `source`를 한 줄만 두면 CocoaPods가 나머지 source를 보지 않아 다른 pod를 찾지 못합니다.
-    - Notification Service/Content Extension 타깃은 `Podfile` 맨 위 `source`를 그대로 공유하므로 `source`를 다시 넣을 필요가 없습니다.
-
-??? note "대안: Specs 저장소를 사용할 수 없을 때 (git 태그 방식)"
-    사내 네트워크 정책 등으로 Specs 저장소에 접근할 수 없다면, 배포 저장소의 git 태그로 직접 설치할 수 있습니다. 이 경우 `source` 줄은 필요 없고, 새 버전으로 올릴 때마다 `:tag` 값을 직접 바꿔야 합니다. 태그는 `v` 없이 숫자만 씁니다(최신 버전은 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md) 참고). Extension 타깃에도 메인 타깃과 **같은 `:tag`** 를 사용하세요.
-
-    ```ruby
+    # 변경 후 (git 태그)
     pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
     ```
+
+    - 새 버전으로 올릴 때는 `:tag` 값을 바꾼 뒤 `pod update GroobeeKit`(또는 `pod install`)을 실행합니다. 태그는 `v` 없이 숫자만 씁니다.
+    - 최신 버전 번호는 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md) 또는 GitHub Releases에서 확인하세요.
+    - Notification Service/Content Extension 타깃에도 `GroobeeKit`을 추가했다면 메인 타깃과 **같은 `:tag`** 를 사용하세요.
 
 ### 2. Pod install
 

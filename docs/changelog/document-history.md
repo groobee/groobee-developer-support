@@ -8,7 +8,7 @@
 ## 2026-10-26
 작성자: 김훈기
 
-- [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md#sdk-install)·[iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md)의 `GroobeeKit` Podfile 예시를 Groobee Specs 저장소 `source` 줄 + `pod 'GroobeeKit'` 방식으로 변경하고, CocoaPods Trunk 읽기 전용 전환(2026-12-02~, 1.1.16부터 Specs 저장소 배포) 안내 추가. 기존 git 태그 방식(`:git` + `:tag`)은 대안으로 유지
+- [iOS SDK 설치 가이드](../installation/installation-ios-sdk.md#sdk-install)·[iOS Flutter SDK 설치 가이드](../installation/installation-ios-flutter-sdk.md)의 `GroobeeKit` Podfile 예시를 CocoaPods Trunk 대신 Groobee 배포 저장소 git 태그(`:git` + `:tag`, 예시 1.1.15) 방식으로 변경하고, Trunk 읽기 전용 전환(2026-12-02~) 안내 추가
 - [iOS 시작하기](../getting-started/gettingstart-ios.md)의 설치 안내 문구 맞춤
 
 ---
