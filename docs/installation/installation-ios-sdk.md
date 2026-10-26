@@ -52,7 +52,7 @@ Native:
 ```ruby
 pod 'FirebaseCore'
 pod 'FirebaseMessaging'
-pod 'GroobeeKit'
+pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 ```
 
 React-Native 참고:
@@ -61,8 +61,26 @@ React-Native 참고:
 pod 'GoogleUtilities', :modular_headers => true
 pod 'FirebaseCore', :modular_headers => true
 pod 'FirebaseMessaging', :modular_headers => true
-pod 'GroobeeKit'
+pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
 ```
+
+!!! warning "CocoaPods Trunk 읽기 전용 전환 안내"
+    CocoaPods Trunk가 읽기 전용으로 바뀌어, 2026-11-01 ~ 11-07 시험 주간에는 새 버전 등록(push)이 실패하고 **2026-12-02부터는 계속 읽기 전용**이 됩니다. 이후 GroobeeKit 새 버전은 Trunk에 올라가지 않으므로, 위 예시처럼 Groobee 배포 저장소의 git 태그로 설치하세요.
+
+    - 이미 설치되어 있는 버전은 Trunk 전환 이후에도 계속 빌드됩니다.
+    - 기존 `Podfile`에서 바꿀 부분은 `GroobeeKit` 한 줄입니다.
+
+    ```ruby
+    # 변경 전 (Trunk)
+    pod 'GroobeeKit'
+
+    # 변경 후 (git 태그)
+    pod 'GroobeeKit', :git => 'https://github.com/groobee/groobee-ios-sdk-release.git', :tag => '1.1.15'
+    ```
+
+    - 새 버전으로 올릴 때는 `:tag` 값을 바꾼 뒤 `pod update GroobeeKit`(또는 `pod install`)을 실행합니다. 태그는 `v` 없이 숫자만 씁니다.
+    - 최신 버전 번호는 [iOS SDK 변경 로그](../changelog/sdk-ios-changelog.md) 또는 GitHub Releases에서 확인하세요.
+    - Notification Service/Content Extension 타깃에도 `GroobeeKit`을 추가했다면 메인 타깃과 **같은 `:tag`** 를 사용하세요.
 
 ### 2. Pod install
 
